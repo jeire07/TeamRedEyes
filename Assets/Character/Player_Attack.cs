@@ -1,18 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using System.Collections;
 
 public class Player_Attack : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public float attackCooldown = 0.5f; // 쿨타임 시간
+    private bool isCooldown = false;     // 쿨타임 활성화 여부
+
+    public void OnAttack(InputAction.CallbackContext context)
     {
-        
+        // Attack 액션
+        if (context.performed && !isCooldown)
+        {
+            Debug.Log("Attack!");
+            StartCoroutine(AttackCooldown());
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator AttackCooldown()
     {
-        
+        isCooldown = true;
+        yield return new WaitForSeconds(attackCooldown);
+        isCooldown = false;
     }
 }
+
