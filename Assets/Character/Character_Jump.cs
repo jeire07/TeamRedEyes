@@ -14,7 +14,7 @@ public class Character_Jump : MonoBehaviour
 
     void Update()
     {
-        // 땅에 닿아 있는지 확인하는 로직 (추가 구현 필요)
+        // 땅에 닿아 있는지 확인하는 로직(나중에 추가)
     }
 
     public void OnJump(InputAction.CallbackContext context)
