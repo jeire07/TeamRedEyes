@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Serializable]
 public class Condition
 {
     // 전부 JSON으로 따로 관리해야하는 데이터
