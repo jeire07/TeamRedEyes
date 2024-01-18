@@ -6,6 +6,11 @@ public enum ItemType
 {
     Resource,
     Consumable,
+    Equipable
+}
+
+public enum EquipableType
+{
     Shoes,
     Clothes,
     Weapon,

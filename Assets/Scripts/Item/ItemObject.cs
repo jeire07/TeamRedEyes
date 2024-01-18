@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
-public class ItemObject : MonoBehaviour
+public class ItemObject : MonoBehaviour, IInteractable
 {
-    // Start is called before the first frame update
-    void Start()
+    public ItemData item;
+
+    public string InteractionText()
     {
-        
+        return string.Format("Pickup {0}", item.displayName);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Interact()
     {
-        
+        Inventory.Instance.AddItem(item);
+        gameObject.SetActive(false);
     }
 }
