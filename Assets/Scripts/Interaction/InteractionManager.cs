@@ -6,9 +6,9 @@ public class InteractionManager : MonoBehaviour
 {
     #region SerializeField
     [SerializeField] private TextMeshProUGUI _interactText;
-    [SerializeField] private float CheckRate = 0.05f;
-    [SerializeField] private float MaxDistance = 3.0f;
-    [SerializeField] private LayerMask _layerMask = LayerMask.GetMask("Interactable");
+    [SerializeField] private float _checkRate = 0.05f;
+    [SerializeField] private float _maxDistance = 3.0f;
+    [SerializeField] private LayerMask _layerMask;
     #endregion
 
     #region private field
@@ -24,19 +24,21 @@ public class InteractionManager : MonoBehaviour
     void Start()
     {
         _camera = Camera.main;
+
+        _layerMask = LayerMask.GetMask("Interactable");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.time - _lastCheckTime > CheckRate)
+        if (Time.time - _lastCheckTime > _checkRate)
         {
             _lastCheckTime = Time.time;
 
             Ray ray = _camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, MaxDistance, _layerMask))
+            if (Physics.Raycast(ray, out hit, _maxDistance, _layerMask))
             {
                 if (hit.collider.gameObject != _curGameobject)
                 {
