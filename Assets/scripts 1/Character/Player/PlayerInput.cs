@@ -7,12 +7,12 @@ public class PlayerInput : MonoBehaviour
  
     public PlayerInputaction InputActions {  get; private set; }
 
-    public PlayerInputaction.PlayerActions playerActions { get; private set; }
+    public PlayerInputaction.PlayerActions PlayerActions { get; private set; }
 
     private void Awake()
     {
         InputActions = new PlayerInputaction();
-        playerActions = InputActions.Player;
+        PlayerActions = InputActions.Player;
     }
 
     private void OnEnable()

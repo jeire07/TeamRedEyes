@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerStateMachine : StateMachine
 {
-    public Player player { get; }
+    public Player Player { get; }
 
-    public PlayerIdleState idleState { get; }
+    public PlayerIdleState IdleState { get; }
 
     public Vector2 MovementInput {  get; set; }
     public float MovementSpeed { get; private set; }
@@ -18,9 +18,9 @@ public class PlayerStateMachine : StateMachine
 
     public PlayerStateMachine(Player player)
     {
-        this.player = player;
+        this.Player = player;
 
-        idleState = new PlayerIdleState(this);
+        IdleState = new PlayerIdleState(this);
 
         MainCameraTransform = Camera.main.transform;
 

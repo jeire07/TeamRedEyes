@@ -2,30 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerIdleState : PlayerBaseState
+public class PlayerIdleState : PlayerGroundState
 {
-    public void Enter()
+    public PlayerIdleState(PlayerStateMachine playerstateMachine) : base(playerstateMachine)
     {
-        throw new System.NotImplementedException();
     }
 
-    public void Exit()
+    public override void Enter()
     {
-        throw new System.NotImplementedException();
+        StateMachine.MovementspeedModifier = 0f;
+        base.Enter();
+        StartAnimation(StateMachine.Player.AnimationData.IdleParameterHash);
     }
 
-    public void HandleInput()
+    public override void Exit()
     {
-        throw new System.NotImplementedException();
+        base.Enter();
+        StopAnimation(StateMachine.Player.AnimationData.IdleParameterHash);
     }
 
-    public void PhysicsUpdate()
+    public override void HandleInput()
     {
-        throw new System.NotImplementedException();
+      
     }
 
-    public void Update()
+    public override void PhysicsUpdate()
     {
-        throw new System.NotImplementedException();
+    
+    }
+
+    public override void Update()
+    {
+       base.Update();
     }
 }
