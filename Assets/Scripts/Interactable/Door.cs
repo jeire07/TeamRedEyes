@@ -60,7 +60,7 @@ public class Door : MonoBehaviour, IInteractable
 
         while (elapsedTime < OpenCloseTime)
         {
-            transform.rotation = Quaternion.Slerp(startRotation, targetQuaternion, (elapsedTime / OpenCloseTime));
+            transform.parent.rotation = Quaternion.Slerp(startRotation, targetQuaternion, (elapsedTime / OpenCloseTime));
             elapsedTime += Time.deltaTime;
             yield return null;
         }

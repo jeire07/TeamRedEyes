@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class TalkToNPC : MonoBehaviour, IInteractable
 {
@@ -7,8 +6,8 @@ public class TalkToNPC : MonoBehaviour, IInteractable
 
     public string GetInteractText()
     {
-        return string.Format("[G] 대화하기 - {_NPC.displayName}");
-        //return string.Format($"[G] 대화하기 - {_NPC.displayName}");
+        return "[G] 대화하기 - {_NPC.displayName}";
+        //return $"[G] 대화하기 - {_NPC.displayName}";
     }
 
     public void Interact()

@@ -1,11 +1,10 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CraftTable : MonoBehaviour, IInteractable
 {
     public string GetInteractText()
     {
-        return string.Format("[G] 아이템 제작하기");
+        return "[G] 작업대 - 아이템 제작하기";
     }
 
     public void Interact()

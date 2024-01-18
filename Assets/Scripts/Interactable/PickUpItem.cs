@@ -6,7 +6,9 @@ public class PickUpItem : MonoBehaviour, IInteractable
 
     public string GetInteractText()
     {
-        return string.Format("[G] 줍기 - {_item.displayName}");
+        return "[G] 줍기 - {_item.displayName}";
+        // 데이터 작성 끝나면 아래 코드로 위의 코드를 대체
+        // return $"[G] 줍기 - {_item.displayName}";
     }
 
     public void Interact()
