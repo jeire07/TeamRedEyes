@@ -2,10 +2,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InteractionManager : MonoBehaviour
+public class CheckInteraction : MonoBehaviour
 {
     #region SerializeField
-    [SerializeField] private TextMeshProUGUI _interactText;
+    [SerializeField] private TMP_Text _interactText;
     [SerializeField] private float _checkRate = 0.05f;
     [SerializeField] private float _maxDistance = 3.0f;
     [SerializeField] private LayerMask _layerMask;
@@ -59,16 +59,19 @@ public class InteractionManager : MonoBehaviour
     private void SetPromptText()
     {
         _interactText.gameObject.SetActive(true);
-        _interactText.text = string.Format($"{_curInteractable.GetInteractText()}");
+        _interactText.text = _curInteractable.GetInteractText();
     }
 
-    public void OnInteractInput(InputAction.CallbackContext callbackContext)
+    public void OnInteraction(InputAction.CallbackContext callbackContext)
     {
+        Debug.Log("OnInteract");
+        Debug.Log($"OnInteract, {callbackContext.phase} {_curInteractable}");
+
         if (callbackContext.phase == InputActionPhase.Started && _curInteractable != null)
         {
             _curInteractable.Interact();
-            _curGameobject = null;
-            _curInteractable = null;
+            //_curGameobject = null;
+            //_curInteractable = null;
             _interactText.gameObject.SetActive(false);
         }
     }
