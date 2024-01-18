@@ -1,7 +1,7 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using System.Collections;
 
-// ¹® Å¬·¡½º°¡ »óÈ£ ÀÛ¿ë °¡´ÉÇÑ ÀÎÅÍÆäÀÌ½º¸¦ ±¸Çö
+// ë¬¸ í´ë˜ìŠ¤ê°€ ìƒí˜¸ ì‘ìš© ê°€ëŠ¥í•œ ì¸í„°í˜ì´ìŠ¤ë¥¼ êµ¬í˜„
 public class Door : MonoBehaviour, IInteractable
 {
     #region private field
@@ -31,14 +31,14 @@ public class Door : MonoBehaviour, IInteractable
     public string GetInteractText()
     {
         if (_isLocked)
-            return "¹®ÀÌ Àá°ÜÀÖ½À´Ï´Ù. ¿­¼è°¡ ÀÖ¾î¾ßÇÕ´Ï´Ù.";
+            return "ë¬¸ì´ ì ê²¨ìˆìŠµë‹ˆë‹¤. ì—´ì‡ ê°€ ìˆì–´ì•¼í•©ë‹ˆë‹¤.";
         else if(_isOpened)
-            return "[G] ¹® ´İ±â";
+            return "[G] ë¬¸ ë‹«ê¸°";
         else
-            return "[G] ¹® ¿­±â";
+            return "[G] ë¬¸ ì—´ê¸°";
     }
 
-    // »óÈ£ ÀÛ¿ë ÀÎÅÍÆäÀÌ½ºÀÇ ¸Ş¼­µå ±¸Çö
+    // ìƒí˜¸ ì‘ìš© ì¸í„°í˜ì´ìŠ¤ì˜ ë©”ì„œë“œ êµ¬í˜„
     public void Interact()
     {
         if(_isOpened)
@@ -68,7 +68,7 @@ public class Door : MonoBehaviour, IInteractable
         _isOpened = !_isOpened;
     }
 
-    // ¸ó½ºÅÍ´Â ¹® ¾ÕµÚ·Î Æ®¸®°Å Ãæµ¹ ¿µ¿ªÀ» ¼³Á¤ÇÏ¿© ÀÚµ¿À¸·Î ¿­¸®µµ·Ï Ã³¸®ÇÔ
+    // ëª¬ìŠ¤í„°ëŠ” ë¬¸ ì•ë’¤ë¡œ íŠ¸ë¦¬ê±° ì¶©ëŒ ì˜ì—­ì„ ì„¤ì •í•˜ì—¬ ìë™ìœ¼ë¡œ ì—´ë¦¬ë„ë¡ ì²˜ë¦¬í•¨
     private void OnTriggerEnter(Collider other)
     {
         if(!_isLocked && !_isOpened && other.gameObject.layer == LayerMask.NameToLayer("Monster"))
