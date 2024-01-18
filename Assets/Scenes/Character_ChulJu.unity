@@ -129,7 +129,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh69018
+  m_Name: pb_Mesh29680
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -288,13 +288,19 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!4 &600480239 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400136, guid: 895bba5160ea131489e4882eb6ded6ab,
+    type: 3}
+  m_PrefabInstance: {fileID: 1804848327}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &761060343
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh69058
+  m_Name: pb_Mesh29720
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -811,7 +817,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh69090
+  m_Name: pb_Mesh29752
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -976,7 +982,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh69036
+  m_Name: pb_Mesh29698
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -3734,9 +3740,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1615954216}
   - component: {fileID: 1615954215}
+  - component: {fileID: 1615954217}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3753,7 +3760,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51c3ec815ef33e04e860af8d85ecb34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Data>k__BackingField: {fileID: 0}
+  <Data>k__BackingField: {fileID: 11400000, guid: 8dae65d150cfdc447b4ee5b512f2bdaa,
+    type: 2}
   <AnimationData>k__BackingField:
     groundParameterName: '@Ground'
     idleParameterName: Idle
@@ -3779,10 +3787,102 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 600480239}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!143 &1615954217
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615954214}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.5
+  m_Radius: 0.25
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.75, z: 0}
+--- !u!1001 &1804848327
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1615954216}
+    m_Modifications:
+    - target: {fileID: 100136, guid: 895bba5160ea131489e4882eb6ded6ab, type: 3}
+      propertyPath: m_Name
+      value: Latifa V2 (Optimized FBX)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400136, guid: 895bba5160ea131489e4882eb6ded6ab, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400136, guid: 895bba5160ea131489e4882eb6ded6ab, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400136, guid: 895bba5160ea131489e4882eb6ded6ab, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400136, guid: 895bba5160ea131489e4882eb6ded6ab, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400136, guid: 895bba5160ea131489e4882eb6ded6ab, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400136, guid: 895bba5160ea131489e4882eb6ded6ab, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400136, guid: 895bba5160ea131489e4882eb6ded6ab, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400136, guid: 895bba5160ea131489e4882eb6ded6ab, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400136, guid: 895bba5160ea131489e4882eb6ded6ab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400136, guid: 895bba5160ea131489e4882eb6ded6ab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400136, guid: 895bba5160ea131489e4882eb6ded6ab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 895bba5160ea131489e4882eb6ded6ab, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1adee3b63b0debf4baa9a1bc496f83e5, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 895bba5160ea131489e4882eb6ded6ab, type: 3}
 --- !u!850595691 &1903088962
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -3861,7 +3961,7 @@ GameObject:
   - component: {fileID: 2045186421}
   m_Layer: 0
   m_Name: MainCamera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
