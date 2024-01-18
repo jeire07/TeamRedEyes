@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class TalkToNPC : MonoBehaviour, IInteractable
 {
@@ -6,13 +6,13 @@ public class TalkToNPC : MonoBehaviour, IInteractable
 
     public string GetInteractText()
     {
-        return "[G] ´ëÈ­ÇÏ±â - {_NPC.displayName}";
-        //return $"[G] ´ëÈ­ÇÏ±â - {_NPC.displayName}";
+        return "[G] ëŒ€í™”í•˜ê¸° - {_NPC.displayName}";
+        //return $"[G] ëŒ€í™”í•˜ê¸° - {_NPC.displayName}";
     }
 
     public void Interact()
     {
-        Debug.Log("´ëÈ­ÇÏ±â¸¦ ½ÃÀüÇß´Ù. ÄÚµå°¡ ¹Ì¿Ï¼ºÀÌ´Ù");
+        Debug.Log("ëŒ€í™”í•˜ê¸°ë¥¼ ì‹œì „í–ˆë‹¤. ì½”ë“œê°€ ë¯¸ì™„ì„±ì´ë‹¤");
         //pop up TalkUI for talk or Chat
     }
 }

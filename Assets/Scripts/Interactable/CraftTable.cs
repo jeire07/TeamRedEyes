@@ -1,15 +1,15 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class CraftTable : MonoBehaviour, IInteractable
 {
     public string GetInteractText()
     {
-        return "[G] ÀÛ¾÷´ë - ¾ÆÀÌÅÛ Á¦ÀÛÇÏ±â";
+        return "[G] ì‘ì—…ëŒ€ - ì•„ì´í…œ ì œì‘í•˜ê¸°";
     }
 
     public void Interact()
     {
-        Debug.Log("Á¦ÀÛÃ¢ ¿­±â¸¦ ½ÃÀüÇß´Ù. ÄÚµå°¡ ¹Ì¿Ï¼ºÀÌ´Ù");
+        Debug.Log("ì œì‘ì°½ ì—´ê¸°ë¥¼ ì‹œì „í–ˆë‹¤. ì½”ë“œê°€ ë¯¸ì™„ì„±ì´ë‹¤");
         //pop up craftUI for craft
     }
 }

@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class PickUpItem : MonoBehaviour, IInteractable
 {
@@ -6,15 +6,15 @@ public class PickUpItem : MonoBehaviour, IInteractable
 
     public string GetInteractText()
     {
-        return "[G] Áİ±â - {_item.displayName}";
-        // µ¥ÀÌÅÍ ÀÛ¼º ³¡³ª¸é ¾Æ·¡ ÄÚµå·Î À§ÀÇ ÄÚµå¸¦ ´ëÃ¼
-        // return $"[G] Áİ±â - {_item.displayName}";
+        return "[G] ì¤ê¸° - {_item.displayName}";
+        // ë°ì´í„° ì‘ì„± ëë‚˜ë©´ ì•„ë˜ ì½”ë“œë¡œ ìœ„ì˜ ì½”ë“œë¥¼ ëŒ€ì²´
+        // return $"[G] ì¤ê¸° - {_item.displayName}";
     }
 
     public void Interact()
     {
         //Inventory.Instance.AddItem(_item);
-        Debug.Log("¾ÆÀÌÅÛ Áİ±â¸¦ ½ÃÀüÇß´Ù. ÄÚµå°¡ ¹Ì¿Ï¼ºÀÌ´Ù");
+        Debug.Log("ì•„ì´í…œ ì¤ê¸°ë¥¼ ì‹œì „í–ˆë‹¤. ì½”ë“œê°€ ë¯¸ì™„ì„±ì´ë‹¤");
         gameObject.SetActive(false);
     }
 }
