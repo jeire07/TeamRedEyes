@@ -10,9 +10,9 @@ using UnityEngine.InputSystem;
     protected PlayerStateMachine StateMachine;
     protected readonly PlayerGroundData groundData;
 
-    public PlayerBaseState(PlayerStateMachine playerstateMachine)
+    public PlayerBaseState(PlayerStateMachine playerStateMachine)
     {
-        StateMachine = playerstateMachine;
+        StateMachine = playerStateMachine;
         groundData = StateMachine.Player.Data.GroundData;
     }
 
@@ -76,7 +76,7 @@ using UnityEngine.InputSystem;
     {
         Vector3 movementDirection = GetMovementdirction();
 
-        Rotate(movementDirection);
+        Rotate(movementDirection);  
 
         Move(movementDirection);
     }

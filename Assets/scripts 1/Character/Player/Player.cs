@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
 
     private PlayerStateMachine stateMachine;
 
-    public void Awake()
+    private void Awake()
     {
         AnimationData.Initialize();
 
@@ -26,13 +26,15 @@ public class Player : MonoBehaviour
         Animator = GetComponentInChildren<Animator>();
         Input = GetComponent<PlayerInput>();
         Controller = GetComponent<CharacterController>();
-        stateMachine = new PlayerStateMachine(this);
 
+        stateMachine = new PlayerStateMachine(this);
     }
 
     private void Start()
     {
+
         Cursor.lockState = CursorLockMode.Locked;
+        Debug.Log(stateMachine.IdleState);
         stateMachine.ChangeState(stateMachine.IdleState);
     }
 

@@ -12,6 +12,7 @@ public class PlayerInput : MonoBehaviour
     private void Awake()
     {
         InputActions = new PlayerInputaction();
+
         PlayerActions = InputActions.Player;
     }
 

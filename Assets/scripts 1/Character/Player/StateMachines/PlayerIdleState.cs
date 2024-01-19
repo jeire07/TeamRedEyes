@@ -23,12 +23,12 @@ public class PlayerIdleState : PlayerGroundState
 
     public override void HandleInput()
     {
-      
+
     }
 
     public override void PhysicsUpdate()
     {
-    
+
     }
 
     public override void Update()
