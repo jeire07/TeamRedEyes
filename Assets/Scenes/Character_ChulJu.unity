@@ -4028,7 +4028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1615954217}
-  drag: 0.3
+  drag: 0.1
 --- !u!1001 &1804848327
 PrefabInstance:
   m_ObjectHideFlags: 0
