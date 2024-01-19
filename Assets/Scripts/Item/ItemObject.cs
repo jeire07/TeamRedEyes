@@ -6,10 +6,10 @@ using UnityEngine;
 public class ItemObject : MonoBehaviour, IInteractable
 {
     public ItemData item;
-
+     
     public string GetInteractText()
     {
-        return string.Format("Pickup {0}", item.displayName);
+        return $"Pickup {item.displayName}";
     }
 
     public void Interact()
