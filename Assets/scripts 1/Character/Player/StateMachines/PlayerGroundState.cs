@@ -37,8 +37,14 @@ public class PlayerGroundState : PlayerBaseState
         {
             return;
         }
+
         StateMachine.ChangeState(StateMachine.IdleState);
         base.OnMovementCanceled(context);
+    }
+
+    protected override void OnJumpStarted(InputAction.CallbackContext context)
+    {
+        StateMachine.ChangeState(StateMachine.JumpState);
     }
 
     protected virtual void OnMove()
@@ -46,4 +52,4 @@ public class PlayerGroundState : PlayerBaseState
         StateMachine.ChangeState(StateMachine.WalkState);
     }
 
-    }
+}

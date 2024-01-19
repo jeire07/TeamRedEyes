@@ -23,7 +23,7 @@ public class PlayerIdleState : PlayerGroundState
 
     public override void HandleInput()
     {
-
+        base.HandleInput();
     }
 
     public override void PhysicsUpdate()
