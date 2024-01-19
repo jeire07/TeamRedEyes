@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class Rest : MonoBehaviour, IInteractable
 {
@@ -6,17 +6,17 @@ public class Rest : MonoBehaviour, IInteractable
 
     public string GetInteractText()
     {
-        return "[G] ÈŞ½ÄÇÏ±â";
+        return "[G] íœ´ì‹í•˜ê¸°";
 
-        // °¡±¸ µ¥ÀÌÅÍ SO°¡ ¾ÆÁ÷ ÀÛ¾÷µÇÁö ¾Ê¾ÒÀ½
-        //if (_item.DisplayName == "ÈŞ½Ä¿ë ÀÇÀÚ")
-        //    return "[G] ÀÇÀÚ¿¡¼­ ÈŞ½ÄÇÏ±â";
-        //else if (_item.DisplayName == "ÈŞ½Ä¿ë Ä§´ë")
-        //    return "[G] Ä§´ë¿¡¼­ ÇÑ¼ûÀÚ±â";
+        // ê°€êµ¬ ë°ì´í„° SOê°€ ì•„ì§ ì‘ì—…ë˜ì§€ ì•Šì•˜ìŒ
+        //if (_item.DisplayName == "íœ´ì‹ìš© ì˜ì")
+        //    return "[G] ì˜ìì—ì„œ íœ´ì‹í•˜ê¸°";
+        //else if (_item.DisplayName == "íœ´ì‹ìš© ì¹¨ëŒ€")
+        //    return "[G] ì¹¨ëŒ€ì—ì„œ í•œìˆ¨ìê¸°";
     }
 
     public void Interact()
     {
-        // ÈŞ½Ä ¾Ö´Ï¸ŞÀÌ¼Ç È£Ãâ, ÇÃ·¹ÀÌ¾î »óÅÂ ¼¼ÆÃ
+        // íœ´ì‹ ì• ë‹ˆë©”ì´ì…˜ í˜¸ì¶œ, í”Œë ˆì´ì–´ ìƒíƒœ ì„¸íŒ…
     }
 }
