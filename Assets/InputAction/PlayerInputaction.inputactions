@@ -6,7 +6,7 @@
             "id": "23311a74-1079-4345-84b5-003ae11dbe1d",
             "actions": [
                 {
-                    "name": "move",
+                    "name": "Movement",
                     "type": "Value",
                     "id": "c94a3203-b096-4d1f-b9aa-6e1f0a654bc2",
                     "expectedControlType": "Vector2",
@@ -95,7 +95,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "move",
+                    "action": "Movement",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -106,7 +106,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "move",
+                    "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -117,7 +117,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "move",
+                    "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -128,7 +128,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "move",
+                    "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -139,7 +139,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "move",
+                    "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },

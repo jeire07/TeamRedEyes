@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
-public class PlayerBaseState : IState
+ public class PlayerBaseState : IState
 {
     protected PlayerStateMachine StateMachine;
     protected readonly PlayerGroundData groundData;
@@ -34,7 +35,7 @@ public class PlayerBaseState : IState
 
     public virtual void PhysicsUpdate()
     {
-        throw new System.NotImplementedException();
+
     }
 
     public virtual void Update()
@@ -44,16 +45,31 @@ public class PlayerBaseState : IState
 
     protected virtual void AddInputActionsCallbacks()
     {
-
+        PlayerInput input = StateMachine.Player.Input;
+        input.PlayerActions.Movement.canceled += OnMovementCanceled;
+        input.PlayerActions.Run.started += OnRunstarted;
     }
-    public virtual void RemoveInputActionsCallbacks()
-    {
 
+    protected virtual void RemoveInputActionsCallbacks()
+    {
+        PlayerInput input = StateMachine.Player.Input;
+        input.PlayerActions.Movement.canceled -= OnMovementCanceled;
+        input.PlayerActions.Run.started -= OnRunstarted;
+    }
+
+    protected virtual void OnRunstarted(InputAction.CallbackContext context)
+    {
+    
+    }
+
+    protected virtual void OnMovementCanceled(InputAction.CallbackContext context)
+    {
+  
     }
 
     private void ReadMovementInput()
     {
-        StateMachine.MovementInput = StateMachine.Player.Input.PlayerActions.move.ReadValue<Vector2>();
+        StateMachine.MovementInput = StateMachine.Player.Input.PlayerActions.Movement.ReadValue<Vector2>();
     }
 
     private void Move()
