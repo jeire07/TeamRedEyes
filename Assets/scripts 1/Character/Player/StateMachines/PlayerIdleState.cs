@@ -33,6 +33,11 @@ public class PlayerIdleState : PlayerGroundState
 
     public override void Update()
     {
+        if(StateMachine.MovementInput != Vector2.zero)
+        {
+            OnMove();
+            return;
+        }
        base.Update();
     }
 }
