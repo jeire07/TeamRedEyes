@@ -15,10 +15,11 @@ public class Player : MonoBehaviour
     public Animator Animator { get; private set; }
     public PlayerInput Input { get; private set; }
     public CharacterController Controller { get; private set; }
+    public ForceReceiver ForceReceiver { get; private set; }
 
     private PlayerStateMachine stateMachine;
 
-    public void Awake()
+    private void Awake()
     {
         AnimationData.Initialize();
 
@@ -26,8 +27,9 @@ public class Player : MonoBehaviour
         Animator = GetComponentInChildren<Animator>();
         Input = GetComponent<PlayerInput>();
         Controller = GetComponent<CharacterController>();
-        stateMachine = new PlayerStateMachine(this);
+        ForceReceiver = GetComponent<ForceReceiver>();
 
+        stateMachine = new PlayerStateMachine(this);
     }
 
     private void Start()

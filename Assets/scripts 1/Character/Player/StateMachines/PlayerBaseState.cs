@@ -10,9 +10,9 @@ using UnityEngine.InputSystem;
     protected PlayerStateMachine StateMachine;
     protected readonly PlayerGroundData groundData;
 
-    public PlayerBaseState(PlayerStateMachine playerstateMachine)
+    public PlayerBaseState(PlayerStateMachine playerStateMachine)
     {
-        StateMachine = playerstateMachine;
+        StateMachine = playerStateMachine;
         groundData = StateMachine.Player.Data.GroundData;
     }
 
@@ -35,7 +35,7 @@ using UnityEngine.InputSystem;
 
     public virtual void PhysicsUpdate()
     {
-
+        
     }
 
     public virtual void Update()
@@ -48,6 +48,12 @@ using UnityEngine.InputSystem;
         PlayerInput input = StateMachine.Player.Input;
         input.PlayerActions.Movement.canceled += OnMovementCanceled;
         input.PlayerActions.Run.started += OnRunstarted;
+        input.PlayerActions.Jump.started += OnJumpStarted;
+    }
+
+    private void OnJumpstartde(InputAction.CallbackContext context)
+    {
+  
     }
 
     protected virtual void RemoveInputActionsCallbacks()
@@ -55,16 +61,21 @@ using UnityEngine.InputSystem;
         PlayerInput input = StateMachine.Player.Input;
         input.PlayerActions.Movement.canceled -= OnMovementCanceled;
         input.PlayerActions.Run.started -= OnRunstarted;
+        input.PlayerActions.Jump.started -= OnJumpStarted;
     }
 
     protected virtual void OnRunstarted(InputAction.CallbackContext context)
     {
-    
+
     }
 
     protected virtual void OnMovementCanceled(InputAction.CallbackContext context)
     {
-  
+
+    }
+    protected virtual void OnJumpStarted(InputAction.CallbackContext context)
+    {
+
     }
 
     private void ReadMovementInput()
@@ -76,7 +87,7 @@ using UnityEngine.InputSystem;
     {
         Vector3 movementDirection = GetMovementdirction();
 
-        Rotate(movementDirection);
+        Rotate(movementDirection);  
 
         Move(movementDirection);
     }
@@ -97,7 +108,9 @@ using UnityEngine.InputSystem;
     private void Move(Vector3 movementDirection)
     {
         float movementSpeed = GetMovementSpeed();
-        StateMachine.Player.Controller.Move((movementDirection * movementSpeed) * Time.deltaTime);
+        StateMachine.Player.Controller.Move(((movementDirection * movementSpeed)
+            + StateMachine.Player.ForceReceiver.Movement) 
+            * Time.deltaTime);
     }
 
     private void Rotate(Vector3 movementDirection)
