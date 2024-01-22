@@ -111,6 +111,17 @@ public partial class @PlayerInputaction: IInputActionCollection2, IDisposable
             ],
             ""bindings"": [
                 {
+                    ""name"": """",
+                    ""id"": ""a6990a0f-338f-4cb1-8b98-a444901b52cd"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
                     ""name"": ""2D Vector"",
                     ""id"": ""2d9eca9b-f45d-452b-a913-73e20ca228cf"",
                     ""path"": ""2DVector"",

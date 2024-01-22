@@ -1,69 +1,50 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+using System.ComponentModel;
 using UnityEngine;
-using UnityEngine.InputSystem.Controls;
-using UnityEngine.UI;
 
-public class ItemSlot
+public class Inventory : Singleton<Inventory>
 {
-    //public ItemData item;
-    public int quantity;
-}
-public class Inventory : MonoBehaviour
-{
-    public ItemSlot[] slot;
-    public ItemSlotUI[] uiSlot;
-    public GameObject inventoryPanel;
+    
+    public GameObject inventory;
+    private bool _isOpened = false;
+    public ItemData item;
+    public ItemSlot[] itemSlot;
 
-    public Transform dropPosition;
-
-    [Header("Selected Item")]
-    private ItemSlot selectedItem;
-    private int selectedItemIndex;
-    public TextMeshProUGUI selectedItemName;
-    public TextMeshProUGUI selectedItemInfomation;
-    public TextMeshProUGUI selectedItemStatName;
-    public TextMeshProUGUI selectedItemStatValue;
-    public GameObject useButton;
-    public GameObject dropButton;
-    public GameObject equipButton;
-    public GameObject unEqipButton;
-
-    private int curEquiupIndex;
-
-    //private PlayerController controller;
-    private PlayerConditions condition;
-
-    //[Header("Events")]
-    //public UnityEvent onOpenInventory;
-    //public UnityEvent onCloseInventory;
-
-    public static Inventory instance;
-    void Awake()
+    private void Awake()
     {
-      instance = this;
-      condition = GetComponent<PlayerConditions>();
-
+        itemSlot = new ItemSlot[10];
     }
 
     private void Start()
     {
-        inventoryPanel.SetActive(false);
-        slot = new ItemSlot[uiSlot.Length];
-
-        for(int i = 0; i < slot.Length; i++)
-        {
-            slot[i] = new ItemSlot();
-            //uiSlot[i].index = 
-            //uiSlot[i].Clear();
-        }
-
-        ClearSelectItemPenal();
+        
     }
 
-    private void ClearSelectItemPenal()
+    private void Update()
     {
+        if(_isOpened == true)
+        {
+            Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else if(_isOpened == false)
+        {
+            Time.timeScale = 1f;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+    }
 
-    } 
+    public void OnInventory()
+    {
+        _isOpened = !_isOpened;
+        inventory.SetActive(_isOpened);
+    }
+
+
+    public void AddItem(ItemData item)
+    {
+       if(itemSlot == null)
+       {
+            
+       }
+    }
 }
