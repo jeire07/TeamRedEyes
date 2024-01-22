@@ -436,13 +436,15 @@ MonoBehaviour:
   itemIcon: {fileID: 361979046039845804}
   displayName: {fileID: 4110845014092395214}
   information: {fileID: 8410725826752261452}
-  ItemAmount: {fileID: 95577808671376902}
+  quantityText: {fileID: 95577808671376902}
   statName: {fileID: 6989272636874260387}
   statValue: {fileID: 1772395198790950067}
   useButton: {fileID: 8708460467685896268}
   dropButton: {fileID: 5053086785454784638}
   equipButton: {fileID: 8119827613205934753}
   unEquipButton: {fileID: 1537032752433102628}
+  item: {fileID: 0}
+  quantity: 0
 --- !u!1 &3199607558602444533
 GameObject:
   m_ObjectHideFlags: 0
@@ -863,7 +865,7 @@ GameObject:
   - component: {fileID: 7767912066049885384}
   - component: {fileID: 95577808671376902}
   m_Layer: 0
-  m_Name: Amount
+  m_Name: Quantity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1533,13 +1535,15 @@ MonoBehaviour:
   itemIcon: {fileID: 0}
   displayName: {fileID: 0}
   information: {fileID: 0}
-  ItemAmount: {fileID: 0}
+  quantityText: {fileID: 0}
   statName: {fileID: 0}
   statValue: {fileID: 0}
   useButton: {fileID: 0}
   dropButton: {fileID: 0}
   equipButton: {fileID: 0}
   unEquipButton: {fileID: 0}
+  item: {fileID: 0}
+  quantity: 0
 --- !u!1 &6743735151445363161
 GameObject:
   m_ObjectHideFlags: 0

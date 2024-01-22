@@ -6,16 +6,16 @@ public class questData : MonoBehaviour
 {
     public string questName;
     public string questDescription;
-    public int questObjective;
+    public string questObjective;
     public int questRewards;
     public bool isCompleted;
 
-    public questData(string name, string description, int objective, int rewards)
+    public questData(string name, string description, string objective) //int rewards
     { 
         questName = name;
         questDescription = description;
         questObjective = objective;
-        questRewards = rewards;
+       // questRewards = rewards;
         isCompleted = false;
     }
     // Start is called before the first frame update
