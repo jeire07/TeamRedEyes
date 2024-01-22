@@ -6,6 +6,11 @@ public enum ItemType
 {
     Resource,
     Consumable,
+    Equipable
+}
+
+public enum EquipableType
+{
     Shoes,
     Clothes,
     Weapon,
@@ -25,6 +30,8 @@ public class ItemData : ScriptableObject
     [Header("Info")]
     public string displayName;
     public string information;
+    public string statName;
+    public string statValue;
     public ItemType type;
     public Sprite icon;
     public GameObject dropPrefab;

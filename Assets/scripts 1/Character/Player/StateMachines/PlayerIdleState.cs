@@ -17,22 +17,27 @@ public class PlayerIdleState : PlayerGroundState
 
     public override void Exit()
     {
-        base.Enter();
+        base.Exit();
         StopAnimation(StateMachine.Player.AnimationData.IdleParameterHash);
     }
 
     public override void HandleInput()
     {
-      
+        base.HandleInput();
     }
 
     public override void PhysicsUpdate()
     {
-    
+
     }
 
     public override void Update()
     {
+        if(StateMachine.MovementInput != Vector2.zero)
+        {
+            OnMove();
+            return;
+        }
        base.Update();
     }
 }
