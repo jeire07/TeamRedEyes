@@ -27,4 +27,10 @@ public class PlayerWalkState : PlayerGroundState
         base.OnRunstarted(context);
         StateMachine.ChangeState(StateMachine.RunState);
     }
+
+    protected override void OnSitStated(InputAction.CallbackContext context)
+    {
+        base.OnSitStated(context);
+        StateMachine.ChangeState(StateMachine.SitState);
+    }
 }
