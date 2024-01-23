@@ -49,7 +49,10 @@ using UnityEngine.InputSystem;
         input.PlayerActions.Movement.canceled += OnMovementCanceled;
         input.PlayerActions.Run.started += OnRunstarted;
         input.PlayerActions.Jump.started += OnJumpStarted;
+        input.PlayerActions.Roll.started += OnRollStarted;
+        input.PlayerActions.Sit.started += OnSitStated;
     }
+
 
     private void OnJumpstartde(InputAction.CallbackContext context)
     {
@@ -62,6 +65,8 @@ using UnityEngine.InputSystem;
         input.PlayerActions.Movement.canceled -= OnMovementCanceled;
         input.PlayerActions.Run.started -= OnRunstarted;
         input.PlayerActions.Jump.started -= OnJumpStarted;
+        input.PlayerActions.Roll.started -= OnRollStarted;
+        input.PlayerActions.Sit.started -= OnSitStated;
     }
 
     protected virtual void OnRunstarted(InputAction.CallbackContext context)
@@ -78,6 +83,16 @@ using UnityEngine.InputSystem;
 
     }
 
+    protected virtual void OnSitStated(InputAction.CallbackContext context)
+    {
+
+    }
+
+    protected virtual void OnRollStarted(InputAction.CallbackContext context)
+    {
+
+    }
+
     private void ReadMovementInput()
     {
         StateMachine.MovementInput = StateMachine.Player.Input.PlayerActions.Movement.ReadValue<Vector2>();
@@ -85,6 +100,12 @@ using UnityEngine.InputSystem;
 
     private void Move()
     {
+        if (StateMachine.IsRolling)
+        {
+            // 롤 중일 때는 기본 이동을 수행하지 않음
+            return;
+        }
+
         Vector3 movementDirection = GetMovementdirction();
 
         Rotate(movementDirection);  
