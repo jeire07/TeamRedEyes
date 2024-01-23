@@ -18,6 +18,7 @@ public class PlayerStateMachine : StateMachine
     public float MovementSpeed { get; private set; }
     public float RotationDamping { get; private set; }
     public float MovementspeedModifier { get; set; } = 1f;
+    public bool IsRolling { get; set; }
 
     public float JumpForce { get; set; }
     public Transform MainCameraTransform { get; set; }
@@ -39,6 +40,8 @@ public class PlayerStateMachine : StateMachine
         MovementSpeed = player.Data.GroundData.BaseSpeed;
 
         RotationDamping = player.Data.GroundData.BaseRotationDamping;
+
+        IsRolling = false;
     }
  
 }

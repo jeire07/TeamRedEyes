@@ -59,4 +59,14 @@ public class PlayerGroundState : PlayerBaseState
         StateMachine.ChangeState(StateMachine.WalkState);
     }
 
+    protected override void OnRollStarted(InputAction.CallbackContext context)
+    {
+        StateMachine.ChangeState(StateMachine.RollState);
+    }
+
+    protected override void OnSitStated(InputAction.CallbackContext context)
+    {
+        StateMachine.ChangeState(StateMachine.SitState);
+    }
+
 }
