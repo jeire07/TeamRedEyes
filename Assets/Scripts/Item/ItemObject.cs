@@ -14,7 +14,13 @@ public class ItemObject : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        Inventory.Instance.AddItem(item);
-        gameObject.SetActive(false);
+        if(Inventory.Instance.AddItem(item) == true)
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            Debug.Log("인벤토리를 비우세요"); // UI로 띄우기
+        }
     }
 }
