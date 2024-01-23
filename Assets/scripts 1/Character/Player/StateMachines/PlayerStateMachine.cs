@@ -11,6 +11,8 @@ public class PlayerStateMachine : StateMachine
     public PlayerRunState RunState { get; }
     public PlayerJumpState JumpState { get; }
     public PlayerFallState FallState { get; }
+    public PlayerRollState RollState { get; }
+    public PlayerSitState SitState { get; }
 
     public Vector2 MovementInput { get; set; }
     public float MovementSpeed { get; private set; }
@@ -29,6 +31,8 @@ public class PlayerStateMachine : StateMachine
         RunState = new PlayerRunState(this);
         JumpState = new PlayerJumpState(this);
         FallState = new PlayerFallState(this);
+        RollState = new PlayerRollState(this);
+        SitState = new PlayerSitState(this);
 
         MainCameraTransform = Camera.main.transform;
 

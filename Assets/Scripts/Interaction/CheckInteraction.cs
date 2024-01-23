@@ -64,8 +64,10 @@ public class CheckInteraction : MonoBehaviour
 
     public void OnInteraction(InputAction.CallbackContext callbackContext)
     {
-        Debug.Log("OnInteract");
-        Debug.Log($"OnInteract, {callbackContext.phase} {_curInteractable}");
+        if(Inventory.Instance.IsOpened)
+        {
+            return;
+        }
 
         if (callbackContext.phase == InputActionPhase.Started && _curInteractable != null)
         {
