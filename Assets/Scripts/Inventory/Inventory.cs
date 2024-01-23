@@ -7,13 +7,13 @@ public class Inventory : Singleton<Inventory>
 {
     
     public GameObject inventory;
-    private bool _isOpened = false;
+    public bool IsOpened = false;
     public ItemData item;
     public ItemSlot[] itemSlot;
 
     private void Awake()
     {
-        //itemSlot = new ItemSlot[10]; 슬롯 지정이 필요가 없나???
+        //itemSlot = new ItemSlot[10];
     }
 
     private void Start()
@@ -23,12 +23,12 @@ public class Inventory : Singleton<Inventory>
 
     private void Update()
     {
-        if(_isOpened == true)
+        if(IsOpened == true)
         {
             Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.None;
         }
-        else if(_isOpened == false)
+        else if(IsOpened == false)
         {
             Time.timeScale = 1f;
             Cursor.lockState = CursorLockMode.Locked;
@@ -37,12 +37,12 @@ public class Inventory : Singleton<Inventory>
 
     public void OnInventory()
     {
-        _isOpened = !_isOpened;
-        inventory.SetActive(_isOpened);
+        IsOpened = !IsOpened;
+        inventory.SetActive(IsOpened);
     }
 
 
-    public void AddItem(ItemData item)
+    public bool AddItem(ItemData item)
     {
         if(item.canStack)
         {
@@ -51,7 +51,7 @@ public class Inventory : Singleton<Inventory>
             {
                 slotTostackTo.quantity++;
                 UpdateUI();
-                return;
+                return true;
             }
         }
 
@@ -62,8 +62,13 @@ public class Inventory : Singleton<Inventory>
             emptySlot.item = item;
             emptySlot.quantity = 1;
             UpdateUI();
-            return;
+            return true;
         }
+        else if (emptySlot == null)
+        {
+            return false;
+        }
+        return false;
     }
 
     void UpdateUI()
