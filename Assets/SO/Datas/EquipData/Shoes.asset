@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: "\uC2E0\uBC1C"
   information: "\uC2E0\uBC1C\uC774\uB2E4, \uC774\uB3D9\uC18D\uB3C4\uB97C \uB192\uC5EC\uC900\uB2E4."
+  statName: 
+  statValue: 
   type: 2
   icon: {fileID: 0}
   dropPrefab: {fileID: 0}
-  canStack: 1
+  canStack: 0
   maxStackAmount: 1
