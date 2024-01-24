@@ -1,13 +1,8 @@
-using System.ComponentModel;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
-using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
-using static UnityEditor.Progress;
-using static UnityEngine.Rendering.DebugUI;
 
 public class Inventory : Singleton<Inventory>
 {
-    
+
     public GameObject inventory;
     public bool IsOpened = false;
     public ItemData item;
@@ -21,12 +16,12 @@ public class Inventory : Singleton<Inventory>
 
     private void Update()
     {
-        if(IsOpened == true)
+        if (IsOpened == true)
         {
             Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.None;
         }
-        else if(IsOpened == false)
+        else if (IsOpened == false)
         {
             Time.timeScale = 1f;
             Cursor.lockState = CursorLockMode.Locked;
@@ -42,10 +37,10 @@ public class Inventory : Singleton<Inventory>
 
     public bool AddItem(ItemData item)
     {
-        if(item.canStack)
+        if (item.canStack)
         {
             ItemSlot slotTostackTo = GetItemStack(item);
-            if(slotTostackTo != null)
+            if (slotTostackTo != null)
             {
                 slotTostackTo.quantity++;
                 UpdateUI();
@@ -92,7 +87,6 @@ public class Inventory : Singleton<Inventory>
             if (itemSlot[i] != null && itemSlot[i].item == item && itemSlot[i].quantity < item.maxStackAmount)
                 return itemSlot[i];
         }
-
         return null;
     }
 

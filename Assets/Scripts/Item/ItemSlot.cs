@@ -1,15 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
+
 
 public class ItemSlot : MonoBehaviour
 {
-    public EquipSlot equipSlot;
     public Image itemIcon;
     public GameObject equipIcon;
 
@@ -103,12 +98,15 @@ public class ItemSlot : MonoBehaviour
 
     public void OnDropButton()
     {
-        Inventory.Instance.ThrowItem(item);
-        quantity--;
-        quantityText.text = $"X {quantity.ToString()}";
-        if (quantity <= 0)
+        if (!item.isEquipped)
         {
-            ClearItemSlot();
+            Inventory.Instance.ThrowItem(item);
+            quantity--;
+            quantityText.text = $"X {quantity.ToString()}";
+            if (quantity <= 0)
+            {
+                ClearItemSlot();
+            }
         }
     }
 
@@ -116,13 +114,30 @@ public class ItemSlot : MonoBehaviour
     {
         item.isEquipped = true;
         ChangeEquip();
-        equipSlot.Equip(item);
+        EquipSlot.Instance.Equip(item);
     }
 
     public void OnUnEquipButton()
     {
         item.isEquipped = false;
         ChangeEquip();
+        EquipSlot.Instance.UnEquip(item);
+    }
+
+    private void ChangeEquip()
+    {
+        if (item.isEquipped == false)
+        {
+            equipIcon.SetActive(false);
+            equipButton.SetActive(true);
+            unEquipButton.SetActive(false);
+        }
+        else if (item.isEquipped == true)
+        {
+            equipIcon.SetActive(true);
+            equipButton.SetActive(false);
+            unEquipButton.SetActive(true);
+        }
     }
 
     private void ClearItemSlot()
@@ -139,21 +154,5 @@ public class ItemSlot : MonoBehaviour
         equipButton.SetActive(false);
         unEquipButton.SetActive(false);
         dropButton.SetActive(false);
-    }
-
-    private void ChangeEquip()
-    {
-        if (item.isEquipped == false)
-        {
-            equipIcon.SetActive(false);
-            equipButton.SetActive(true);
-            unEquipButton.SetActive(false);
-        }
-        else if(item.isEquipped == true)
-        {
-            equipIcon.SetActive(true);
-            equipButton.SetActive(false);
-            unEquipButton.SetActive(true);
-        }
     }
 }

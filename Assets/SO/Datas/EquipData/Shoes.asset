@@ -23,3 +23,5 @@ MonoBehaviour:
   canStack: 0
   maxStackAmount: 1
   consumables: []
+  equipableType: 0
+  isEquipped: 0
