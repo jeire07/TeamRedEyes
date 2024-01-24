@@ -10,7 +10,7 @@ using static UnityEditor.Progress;
 public class ItemSlot : MonoBehaviour
 {
     public Image itemIcon;
-    private ItemSlot curSlot;
+    public GameObject equipIcon;
 
     #region Text    
     public TextMeshProUGUI displayName;
@@ -29,58 +29,129 @@ public class ItemSlot : MonoBehaviour
 
     public ItemData item;
     public int quantity;
+    private PlayerConditions condition;
 
-    private void Start()
+    private void Awake()
     {
- 
+        GameObject player = GameObject.Find("Player"); //Find 사용말고 다른방법 질문, 왜 지양해야 하는지, Find말고 다른방법으로 바꿔보기
+        condition = player.GetComponent<PlayerConditions>();
     }
 
-    public void Set(ItemSlot slot)
+    private void Update()
     {
-        curSlot = slot;
-        displayName.text = slot.item.displayName;
-        information.text = slot.item.information;
-        statName.text =  slot.item.statName;
-        statValue.text = slot.item.statValue;
-        itemIcon.sprite = slot.item.icon;
-        quantityText.text = slot.quantity > 1 ? $"X {slot.quantity.ToString()}" : "X 1";
+        if (item == null)
+        {
+            useButton.SetActive(false);
+            equipButton.SetActive(false);
+            unEquipButton.SetActive(false);
+            dropButton.SetActive(false);
+            equipIcon.SetActive(false);
+        }
+    }
 
-        useButton.SetActive(item.type == ItemType.Consumable || item.type == ItemType.Resource);
-        equipButton.SetActive(item.type == ItemType.Equipable);
-        unEquipButton.SetActive(item.type == ItemType.Equipable);
+    public void Set()
+    {
+        displayName.text = item.displayName;
+        information.text = item.information;
+        statName.text = item.statName;
+        statValue.text = item.statValue;
+        itemIcon.sprite = item.icon;
+        quantityText.text = quantity > 1 ? $"X {quantity.ToString()}" : "X 1";
+
+        useButton.SetActive(item.type == ItemType.Consumable);
         dropButton.SetActive(true);
+
+        if (item.type == ItemType.Equipable)
+        {
+            equipButton.SetActive(true);
+            unEquipButton.SetActive(false);
+            equipIcon.SetActive(false);
+        }
     }
 
     public void Clear()
     {
-        curSlot = null;
         item = null;
-        quantityText.text = string.Empty;
     }
+
 
     public void OnUseButton()
     {
-
+        if (item.type == ItemType.Consumable)
+        {
+            for (int i = 0; i < item.consumables.Length; i++)
+            {
+                switch (item.consumables[i].type)
+                {
+                    case ConsumableType.Health:
+                        condition.Heal(item.consumables[i].value); break;
+                    case ConsumableType.Hunger:
+                        condition.Eat(item.consumables[i].value); break;
+                    case ConsumableType.Thirsty:
+                        condition.Drink(item.consumables[i].value); break;
+                }
+            }
+            quantity--;
+            quantityText.text = $"X {quantity.ToString()}";
+            if (quantity <= 0)
+            {
+                ClearItemSlot();
+            }
+        }
     }
 
     public void OnDropButton()
     {
-
+        Inventory.Instance.ThrowItem(item);
+        quantity--;
+        quantityText.text = $"X {quantity.ToString()}";
+        if (quantity <= 0)
+        {
+            ClearItemSlot();
+        }
     }
 
     public void OnEquipButton()
     {
-
+        item.isEquipped = true;
+        ChangeEquip();
     }
 
     public void OnUnEquipButton()
     {
-
+        item.isEquipped = false;
+        ChangeEquip();
     }
 
-    private void UseItem()
+    private void ClearItemSlot()
     {
-        item.type = ItemType.Consumable;
+        Clear();
+        displayName.text = null;
+        information.text = null;
+        statName.text = null;
+        statValue.text = null;
+        itemIcon.sprite = null;
+        quantityText.text = null;
+
+        useButton.SetActive(false);
+        equipButton.SetActive(false);
+        unEquipButton.SetActive(false);
+        dropButton.SetActive(false);
     }
 
+    private void ChangeEquip()
+    {
+        if (item.isEquipped == false)
+        {
+            equipIcon.SetActive(false);
+            equipButton.SetActive(true);
+            unEquipButton.SetActive(false);
+        }
+        else if(item.isEquipped == true)
+        {
+            equipIcon.SetActive(true);
+            equipButton.SetActive(false);
+            unEquipButton.SetActive(true);
+        }
+    }
 }

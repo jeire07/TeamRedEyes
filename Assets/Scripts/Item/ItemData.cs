@@ -24,6 +24,13 @@ public enum ConsumableType
     Health
 }
 
+[System.Serializable]
+public class ItemDataConsumable
+{
+    public ConsumableType type;
+    public float value;
+}
+
 [CreateAssetMenu(fileName = "Item", menuName = "New Item")]
 public class ItemData : ScriptableObject
 {
@@ -40,4 +47,10 @@ public class ItemData : ScriptableObject
     public bool canStack;
     public int maxStackAmount;
 
+    [Header("Consumable")]
+    public ItemDataConsumable[] consumables;
+
+    [Header("Equipable")]
+    public EquipableType equipableType; // 추가: 어떤 종류의 장비인지를 나타내는 열거형
+    public bool isEquipped;
 }

@@ -81,7 +81,7 @@ public class PlayerConditions : MonoBehaviour
     {
         //if(베이스 공간에 들어가면)
         health.Add(amount);
-        RestoreStamina(amount);
+        //RestoreStamina(amount);
     }
 
     public void Eat(float amount)
