@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.UI;
 
-public class EquipSlot : MonoBehaviour
+public class EquipSlot : Singleton<EquipSlot>
 {
     public ItemData Item; 
     public Image clothesIcon;
@@ -13,12 +10,11 @@ public class EquipSlot : MonoBehaviour
 
     public void Equip(ItemData itemData)
     {
-
-        Debug.Log($"{itemData.icon}");
+        Item = itemData;
+ 
         if(itemData.equipableType == EquipableType.Weapon)
         {
             weaponIcon.sprite = itemData.icon;
-            Debug.Log($"{weaponIcon.sprite}");
         }
         else if (itemData.equipableType == EquipableType.Shoes)
         {
@@ -30,8 +26,19 @@ public class EquipSlot : MonoBehaviour
         }
     }
 
-    public void UnEquip()
+    public void UnEquip(ItemData itemData)
     {
-       
+        if (itemData.equipableType == EquipableType.Weapon)
+        {
+            weaponIcon.sprite = null;
+        }
+        else if (itemData.equipableType == EquipableType.Shoes)
+        {
+            shoesIcon.sprite = null;
+        }
+        else if (itemData.equipableType == EquipableType.Clothes)
+        {
+            clothesIcon.sprite = null;
+        }
     }
 }
