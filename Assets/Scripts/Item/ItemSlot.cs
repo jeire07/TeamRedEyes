@@ -9,6 +9,7 @@ using static UnityEditor.Progress;
 
 public class ItemSlot : MonoBehaviour
 {
+    public EquipSlot equipSlot;
     public Image itemIcon;
     public GameObject equipIcon;
 
@@ -115,6 +116,7 @@ public class ItemSlot : MonoBehaviour
     {
         item.isEquipped = true;
         ChangeEquip();
+        equipSlot.Equip(item);
     }
 
     public void OnUnEquipButton()

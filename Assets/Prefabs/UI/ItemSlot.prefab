@@ -444,6 +444,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7839d9428013a940b9908b90205a02b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  equipSlot: {fileID: 4340607480482431660, guid: 84f90fd78e223bb449a6496473089bde,
+    type: 3}
   itemIcon: {fileID: 361979046039845804}
   equipIcon: {fileID: 3219215345678018984}
   displayName: {fileID: 4110845014092395214}
