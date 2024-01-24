@@ -21,3 +21,6 @@ MonoBehaviour:
   dropPrefab: {fileID: 0}
   canStack: 0
   maxStackAmount: 1
+  consumables: []
+  equipableType: 3
+  isEquipped: 0

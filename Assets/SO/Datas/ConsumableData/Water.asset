@@ -15,9 +15,13 @@ MonoBehaviour:
   displayName: "\uBB3C"
   information: "\uAC08\uC99D\uC744 \uCC44\uC6CC\uC900\uB2E4."
   statName: "\uAC08\uC99D"
-  statValue: 50
+  statValue: 20
   type: 1
   icon: {fileID: 21300000, guid: 0a2842a9f4da4eb43b8c153f5d6df6e1, type: 3}
-  dropPrefab: {fileID: 0}
+  dropPrefab: {fileID: 8970542737790308916, guid: de2ca2a3d4383cb449d1a3fb60c7e1ba,
+    type: 3}
   canStack: 1
   maxStackAmount: 10
+  consumables:
+  - type: 0
+    value: 20
