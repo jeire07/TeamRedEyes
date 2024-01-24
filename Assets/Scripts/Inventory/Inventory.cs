@@ -2,6 +2,8 @@ using System.ComponentModel;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
+using static UnityEditor.Progress;
+using static UnityEngine.Rendering.DebugUI;
 
 public class Inventory : Singleton<Inventory>
 {
@@ -10,15 +12,11 @@ public class Inventory : Singleton<Inventory>
     public bool IsOpened = false;
     public ItemData item;
     public ItemSlot[] itemSlot;
+    public Transform dropPosition;
 
     private void Awake()
     {
         //itemSlot = new ItemSlot[10];
-    }
-
-    private void Start()
-    {
-        
     }
 
     private void Update()
@@ -71,12 +69,17 @@ public class Inventory : Singleton<Inventory>
         return false;
     }
 
+    public void ThrowItem(ItemData item)
+    {
+        Instantiate(item.dropPrefab, dropPosition.position, Quaternion.Euler(Vector3.one * Random.value * 360f));
+    }
+
     void UpdateUI()
     {
         for (int i = 0; i < itemSlot.Length; i++)
         {
             if (itemSlot[i].item != null)
-                itemSlot[i].Set(itemSlot[i]);
+                itemSlot[i].Set();
             else
                 itemSlot[i].Clear();
         }

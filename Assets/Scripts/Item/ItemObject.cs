@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ItemObject : MonoBehaviour, IInteractable
 {
     public ItemData item;
-     
+    private Vector3 dropPosition;
+
     public string GetInteractText()
     {
         return $"Pickup {item.displayName}";
@@ -14,9 +17,10 @@ public class ItemObject : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if(Inventory.Instance.AddItem(item) == true)
+        if(Inventory.Instance.AddItem(item))
         {
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false); 오브젝트풀로 교체하기
+            Destroy(gameObject);
         }
         else
         {
