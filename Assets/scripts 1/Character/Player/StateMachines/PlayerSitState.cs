@@ -13,11 +13,18 @@ public class PlayerSitState : PlayerGroundState
         StateMachine.MovementspeedModifier = groundData.SitSpeedModifier;
         base.Enter();
         StartAnimation(StateMachine.Player.AnimationData.SitParameterHash);
+        StateMachine.Player.Input.PlayerActions.Sit.canceled += OnSitCanceled;
     }
     public override void Exit() 
     { 
         base.Exit();
         StopAnimation(StateMachine.Player.AnimationData.SitParameterHash);
+        StateMachine.Player.Input.PlayerActions.Sit.canceled -= OnSitCanceled;
+    }
+
+    private void OnSitCanceled(InputAction.CallbackContext context)
+    {
+        StateMachine.ChangeState(StateMachine.WalkState);
     }
 
 }

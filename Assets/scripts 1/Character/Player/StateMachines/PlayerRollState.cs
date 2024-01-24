@@ -38,8 +38,14 @@ public class PlayerRollState : PlayerGroundState
         }
         else
         {
-            
-            StateMachine.ChangeState(StateMachine.IdleState);
+            if (StateMachine.Player.Controller.isGrounded)
+            {
+                StateMachine.ChangeState(StateMachine.IdleState); // 롤 완료 후 지면에 있으면 Idle 상태로 전환
+            }
+            else
+            {
+                StateMachine.ChangeState(StateMachine.FallState); // 롤 완료 후 지면에 없으면 Fall 상태로 전환
+            }
         }
     }
 
