@@ -7,6 +7,7 @@ public class ItemSlot : MonoBehaviour
 {
     public Image itemIcon;
     public GameObject equipIcon;
+    public bool isEquipped;
 
     #region Text    
     public TextMeshProUGUI displayName;
@@ -31,10 +32,7 @@ public class ItemSlot : MonoBehaviour
     {
         GameObject player = GameObject.Find("Player"); //Find 사용말고 다른방법 질문, 왜 지양해야 하는지, Find말고 다른방법으로 바꿔보기
         condition = player.GetComponent<PlayerConditions>();
-    }
 
-    private void Update()
-    {
         if (item == null)
         {
             useButton.SetActive(false);
@@ -43,6 +41,11 @@ public class ItemSlot : MonoBehaviour
             dropButton.SetActive(false);
             equipIcon.SetActive(false);
         }
+    }
+
+    private void Update()
+    {
+        
     }
 
     public void Set()
@@ -98,7 +101,7 @@ public class ItemSlot : MonoBehaviour
 
     public void OnDropButton()
     {
-        if (!item.isEquipped)
+        if (!isEquipped)
         {
             Inventory.Instance.ThrowItem(item);
             quantity--;
@@ -112,27 +115,27 @@ public class ItemSlot : MonoBehaviour
 
     public void OnEquipButton()
     {
-        item.isEquipped = true;
+        if(EquipSlot.Instance.Equip(item))
+        isEquipped = true;
         ChangeEquip();
-        EquipSlot.Instance.Equip(item);
     }
 
     public void OnUnEquipButton()
     {
-        item.isEquipped = false;
+        isEquipped = false;
         ChangeEquip();
         EquipSlot.Instance.UnEquip(item);
     }
 
     private void ChangeEquip()
     {
-        if (item.isEquipped == false)
+        if (isEquipped == false)
         {
             equipIcon.SetActive(false);
             equipButton.SetActive(true);
             unEquipButton.SetActive(false);
         }
-        else if (item.isEquipped == true)
+        else if (isEquipped == true)
         {
             equipIcon.SetActive(true);
             equipButton.SetActive(false);
