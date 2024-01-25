@@ -2,17 +2,11 @@ using UnityEngine;
 
 public class Inventory : Singleton<Inventory>
 {
-
-    public GameObject inventory;
+    public GameObject InventoryObj;
     public bool IsOpened = false;
-    public ItemData item;
-    public ItemSlot[] itemSlot;
-    public Transform dropPosition;
-
-    private void Awake()
-    {
-        //itemSlot = new ItemSlot[10];
-    }
+    public ItemData ItemData;
+    public ItemSlot[] ItemSlot;
+    public Transform DropPosition;
 
     private void Update() //업데이트에 굳이 쓸 필요 없다
     {
@@ -31,18 +25,18 @@ public class Inventory : Singleton<Inventory>
     public void OnInventory()
     {
         IsOpened = !IsOpened;
-        inventory.SetActive(IsOpened);
+        InventoryObj.SetActive(IsOpened);
     }
 
 
     public bool AddItem(ItemData item)
     {
-        if (item.canStack)
+        if (item.CanStack)
         {
             ItemSlot slotTostackTo = GetItemStack(item);
             if (slotTostackTo != null)
             {
-                slotTostackTo.quantity++;
+                slotTostackTo.Quantity++;
                 UpdateUI();
                 return true;
             }
@@ -52,12 +46,12 @@ public class Inventory : Singleton<Inventory>
 
         if(emptySlot != null)
         {
-            emptySlot.item = item;
-            emptySlot.quantity = 1;
+            emptySlot.Item = item;
+            emptySlot.Quantity = 1;
             UpdateUI();
             return true;
         }
-        else if (emptySlot == null)
+        else if(emptySlot == null)
         {
             return false;
         }
@@ -66,38 +60,37 @@ public class Inventory : Singleton<Inventory>
 
     public void ThrowItem(ItemData item)
     {
-        Instantiate(item.dropPrefab, dropPosition.position, Quaternion.Euler(Vector3.one * Random.value * 360f));
+        Instantiate(item.DropPrefab, DropPosition.position, Quaternion.Euler(Vector3.one * Random.value * 360f));
     }
 
     void UpdateUI()
     {
-        for (int i = 0; i < itemSlot.Length; i++)
+        for (int i = 0; i < ItemSlot.Length; i++)
         {
-            if (itemSlot[i].item != null)
-                itemSlot[i].Set();
+            if (ItemSlot[i].Item != null)
+                ItemSlot[i].Set();
             else
-                itemSlot[i].Clear();
+                ItemSlot[i].Clear();
         }
     }
 
     ItemSlot GetItemStack(ItemData item)
     {
-        for (int i = 0; i < itemSlot.Length; i++)
+        for (int i = 0; i < ItemSlot.Length; i++)
         {
-            if (itemSlot[i] != null && itemSlot[i].item == item && itemSlot[i].quantity < item.maxStackAmount)
-                return itemSlot[i];
+            if (ItemSlot[i] != null && ItemSlot[i].Item == item && ItemSlot[i].Quantity < item.MaxStackAmount)
+                return ItemSlot[i];
         }
         return null;
     }
 
     ItemSlot GetEmptySlot()
     {
-        for (int i = 0; i < itemSlot.Length; i++)
+        for (int i = 0; i < ItemSlot.Length; i++)
         {
-            if (itemSlot[i].item == null)
-                return itemSlot[i]; 
+            if (ItemSlot[i].Item == null)
+                return ItemSlot[i]; 
         }
-
         return null;
     }
 }

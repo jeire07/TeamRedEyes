@@ -5,36 +5,35 @@ using UnityEngine.UI;
 public class EquipSlot : Singleton<EquipSlot>
 {
     public ItemData Item; 
-    public Image clothesIcon;
-    public Image weaponIcon;
-    public Image shoesIcon;
-
+    public Image ClothesIcon;
+    public Image WeaponIcon;
+    public Image ShoesIcon;
 
     public bool Equip(ItemData itemData)
     {
         Item = itemData;
         
-        if (itemData.equipableType == EquipableType.Weapon)
+        if (itemData.EquipableType == EquipableType.Weapon)
         {
-            if (weaponIcon.sprite == null)
+            if (WeaponIcon.sprite == null)
             {
-                weaponIcon.sprite = itemData.icon;
+                WeaponIcon.sprite = itemData.Icon;
                 return true;
             }
         }
-        else if (itemData.equipableType == EquipableType.Shoes)
+        else if (itemData.EquipableType == EquipableType.Shoes)
         {
-            if (shoesIcon.sprite == null)
+            if (ShoesIcon.sprite == null)
             {
-                shoesIcon.sprite = itemData.icon;
+                ShoesIcon.sprite = itemData.Icon;
                 return true;
             }
         }
-        else if (itemData.equipableType == EquipableType.Clothes)
+        else if (itemData.EquipableType == EquipableType.Clothes)
         {
-            if (clothesIcon.sprite == null)
+            if (ClothesIcon.sprite == null)
             {   
-                clothesIcon.sprite = itemData.icon;
+                ClothesIcon.sprite = itemData.Icon;
                 return true;
             }
         }
@@ -43,20 +42,18 @@ public class EquipSlot : Singleton<EquipSlot>
 
     public void UnEquip(ItemData itemData)
     {
- 
-            if (itemData.equipableType == EquipableType.Weapon)
-            {
-                    weaponIcon.sprite = null;
-            }
-            else if (itemData.equipableType == EquipableType.Shoes)
-            { 
-                    shoesIcon.sprite = null;
+        if (itemData.EquipableType == EquipableType.Weapon)
+        {
+            WeaponIcon.sprite = null;
+        }
+        else if (itemData.EquipableType == EquipableType.Shoes)
+        {
+            ShoesIcon.sprite = null;
 
-            }
-            else if (itemData.equipableType == EquipableType.Clothes)
-            {
-                    clothesIcon.sprite = null;
-            }
-        
+        }
+        else if (itemData.EquipableType == EquipableType.Clothes)
+        {
+            ClothesIcon.sprite = null;
+        }
     }
 }

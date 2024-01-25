@@ -5,104 +5,104 @@ using UnityEngine.UI;
 public class Condition
 {
     // 전부 JSON으로 따로 관리해야하는 데이터
-    public float curValue;
-    public float maxValue;
-    public float startValue;
-    public float regenRate;
-    public float decayRate;
-    public Image uiBar;
+    public float CurValue;
+    public float MaxValue;
+    public float StartValue;
+    public float RegenRate;
+    public float DecayRate;
+    public Image UiBar;
 
     public void Add(float amount) //최대값을 maxValue로 제한
     {
-        curValue = Mathf.Min(curValue + amount, maxValue);
+        CurValue = Mathf.Min(CurValue + amount, MaxValue);
     }
 
     public void Subtract(float amount) //최소값을 0으로 제한
     {
-        curValue = Mathf.Max(curValue - amount, 0.0f);
+        CurValue = Mathf.Max(CurValue - amount, 0.0f);
     }
 
     public float GetPercentage()
     {
-        return curValue / maxValue;
+        return CurValue / MaxValue;
     }
 
     public float HealthPercentage()
     {
-        return curValue / maxValue * 100;
+        return CurValue / MaxValue * 100;
     }
 }
 
 
 public class PlayerConditions : MonoBehaviour
 {
-    public Condition health;
-    public Condition hunger;
-    public Condition thirsty;
-    public Condition stamina;
+    public Condition Health;
+    public Condition Hunger;
+    public Condition Thirsty;
+    public Condition Stamina;
 
     public float noFoodWaterHealthDecay;
 
     private void Update()
     {
-        hunger.Subtract(hunger.decayRate * Time.deltaTime);
-        thirsty.Subtract(thirsty.decayRate * Time.deltaTime);
+        Hunger.Subtract(Hunger.DecayRate * Time.deltaTime);
+        Thirsty.Subtract(Thirsty.DecayRate * Time.deltaTime);
 
-        if (hunger.curValue == 0.0f && thirsty.curValue == 0.0f)
-            health.Subtract(noFoodWaterHealthDecay * Time.deltaTime);
+        if (Hunger.CurValue == 0.0f && Thirsty.CurValue == 0.0f)
+            Health.Subtract(noFoodWaterHealthDecay * Time.deltaTime);
 
-        if (health.curValue == 0.0f)
+        if (Health.CurValue == 0.0f)
             Die();
 
-        if(stamina.curValue == 0.0f)
+        if(Stamina.CurValue == 0.0f)
         {
-            if(hunger.curValue < 50.0f && thirsty.curValue < 50.0f)
+            if(Hunger.CurValue < 50.0f && Thirsty.CurValue < 50.0f)
             {
                 //이속 디버프
             }
         }
 
-        health.uiBar.fillAmount = health.GetPercentage();
-        hunger.uiBar.fillAmount = hunger.GetPercentage();
-        thirsty.uiBar.fillAmount = thirsty.GetPercentage();
-        stamina.uiBar.fillAmount = stamina.GetPercentage();
+        Health.UiBar.fillAmount = Health.GetPercentage();
+        Hunger.UiBar.fillAmount = Hunger.GetPercentage();
+        Thirsty.UiBar.fillAmount = Thirsty.GetPercentage();
+        Stamina.UiBar.fillAmount = Stamina.GetPercentage();
     }
     private void Start()
     {
-        health.curValue = health.startValue;
-        hunger.curValue = hunger.startValue;
-        thirsty.curValue = thirsty.startValue;
-        stamina.curValue = stamina.startValue;
+        Health.CurValue = Health.StartValue;
+        Hunger.CurValue = Hunger.StartValue;
+        Thirsty.CurValue = Thirsty.StartValue;
+        Stamina.CurValue = Stamina.StartValue;
     }
 
     public void Heal(float amount)
     {
         //if(베이스 공간에 들어가면)
-        health.Add(amount);
+        Health.Add(amount);
         //RestoreStamina(amount);
     }
 
     public void Eat(float amount)
     {
-        hunger.Add(amount);
+        Hunger.Add(amount);
     }
 
     public void Drink(float amount)
     {
-        thirsty.Add(amount);
+        Thirsty.Add(amount);
     }
 
     public void RestoreStamina(float amount)
     {
-        stamina.Add(amount);
+        Stamina.Add(amount);
         //스태미나 회복 내용 (배부름에 따라서 회복량 증가)
     }
     public bool UseStamina(float amount)
     {
-        if(stamina.curValue -amount < 0)
+        if(Stamina.CurValue -amount < 0)
             return false;
 
-        stamina.Subtract(amount);
+        Stamina.Subtract(amount);
         return true; 
 
         // attack = 3, run = 2, 아이템줍기 = 1, 스킬값 따로
@@ -115,7 +115,7 @@ public class PlayerConditions : MonoBehaviour
 
     public void HungryPercent()
     {
-        float hungrypercent = hunger.HealthPercentage();
+        float hungrypercent = Hunger.HealthPercentage();
 
         if (hungrypercent >= 80)
         {
@@ -141,7 +141,7 @@ public class PlayerConditions : MonoBehaviour
 
     public void ThirstyPercent()
     {
-        float thirstypercent = thirsty.HealthPercentage();
+        float thirstypercent = Thirsty.HealthPercentage();
         
         if (thirstypercent >= 50)
         {
