@@ -14,7 +14,7 @@ public class Inventory : Singleton<Inventory>
         //itemSlot = new ItemSlot[10];
     }
 
-    private void Update()
+    private void Update() //업데이트에 굳이 쓸 필요 없다
     {
         if (IsOpened == true)
         {
@@ -95,7 +95,7 @@ public class Inventory : Singleton<Inventory>
         for (int i = 0; i < itemSlot.Length; i++)
         {
             if (itemSlot[i].item == null)
-                return itemSlot[i];
+                return itemSlot[i]; 
         }
 
         return null;

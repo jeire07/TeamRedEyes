@@ -50,5 +50,4 @@ public class ItemData : ScriptableObject
 
     [Header("Equipable")]
     public EquipableType equipableType; // 추가: 어떤 종류의 장비인지를 나타내는 열거형
-    public bool isEquipped;
 }
