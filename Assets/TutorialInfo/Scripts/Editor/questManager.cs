@@ -10,9 +10,20 @@ public class questManager : MonoBehaviour
     private List<questData> activeQuests = new List<questData>();
     public Text questUITitle;
     public Text questUIDescription;
-    
-    
     public questUI questUI;
+
+    private static questManager _instance;
+    public static questManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<questManager>();
+            }
+            return _instance;
+        }
+    }
 
 
     private void Start()
@@ -53,6 +64,11 @@ public class questManager : MonoBehaviour
         quest.isCompleted = true;
         
         activeQuests.Remove(quest);
+    }
+
+    public List<questData> GetActiveQuests()
+    { 
+        return activeQuests;
     }
 
     public string SaveQuestDatatoJson()

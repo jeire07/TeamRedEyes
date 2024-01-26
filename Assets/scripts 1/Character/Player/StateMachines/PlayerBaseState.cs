@@ -51,12 +51,8 @@ using UnityEngine.InputSystem;
         input.PlayerActions.Jump.started += OnJumpStarted;
         input.PlayerActions.Roll.started += OnRollStarted;
         input.PlayerActions.Sit.started += OnSitStated;
-    }
-
-
-    private void OnJumpstartde(InputAction.CallbackContext context)
-    {
-  
+        input.PlayerActions.Attack.performed += OnAttackPerformed;
+        input.PlayerActions.Attack.canceled += OnAttackCanceled;
     }
 
     protected virtual void RemoveInputActionsCallbacks()
@@ -67,6 +63,8 @@ using UnityEngine.InputSystem;
         input.PlayerActions.Jump.started -= OnJumpStarted;
         input.PlayerActions.Roll.started -= OnRollStarted;
         input.PlayerActions.Sit.started -= OnSitStated;
+        input.PlayerActions.Attack.performed -= OnAttackPerformed;
+        input.PlayerActions.Attack.canceled -= OnAttackCanceled;
     }
 
     protected virtual void OnRunstarted(InputAction.CallbackContext context)
@@ -91,6 +89,21 @@ using UnityEngine.InputSystem;
     protected virtual void OnRollStarted(InputAction.CallbackContext context)
     {
 
+    }
+
+    private void OnJumpstartde(InputAction.CallbackContext context)
+    {
+
+    }
+
+    protected virtual void OnAttackPerformed(InputAction.CallbackContext context)
+    {
+        StateMachine.IsAttacking = true;
+    }
+
+    protected virtual void OnAttackCanceled(InputAction.CallbackContext context)
+    {
+        StateMachine.IsAttacking = false;
     }
 
     private void ReadMovementInput()
@@ -134,6 +147,11 @@ using UnityEngine.InputSystem;
             * Time.deltaTime);
     }
 
+    protected void ForceMove()
+    {
+        StateMachine.Player.Controller.Move(StateMachine.Player.ForceReceiver.Movement * Time.deltaTime);
+    }
+
     private void Rotate(Vector3 movementDirection)
     {
         if(movementDirection != Vector3.zero)
@@ -157,5 +175,24 @@ using UnityEngine.InputSystem;
     protected void StopAnimation(int animationHash)
     {
         StateMachine.Player.Animator.SetBool(animationHash, false);
+    }
+
+    protected float GetNomarlizedTime(Animator animator, string tag)
+    {
+        AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);
+        AnimatorStateInfo nextInfo = animator.GetNextAnimatorStateInfo(0);
+
+        if (animator.IsInTransition(0) && nextInfo.IsTag(tag))
+        {
+            return nextInfo.normalizedTime;
+        }
+        else if (!animator.IsInTransition(0) && currentInfo.IsTag(tag)) 
+        {
+            return currentInfo.normalizedTime;
+        }
+        else
+        {
+            return 0f;
+        }
     }
 }

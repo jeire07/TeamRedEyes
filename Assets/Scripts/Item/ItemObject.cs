@@ -3,11 +3,10 @@ using UnityEngine;
 public class ItemObject : MonoBehaviour, IInteractable
 {
     public ItemData item;
-    private Vector3 dropPosition;
 
     public string GetInteractText()
     {
-        return $"Pickup {item.displayName}";
+        return $"Pickup {item.DisplayName}";
     }
 
     public void Interact()

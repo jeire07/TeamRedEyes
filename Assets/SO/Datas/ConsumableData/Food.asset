@@ -12,15 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5fa107318043294d8079a82b7a4a357, type: 3}
   m_Name: Food
   m_EditorClassIdentifier: 
-  displayName: "\uC74C\uC2DD"
-  information: "\uD5C8\uAE30\uB97C \uCC44\uC6CC\uC900\uB2E4."
-  statName: "\uD5C8\uAE30"
-  statValue: 20
-  type: 1
-  icon: {fileID: 21300000, guid: 0a2842a9f4da4eb43b8c153f5d6df6e1, type: 3}
-  dropPrefab: {fileID: 0}
-  canStack: 1
-  maxStackAmount: 10
-  consumables:
-  - type: 1
-    value: 20
+  DisplayName: "\uC74C\uC2DD"
+  Information: "\uC74C\uC2DD\uC774\uB2E4."
+  StatName: "\uBC30\uACE0\uD514"
+  StatValue: 20
+  Type: 1
+  Icon: {fileID: 21300000, guid: 0a2842a9f4da4eb43b8c153f5d6df6e1, type: 3}
+  DropPrefab: {fileID: 0}
+  CanStack: 1
+  MaxStackAmount: 10
+  Consumables:
+  - Type: 1
+    Value: 20
+  EquipableType: 0
