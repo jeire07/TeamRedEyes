@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5fa107318043294d8079a82b7a4a357, type: 3}
   m_Name: Iron
   m_EditorClassIdentifier: 
-  displayName: "\uCCA0"
-  information: "\uAC15\uD654 \uC7AC\uB8CC\uC784"
-  type: 0
-  icon: {fileID: 0}
-  dropPrefab: {fileID: 0}
-  canStack: 1
-  maxStackAmount: 10
+  DisplayName: "\uCCA0"
+  Information: "\uCCA0\uC774\uB2E4."
+  StatName: 
+  StatValue: 
+  Type: 0
+  Icon: {fileID: 0}
+  DropPrefab: {fileID: 0}
+  CanStack: 1
+  MaxStackAmount: 10
+  Consumables: []
+  EquipableType: 0

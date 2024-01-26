@@ -1,22 +1,59 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EquipSlot : MonoBehaviour
+public class EquipSlot : Singleton<EquipSlot>
 {
-    public Image clothesIcon;
-    public Image weaponIcon;
-    public Image shoesIcon;
+    public ItemData Item; 
+    public Image ClothesIcon;
+    public Image WeaponIcon;
+    public Image ShoesIcon;
 
-
-    private void Equip()
+    public bool Equip(ItemData itemData)
     {
-       
+        Item = itemData;
+        
+        if (itemData.EquipableType == EquipableType.Weapon)
+        {
+            if (WeaponIcon.sprite == null)
+            {
+                WeaponIcon.sprite = itemData.Icon;
+                return true;
+            }
+        }
+        else if (itemData.EquipableType == EquipableType.Shoes)
+        {
+            if (ShoesIcon.sprite == null)
+            {
+                ShoesIcon.sprite = itemData.Icon;
+                return true;
+            }
+        }
+        else if (itemData.EquipableType == EquipableType.Clothes)
+        {
+            if (ClothesIcon.sprite == null)
+            {   
+                ClothesIcon.sprite = itemData.Icon;
+                return true;
+            }
+        }
+        return false;
     }
 
-    private void UnEquip()
+    public void UnEquip(ItemData itemData)
     {
-       
+        if (itemData.EquipableType == EquipableType.Weapon)
+        {
+            WeaponIcon.sprite = null;
+        }
+        else if (itemData.EquipableType == EquipableType.Shoes)
+        {
+            ShoesIcon.sprite = null;
+
+        }
+        else if (itemData.EquipableType == EquipableType.Clothes)
+        {
+            ClothesIcon.sprite = null;
+        }
     }
 }
