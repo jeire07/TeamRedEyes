@@ -4,7 +4,7 @@ using UnityEngine.UI;
 [System.Serializable]
 public class Condition
 {
-    // 전부 JSON으로 따로 관리해야하는 데이터
+
     public float CurValue;
     public float MaxValue;
     public float StartValue;
@@ -34,14 +34,14 @@ public class Condition
 }
 
 
-public class PlayerConditions : MonoBehaviour
+public class PlayerCondition : MonoBehaviour
 {
     public Condition Health;
     public Condition Hunger;
     public Condition Thirsty;
     public Condition Stamina;
 
-    public float noFoodWaterHealthDecay;
+    public float NoFoodWaterHealthDecay;
 
     private void Update()
     {
@@ -49,18 +49,10 @@ public class PlayerConditions : MonoBehaviour
         Thirsty.Subtract(Thirsty.DecayRate * Time.deltaTime);
 
         if (Hunger.CurValue == 0.0f && Thirsty.CurValue == 0.0f)
-            Health.Subtract(noFoodWaterHealthDecay * Time.deltaTime);
+            Health.Subtract(NoFoodWaterHealthDecay * Time.deltaTime);
 
         if (Health.CurValue == 0.0f)
             Die();
-
-        if(Stamina.CurValue == 0.0f)
-        {
-            if(Hunger.CurValue < 50.0f && Thirsty.CurValue < 50.0f)
-            {
-                //이속 디버프
-            }
-        }
 
         Health.UiBar.fillAmount = Health.GetPercentage();
         Hunger.UiBar.fillAmount = Hunger.GetPercentage();
@@ -75,11 +67,9 @@ public class PlayerConditions : MonoBehaviour
         Stamina.CurValue = Stamina.StartValue;
     }
 
-    public void Heal(float amount)
+    public void Potion(float amount)
     {
-        //if(베이스 공간에 들어가면)
         Health.Add(amount);
-        //RestoreStamina(amount);
     }
 
     public void Eat(float amount)
@@ -92,10 +82,14 @@ public class PlayerConditions : MonoBehaviour
         Thirsty.Add(amount);
     }
 
+    public void RestoreHealth(float amount)
+    {
+        Health.Add(Health.RegenRate * Time.deltaTime);
+    }
+
     public void RestoreStamina(float amount)
     {
-        Stamina.Add(amount);
-        //스태미나 회복 내용 (배부름에 따라서 회복량 증가)
+        Stamina.Add(Stamina.RegenRate * Time.deltaTime);
     }
     public bool UseStamina(float amount)
     {
@@ -112,56 +106,4 @@ public class PlayerConditions : MonoBehaviour
     {
         //사망
     }
-
-    public void HungryPercent()
-    {
-        float hungrypercent = Hunger.HealthPercentage();
-
-        if (hungrypercent >= 80)
-        {
-            // 체력 회복속도 상승, 플레이어 스피드 증가
-        }
-        else if (hungrypercent >= 50)
-        {
-            // 정상
-        }
-        else if (hungrypercent >= 20)
-        {
-            // 달릴 수 없음, 시야 범위 줄어듬
-        }
-        else if (hungrypercent > 0)
-        {
-            // 시야가 흐려지며 공격을 할 수 없다
-        }
-        else
-        {
-            Die();
-        }
-    }
-
-    public void ThirstyPercent()
-    {
-        float thirstypercent = Thirsty.HealthPercentage();
-        
-        if (thirstypercent >= 50)
-        {
-            // 정상
-        }
-        else if (thirstypercent >= 20)
-        {
-            // 어지럼증
-        }
-        else if (thirstypercent > 0)
-        {
-            // 매우 어지럼증
-        }
-        else
-        {
-            Die();
-        }
-    }
-
-
 }
-
-// 나중에 class 따로따로 나눠서 refactoring 하자

@@ -27,23 +27,20 @@ public class ItemSlot : MonoBehaviour
 
     public ItemData Item;
     public int Quantity;
-    private PlayerConditions Condition;
+    private PlayerCondition Condition;
 
     private void Awake()
     {
         GameObject player = GameObject.Find("Player"); //Find 사용말고 다른방법 질문, 왜 지양해야 하는지, Find말고 다른방법으로 바꿔보기
-        Condition = player.GetComponent<PlayerConditions>();
+        Condition = player.GetComponent<PlayerCondition>();
+        EquipIcon.SetActive(false);
     }
 
     private void SetButton()
     {
         DropButton.SetActive(true);
-        EquipButton.SetActive(false);
-        UnEquipButton.SetActive(false);
-        EquipIcon.SetActive(false);
-        UseButton.SetActive(false);
 
-        if (Item.Type == ItemType.Equipable)
+        if (Item.Type == ItemType.Equipable && IsEquipped != true)
         {
             EquipButton.SetActive(true);
         }
@@ -69,11 +66,6 @@ public class ItemSlot : MonoBehaviour
         GetItemData();
     }
 
-    public void Clear()
-    {
-        Item = null;
-    }
-
     public void OnUseButton()
     {
         if (Item.Type == ItemType.Consumable)
@@ -83,7 +75,7 @@ public class ItemSlot : MonoBehaviour
                 switch (Item.Consumables[i].Type)
                 {
                     case ConsumableType.Health:
-                        Condition.Heal(Item.Consumables[i].Value); break;
+                        Condition.Potion(Item.Consumables[i].Value); break;
                     case ConsumableType.Hunger:
                         Condition.Eat(Item.Consumables[i].Value); break;
                     case ConsumableType.Thirsty:
@@ -145,7 +137,7 @@ public class ItemSlot : MonoBehaviour
 
     private void ClearItemSlot()
     {
-        Clear();
+        Item = null;
         DisplayName.text = null;
         Information.text = null;
         StatName.text = null;

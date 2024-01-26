@@ -69,8 +69,6 @@ public class Inventory : Singleton<Inventory>
         {
             if (ItemSlot[i].Item != null)
                 ItemSlot[i].Set();
-            else
-                ItemSlot[i].Clear();
         }
     }
 

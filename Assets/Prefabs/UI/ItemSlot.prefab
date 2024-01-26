@@ -383,9 +383,9 @@ RectTransform:
   - {fileID: 6102694940258686767}
   - {fileID: 5414948794664830683}
   - {fileID: 1750561837819059677}
-  - {fileID: 968054568083247528}
-  - {fileID: 6964655576878527427}
   - {fileID: 8110706283226831887}
+  - {fileID: 6964655576878527427}
+  - {fileID: 968054568083247528}
   - {fileID: 5763972301100644785}
   m_Father: {fileID: 0}
   m_RootOrder: -1
@@ -1932,7 +1932,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8011926787709277661}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
