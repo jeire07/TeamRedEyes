@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class TimeUI : MonoBehaviour
+public class EnvironmentUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text _timeText;
     [SerializeField] private TMP_Text _AMPMText;
@@ -15,17 +15,13 @@ public class TimeUI : MonoBehaviour
         TimeManager.Instance.OnMinutePassed += UpdateTimeUI;
     }
 
-    //private void OnDisable()
-    //{
-    //    TimeManager.Instance.OnMinutePassed -= UpdateTimeUI;
-    //}
-
     private void UpdateTimeUI()
     {
         if (TimeManager.Instance != null)
         {
             string[] TimeData = TimeManager.Instance.GetFormattedTime(_is24HourFormat);
 
+            _AMPMText.text = TimeData[0];
             _timeText.text = TimeData[1];
         }
     }

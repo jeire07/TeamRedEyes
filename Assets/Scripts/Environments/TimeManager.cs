@@ -9,8 +9,8 @@ public class TimeManager : Singleton<TimeManager>
     private float _startTime;
 
     [SerializeField] private int _minutesPerDay = 12;
-    private float _timeRate;
-    public int TimeScale;
+    private float _TimeRate;
+    public int TimeScale = 1;
 
     private bool _isAM;
     private int _days = 0;
@@ -19,7 +19,7 @@ public class TimeManager : Singleton<TimeManager>
 
     private void Awake()
     {
-        _timeRate = 60 * 60 * 24 / _minutesPerDay;
+        _TimeRate = 60 * 60 * 24 / (_minutesPerDay * 60);
         _currentTime = _startTime;
 
         CalcTime();
@@ -28,17 +28,17 @@ public class TimeManager : Singleton<TimeManager>
 
     private void Update()
     {
-        _currentTime += _timeRate * Time.deltaTime * TimeScale;
+        _currentTime += _TimeRate * Time.deltaTime * TimeScale;
 
-        if(_currentTime > _timeRate)
+        if(_currentTime > 60)
         {
-            _currentTime -= _timeRate;
-            _minutes++;
+            _minutes += (int)_currentTime / 60;
+            _currentTime %= 60;
             CalcTime();
         }
     }
 
-    public void CalcTime()
+    private void CalcTime()
     {
         if (_minutes >= 60)
         {
@@ -52,6 +52,14 @@ public class TimeManager : Singleton<TimeManager>
             }
         }
         OnMinutePassed();
+    }
+
+    public string SetGameSpeed()
+    {
+        if( _minutes > 0 )
+        {
+
+        }
     }
 
     public string[] GetFormattedTime(bool is24HourFormat = false)
