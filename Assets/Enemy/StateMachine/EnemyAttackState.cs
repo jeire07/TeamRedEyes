@@ -37,7 +37,7 @@ public class EnemyAttackState : EnemyBaseState
         }
         else
         {
-            if (IsInChasingRange())
+            if (IsInChaseRange())
             {
                 stateMachine.ChangeState(stateMachine.ChasingState);
                 return;
@@ -59,6 +59,4 @@ public class EnemyAttackState : EnemyBaseState
 
         stateMachine.Enemy.ForceReceiver.AddForce(stateMachine.Enemy.transform.forward * stateMachine.Enemy.Data.Force);
     }
-
-
 }

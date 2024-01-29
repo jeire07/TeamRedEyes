@@ -58,8 +58,9 @@ public class TimeManager : Singleton<TimeManager>
     {
         if( _minutes > 0 )
         {
-
+            
         }
+        return "";
     }
 
     public string[] GetFormattedTime(bool is24HourFormat = false)

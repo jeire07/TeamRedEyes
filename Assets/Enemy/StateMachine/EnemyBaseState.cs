@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class EnemyBaseState : MonoBehaviour
+public class EnemyBaseState : IState
 {
     protected EnemyStateMachine stateMachine;
     protected readonly PlayerGroundData groundData;
@@ -76,7 +76,7 @@ public class EnemyBaseState : MonoBehaviour
             direction.y = 0;
             Quaternion targetRotation = Quaternion.LookRotation(direction);
 
-            stateMachine.Enemy.transform.rotation = Quaternion.Slerp(stateMachine.Enemy.transform.rotation, targetRotation, StateMachine.RotationDamping * Time.deltaTime);
+            stateMachine.Enemy.transform.rotation = Quaternion.Slerp(stateMachine.Enemy.transform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
         }
     }
 
@@ -106,7 +106,7 @@ public class EnemyBaseState : MonoBehaviour
         }
     }
 
-    protected bool IsInChasingRange()
+    protected bool IsInChaseRange()
     {
         //if (stateMachine.Target.IsDead) { return false; }
 
