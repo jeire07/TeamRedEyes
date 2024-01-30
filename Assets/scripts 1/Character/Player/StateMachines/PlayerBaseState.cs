@@ -90,20 +90,21 @@ using UnityEngine.InputSystem;
     {
 
     }
-
-    private void OnJumpstartde(InputAction.CallbackContext context)
-    {
-
-    }
-
     protected virtual void OnAttackPerformed(InputAction.CallbackContext context)
     {
-        StateMachine.IsAttacking = true;
+        if (!StateMachine.IsAttacking)
+        {
+            StateMachine.ChangeState(StateMachine.ComboAttackState);
+        }
     }
 
     protected virtual void OnAttackCanceled(InputAction.CallbackContext context)
     {
-        StateMachine.IsAttacking = false;
+        if (StateMachine.IsAttacking)
+        {
+            StateMachine.IsAttacking = false;
+            StateMachine.ChangeState(StateMachine.IdleState);
+        }
     }
 
     private void ReadMovementInput()
