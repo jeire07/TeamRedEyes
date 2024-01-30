@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Inventory : Singleton<Inventory>
@@ -7,6 +8,7 @@ public class Inventory : Singleton<Inventory>
     public ItemData ItemData;
     public ItemSlot[] ItemSlot;
     public Transform DropPosition;
+    private StatPanel _statPanel; 
 
     private void Update() //업데이트에 굳이 쓸 필요 없다
     {
@@ -14,6 +16,7 @@ public class Inventory : Singleton<Inventory>
         {
             Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.None;
+            
         }
         else if (IsOpened == false)
         {
