@@ -5,34 +5,25 @@ public class TimeManager : Singleton<TimeManager>
 {
     public event Action OnMinutePassed;
 
+    [SerializeField] private TimeData _time;
+
     private float _currentTime;
-    private float _startTime;
-
-    [SerializeField] private int _minutesPerDay = 12;
-    private float _TimeRate;
-    public int TimeScale = 1;
-
-    private bool _isAM;
-    private int _days = 0;
-    private int _hours = 12;
-    private int _minutes = 0;
+    private float _timeRate;
 
     private void Awake()
     {
-        _TimeRate = 60 * 60 * 24 / (_minutesPerDay * 60);
-        _currentTime = _startTime;
+        _timeRate = 60 * 60 * 24 / (_time.MinutesPerDay * 60);
 
-        CalcTime();
         Time.timeScale = 1.0f;
     }
 
     private void Update()
     {
-        _currentTime += _TimeRate * Time.deltaTime * TimeScale;
+        _currentTime += _timeRate * Time.deltaTime * _time.TimeScale;
 
         if(_currentTime > 60)
         {
-            _minutes += (int)_currentTime / 60;
+            _time.Minute += (int)_currentTime / 60;
             _currentTime %= 60;
             CalcTime();
         }
@@ -40,40 +31,33 @@ public class TimeManager : Singleton<TimeManager>
 
     private void CalcTime()
     {
-        if (_minutes >= 60)
+        if (_time.Minute >= 60)
         {
-            _minutes = 0;
-            _hours++;
+            _time.Minute = 0;
 
-            if (_hours >= 24)
+            _time.Hour++;
+
+            if(_time.Hour % 12 == 0)
             {
-                _hours = 0;
-                _days++;
+                ToggleIsAM();
+
+                if (_time.Hour >= 24)
+                {
+                    _time.Hour = 0;
+                    _time.Day++;
+                }
             }
         }
         OnMinutePassed();
     }
 
-    public string SetGameSpeed()
+    public void SetGameSpeed(int gameSpeed)
     {
-        if( _minutes > 0 )
-        {
-
-        }
+        _time.TimeScale = gameSpeed;
     }
 
-    public string[] GetFormattedTime(bool is24HourFormat = false)
+    public void ToggleIsAM()
     {
-        string amPm = _isAM ? "오전" : "오전";
-
-        if (is24HourFormat)
-        {
-            return new string[] { amPm, $"D+{_days}, {_hours:D2} : {_minutes:D2}" };
-        }
-        else
-        {
-            int curHour = _hours == 12 ? _hours : _hours % 12;
-            return new string[] { amPm, $"D+{_days}, {curHour:D2} : {_minutes:D2}" };
-        }
+        _time.IsAM = !_time.IsAM;
     }
 }
