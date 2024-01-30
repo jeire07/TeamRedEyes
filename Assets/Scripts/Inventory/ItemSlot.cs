@@ -27,12 +27,12 @@ public class ItemSlot : MonoBehaviour
 
     public ItemData Item;
     public int Quantity;
-    private PlayerCondition Condition;
+    private PlayerCondition _Condition;
 
     private void Awake()
     {
         GameObject player = GameObject.Find("Player"); //Find 사용말고 다른방법 질문, 왜 지양해야 하는지, Find말고 다른방법으로 바꿔보기
-        Condition = player.GetComponent<PlayerCondition>();
+        _Condition = player.GetComponent<PlayerCondition>();
         EquipIcon.SetActive(false);
     }
 
@@ -75,11 +75,15 @@ public class ItemSlot : MonoBehaviour
                 switch (Item.Consumables[i].Type)
                 {
                     case ConsumableType.Health:
-                        Condition.Potion(Item.Consumables[i].Value); break;
+                        _Condition.Potion(Item.Consumables[i].Value); break;
                     case ConsumableType.Hunger:
-                        Condition.Eat(Item.Consumables[i].Value); break;
+                        _Condition.Eat(Item.Consumables[i].Value); break;
                     case ConsumableType.Thirsty:
-                        Condition.Drink(Item.Consumables[i].Value); break;
+                        _Condition.Drink(Item.Consumables[i].Value); break;
+                    case ConsumableType.Infection:
+                        _Condition.TakeInfection(Item.Consumables[i].Value); break;
+                    case ConsumableType.Immunity:
+                        _Condition.TakeImmunity(Item.Consumables[i].Value); break;
                 }
             }
             Quantity--;
