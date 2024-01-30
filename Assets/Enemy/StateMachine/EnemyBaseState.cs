@@ -66,7 +66,7 @@ public class EnemyBaseState : IState
     {
         float movementSpeed = GetMovementSpeed();
         Vector3 movement = direction * movementSpeed + stateMachine.Enemy.ForceReceiver.Movement;
-        movement.y = 0;
+        movement.y = 0; // y축 이동 제한
         stateMachine.Enemy.Controller.Move(movement * Time.deltaTime);
     }
 
@@ -90,7 +90,7 @@ public class EnemyBaseState : IState
     {
         if (direction != Vector3.zero)
         {
-            direction.y = 0;
+            direction.y = 0; // 높이를 고려하지 않고 회전하도록 설정
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             stateMachine.Enemy.transform.rotation = Quaternion.Slerp(stateMachine.Enemy.transform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
         }
