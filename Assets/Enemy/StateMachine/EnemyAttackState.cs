@@ -14,13 +14,11 @@ public class EnemyAttackState : EnemyBaseState
         stateMachine.MovementSpeedModifier = 0f;
         base.Enter();
         StartAnimation(stateMachine.Enemy.AnimationData.AttackParameterHash);
-        StartAnimation(stateMachine.Enemy.AnimationData.BaseAttackParameterHash);
     }
     public override void Exit()
     {
         base.Exit();
         StopAnimation(stateMachine.Enemy.AnimationData.AttackParameterHash);
-        StopAnimation(stateMachine.Enemy.AnimationData.BaseAttackParameterHash);
     }
 
     public override void Update()
@@ -37,7 +35,7 @@ public class EnemyAttackState : EnemyBaseState
         }
         else
         {
-            if (IsInChasingRange())
+            if (IsInChaseRange())
             {
                 stateMachine.ChangeState(stateMachine.ChasingState);
                 return;
@@ -59,6 +57,4 @@ public class EnemyAttackState : EnemyBaseState
 
         stateMachine.Enemy.ForceReceiver.AddForce(stateMachine.Enemy.transform.forward * stateMachine.Enemy.Data.Force);
     }
-
-
 }

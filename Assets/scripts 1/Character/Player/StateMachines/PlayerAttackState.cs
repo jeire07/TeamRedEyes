@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerAttackState : PlayerBaseState
 {
@@ -10,13 +11,15 @@ public class PlayerAttackState : PlayerBaseState
 
     public override void Enter()
     {
-        StateMachine.MovementspeedModifier = 0f;
         base.Enter();
+        StateMachine.MovementspeedModifier = 0f;
         StartAnimation(StateMachine.Player.AnimationData.AttackParameterHash);
+        StateMachine.IsAttacking = true;
     }
     public override void Exit() 
     {
         base.Exit();
         StopAnimation(StateMachine.Player.AnimationData.AttackParameterHash);
+        StateMachine.IsAttacking = false;
     }
 }

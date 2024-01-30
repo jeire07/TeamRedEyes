@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
     [field: SerializeField] public EnemySO Data { get; private set; }
 
     [field: Header("Animations")]
-    [field: SerializeField] public PlayerAnimationData AnimationData { get; private set; }
+    [field: SerializeField] public EnemyAnimationData AnimationData { get; private set; }
 
     public Rigidbody Rigidbody { get; private set; }
     public Animator Animator { get; private set; }
@@ -14,12 +14,13 @@ public class Enemy : MonoBehaviour
     public CharacterController Controller { get; private set; }
 
     private EnemyStateMachine stateMachine;
+
     private void Awake()
     {
         AnimationData.Initialize();
 
         Rigidbody = GetComponent<Rigidbody>();
-        Animator = GetComponent<Animator>();
+        Animator = GetComponentInChildren<Animator>();
         Controller = GetComponent<CharacterController>();
         ForceReceiver = GetComponent<ForceReceiver>();
 

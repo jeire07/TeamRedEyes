@@ -26,9 +26,9 @@ public class EnemyIdleState : EnemyBaseState
 
     public override void Update()
     {
-       if (IsInChasingRange())
+       if (IsInChaseRange())
         {
-            stateMachine.ChasingState(stateMachine.ChasingState);
+            stateMachine.ChangeState(stateMachine.ChasingState);
             return;
         }
     }

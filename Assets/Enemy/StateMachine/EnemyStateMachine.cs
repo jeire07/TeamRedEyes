@@ -8,9 +8,9 @@ public class EnemyStateMachine : StateMachine
     public Enemy Enemy { get; }
 
     public Transform Target { get; private set; }
-    public EnemyIdleState IdlingState { get; private set; }
-    public EnemyChasingState ChasingState { get; private set; }
-    public EnemyAttackState AttackState { get; private set; }
+    public EnemyIdleState IdlingState { get; set; }
+    public EnemyChasingState ChasingState { get; set; }
+    public EnemyAttackState AttackState { get; set; }
 
     public Vector2 MovementInput { get; set; }
     public float MovementSpeed { get; private set; }
@@ -20,14 +20,14 @@ public class EnemyStateMachine : StateMachine
     public EnemyStateMachine(Enemy enemy)
     {
         Enemy = enemy;
-        Target = GameObject.FindGameObjectWithTag("player").transform;
+        Target = GameObject.FindGameObjectWithTag("Player").transform;
 
         IdlingState = new EnemyIdleState(this);
         ChasingState = new EnemyChasingState(this);
         AttackState = new EnemyAttackState(this);
 
-        MovementSpeed = enemy.Data.groundData.BaseSpeed;
-        RotationDamping = enemy.Data.groundData.BaseRotationDamping;
+        MovementSpeed = enemy.Data.EnemyGroundData.BaseSpeed;
+        RotationDamping = enemy.Data.EnemyGroundData.BaseRotationDamping;
     }
 
 }
