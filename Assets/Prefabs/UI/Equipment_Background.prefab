@@ -319,7 +319,7 @@ GameObject:
   - component: {fileID: 6510404524570057991}
   - component: {fileID: 4340607480482431660}
   m_Layer: 0
-  m_Name: EquipmentBG
+  m_Name: Equipment_Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -398,10 +398,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c08b6b4c6700754ca0c5fb260577629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 0}
-  clothesIcon: {fileID: 400911440710015354}
-  weaponIcon: {fileID: 4089426984416505983}
-  shoesIcon: {fileID: 4857019286078303010}
+  Item: {fileID: 0}
+  ClothesIcon: {fileID: 400911440710015354}
+  WeaponIcon: {fileID: 4089426984416505983}
+  ShoesIcon: {fileID: 4857019286078303010}
 --- !u!1 &8586732991346649100
 GameObject:
   m_ObjectHideFlags: 0
