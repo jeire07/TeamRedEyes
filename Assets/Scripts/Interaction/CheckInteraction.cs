@@ -24,8 +24,10 @@ public class CheckInteraction : MonoBehaviour
     void Start()
     {
         _camera = Camera.main;
-
         _layerMask = LayerMask.GetMask("Interactable");
+
+        Transform canvas = GameObject.FindGameObjectWithTag("InfrequentUI").GetComponent<Transform>();
+        _interactText = canvas.Find("InteractionText").GetComponent<TMP_Text>();
     }
 
     // Update is called once per frame
@@ -51,14 +53,14 @@ public class CheckInteraction : MonoBehaviour
             {
                 _curGameobject = null;
                 _curInteractable = null;
-                _interactText.gameObject.SetActive(false);
+                _interactText.enabled = false;
             }
         }
     }
 
     private void SetPromptText()
     {
-        _interactText.gameObject.SetActive(true);
+        _interactText.enabled = true;
         _interactText.text = _curInteractable.GetInteractText();
     }
 
@@ -69,12 +71,10 @@ public class CheckInteraction : MonoBehaviour
             return;
         }
 
-        if (callbackContext.phase == InputActionPhase.Started && _curInteractable != null)
+        if (callbackContext.started && _curInteractable != null)
         {
             _curInteractable.Interact();
-            //_curGameobject = null;
-            //_curInteractable = null;
-            _interactText.gameObject.SetActive(false);
+            _interactText.enabled = false;
         }
     }
 }

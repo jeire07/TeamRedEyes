@@ -4,6 +4,7 @@ using UnityEngine;
 public class TimeManager : Singleton<TimeManager>
 {
     public event Action OnMinutePassed;
+    public event Action OnDayPassed;
 
     [SerializeField] private TimeData _time;
 
@@ -45,6 +46,7 @@ public class TimeManager : Singleton<TimeManager>
                 {
                     _time.Hour = 0;
                     _time.Day++;
+                    OnDayPassed();
                 }
             }
         }
@@ -54,15 +56,16 @@ public class TimeManager : Singleton<TimeManager>
     public void SetGameSpeed(int gameSpeed)
     {
         _time.TimeScale = gameSpeed;
-        //if( _minutes > 0 )
-        //{
-        //    
-        //}
-        return "";
     }
 
     public void ToggleIsAM()
     {
         _time.IsAM = !_time.IsAM;
+    }
+
+    private void OnDestroy()
+    {
+        OnMinutePassed = null;
+        OnDayPassed = null;
     }
 }
