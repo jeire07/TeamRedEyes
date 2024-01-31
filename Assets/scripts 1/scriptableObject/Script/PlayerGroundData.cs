@@ -9,7 +9,7 @@ using UnityEngine;
 public class PlayerGroundData
 {
     [field: SerializeField][field: Range(0f, 25f)] public float BaseSpeed { get; private set; } = 10f;
-    [field: SerializeField][field: Range(0f, 25f)] public float BaseRotationDamping { get; private set; } = 1f;
+    [field: SerializeField][field: Range(0f, 25f)] public float BaseRotationDamping { get; private set; } = 0.5f;
     [field: Header("IdleData")]
 
     [field: Header("Sit")]

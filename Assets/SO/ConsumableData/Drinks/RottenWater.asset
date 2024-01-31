@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5fa107318043294d8079a82b7a4a357, type: 3}
+  m_Name: RottenWater
+  m_EditorClassIdentifier: 
+  DisplayName: "\uC0C1\uD55C \uBB3C"
+  Information: "\uC0C1\uD55C \uBB3C\uC774\uB2E4."
+  StatName: "\uAC08\uC99D \uAC10\uC5FC"
+  StatValue: 20
+  Type: 1
+  Icon: {fileID: 21300000, guid: 0a2842a9f4da4eb43b8c153f5d6df6e1, type: 3}
+  DropPrefab: {fileID: 5713433101224488750, guid: cc9d3b6e5d3a95146a74069192d1d7da,
+    type: 3}
+  IsCorrupted: 1
+  CanStack: 1
+  MaxStackAmount: 10
+  Consumables:
+  - Type: 0
+    Value: 20
+  - Type: 3
+    Value: 100
+  EquipableType: 0

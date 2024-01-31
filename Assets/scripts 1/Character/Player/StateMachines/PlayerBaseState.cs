@@ -90,20 +90,21 @@ using UnityEngine.InputSystem;
     {
 
     }
-
-    private void OnJumpstartde(InputAction.CallbackContext context)
-    {
-
-    }
-
     protected virtual void OnAttackPerformed(InputAction.CallbackContext context)
     {
-        StateMachine.IsAttacking = true;
+        if (!StateMachine.IsAttacking)
+        {
+            StateMachine.ChangeState(StateMachine.ComboAttackState);
+        }
     }
 
     protected virtual void OnAttackCanceled(InputAction.CallbackContext context)
     {
-        StateMachine.IsAttacking = false;
+        if (StateMachine.IsAttacking)
+        {
+            StateMachine.IsAttacking = false;
+            StateMachine.ChangeState(StateMachine.IdleState);
+        }
     }
 
     private void ReadMovementInput()
@@ -119,14 +120,13 @@ using UnityEngine.InputSystem;
             return;
         }
 
-        Vector3 movementDirection = GetMovementdirction();
+        Vector3 movementDirection = GetMovementDirection();
 
-        Rotate(movementDirection);  
-
-        Move(movementDirection);
+        Rotate(movementDirection);
+        ApplyMovement(movementDirection);
     }
 
-    private Vector3 GetMovementdirction()
+    private Vector3 GetMovementDirection()
     {
         Vector3 forward = StateMachine.MainCameraTransform.forward;
         Vector3 right = StateMachine.MainCameraTransform.right;
@@ -137,14 +137,14 @@ using UnityEngine.InputSystem;
         forward.Normalize();
         right.Normalize();
 
-        return forward* StateMachine.MovementInput.y + right* StateMachine.MovementInput.x;
+        return forward * StateMachine.MovementInput.y + right * StateMachine.MovementInput.x;
     }
-    private void Move(Vector3 movementDirection)
+
+    private void ApplyMovement(Vector3 movementDirection)
     {
         float movementSpeed = GetMovementSpeed();
-        StateMachine.Player.Controller.Move(((movementDirection * movementSpeed)
-            + StateMachine.Player.ForceReceiver.Movement) 
-            * Time.deltaTime);
+        Vector3 movement = movementDirection * movementSpeed + StateMachine.Player.ForceReceiver.Movement;
+        StateMachine.Player.Controller.Move(movement * Time.deltaTime);
     }
 
     protected void ForceMove()
@@ -154,7 +154,7 @@ using UnityEngine.InputSystem;
 
     private void Rotate(Vector3 movementDirection)
     {
-        if(movementDirection != Vector3.zero)
+        if (movementDirection != Vector3.zero)
         {
             Transform playerTransform = StateMachine.Player.transform;
             Quaternion targetRotation = Quaternion.LookRotation(movementDirection);

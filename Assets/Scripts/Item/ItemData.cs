@@ -19,7 +19,9 @@ public enum ConsumableType
 {
     Thirsty,
     Hunger,
-    Health
+    Health,
+    Infection,
+    Immunity
 }
 
 [System.Serializable]
@@ -40,6 +42,7 @@ public class ItemData : ScriptableObject
     public ItemType Type;
     public Sprite Icon;
     public GameObject DropPrefab;
+    public bool IsCorrupted; //상한지 확인
 
     [Header("Stacking")] //최대보유갯수
     public bool CanStack;

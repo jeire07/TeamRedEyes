@@ -16,14 +16,16 @@ public class ForceReceiver : MonoBehaviour
 
     void Update()
     {
-      if(VerticalVelocity < 0 && controller.isGrounded)
+        if (VerticalVelocity < 0 && controller.isGrounded)
         {
             VerticalVelocity = Physics.gravity.y * Time.deltaTime;
+            Impact = Vector3.zero; 
         }
         else
         {
             VerticalVelocity += Physics.gravity.y * Time.deltaTime;
         }
+
         Impact = Vector3.SmoothDamp(Impact, Vector3.zero, ref DampingVelocity, drag);
     }
 

@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class EnemyBaseState : MonoBehaviour
+public class EnemyBaseState : IState
 {
     protected EnemyStateMachine stateMachine;
-    protected readonly PlayerGroundData groundData;
+    protected readonly EnemyGroundData groundData;
 
     public EnemyBaseState(EnemyStateMachine enemyStateMachine)
     {
         stateMachine = enemyStateMachine;
-        groundData = stateMachine.Enemy.Data.groundData;
+        groundData = stateMachine.Enemy.Data.EnemyGroundData;
     }
 
     public virtual void Enter()
@@ -36,6 +36,16 @@ public class EnemyBaseState : MonoBehaviour
 
     }
 
+    protected bool HasParameter(Animator animator, int hash)
+    {
+        foreach (AnimatorControllerParameter param in animator.parameters)
+        {
+            if (param.nameHash == hash)
+                return true;
+        }
+        return false;
+    }
+
     protected void StartAnimation(int animationHash)
     {
         stateMachine.Enemy.Animator.SetBool(animationHash, true);
@@ -48,9 +58,16 @@ public class EnemyBaseState : MonoBehaviour
     private void Move()
     {
         Vector3 movementDirection = GetMovementDirection();
-
         Rotate(movementDirection);
-        Move(movementDirection);
+        ApplyMovement(movementDirection);
+    }
+
+    private void ApplyMovement(Vector3 direction)
+    {
+        float movementSpeed = GetMovementSpeed();
+        Vector3 movement = direction * movementSpeed + stateMachine.Enemy.ForceReceiver.Movement;
+        movement.y = 0; // y축 이동 제한
+        stateMachine.Enemy.Controller.Move(movement * Time.deltaTime);
     }
 
     protected void ForceMove()
@@ -60,23 +77,16 @@ public class EnemyBaseState : MonoBehaviour
 
     private Vector3 GetMovementDirection()
     {
-        return (stateMachine.Target.transform.position - stateMachine.Target.transform.position).normalized;
-    }
-
-    private void Move(Vector3 direction)
-    {
-        float movementSpeed = GetMovementSpeed();
-        stateMachine.Enemy.Controller.Move(((direction * movementSpeed)+stateMachine.Enemy.ForceReceiver.Movement) * Time.deltaTime);
+        return (stateMachine.Target.transform.position - stateMachine.Enemy.transform.position).normalized;
     }
 
     private void Rotate(Vector3 direction)
     {
-        if(direction != Vector3.zero)
+        if (direction != Vector3.zero)
         {
-            direction.y = 0;
+            direction.y = 0; // 높이를 고려하지 않고 회전하도록 설정
             Quaternion targetRotation = Quaternion.LookRotation(direction);
-
-            stateMachine.Enemy.transform.rotation = Quaternion.Slerp(stateMachine.Enemy.transform.rotation, targetRotation, StateMachine.RotationDamping * Time.deltaTime);
+            stateMachine.Enemy.transform.rotation = Quaternion.Slerp(stateMachine.Enemy.transform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
         }
     }
 
@@ -106,7 +116,7 @@ public class EnemyBaseState : MonoBehaviour
         }
     }
 
-    protected bool IsInChasingRange()
+    protected bool IsInChaseRange()
     {
         //if (stateMachine.Target.IsDead) { return false; }
 

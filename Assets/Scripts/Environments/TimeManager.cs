@@ -54,6 +54,11 @@ public class TimeManager : Singleton<TimeManager>
     public void SetGameSpeed(int gameSpeed)
     {
         _time.TimeScale = gameSpeed;
+        //if( _minutes > 0 )
+        //{
+        //    
+        //}
+        return "";
     }
 
     public void ToggleIsAM()

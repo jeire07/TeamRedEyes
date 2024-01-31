@@ -4,7 +4,6 @@ using UnityEngine.UI;
 [System.Serializable]
 public class Condition
 {
-
     public float CurValue;
     public float MaxValue;
     public float StartValue;
@@ -27,7 +26,7 @@ public class Condition
         return CurValue / MaxValue;
     }
 
-    public float HealthPercentage()
+    public float ValuePercentage()
     {
         return CurValue / MaxValue * 100;
     }
@@ -40,6 +39,7 @@ public class PlayerCondition : MonoBehaviour
     public Condition Hunger;
     public Condition Thirsty;
     public Condition Stamina;
+    public Condition Infection;
 
     public float NoFoodWaterHealthDecay;
 
@@ -48,16 +48,17 @@ public class PlayerCondition : MonoBehaviour
         Hunger.Subtract(Hunger.DecayRate * Time.deltaTime);
         Thirsty.Subtract(Thirsty.DecayRate * Time.deltaTime);
 
-        if (Hunger.CurValue == 0.0f && Thirsty.CurValue == 0.0f)
+        if (Hunger.CurValue == 0.0f || Thirsty.CurValue == 0.0f)
             Health.Subtract(NoFoodWaterHealthDecay * Time.deltaTime);
 
         if (Health.CurValue == 0.0f)
-            Die();
+            IsDead();
 
         Health.UiBar.fillAmount = Health.GetPercentage();
         Hunger.UiBar.fillAmount = Hunger.GetPercentage();
         Thirsty.UiBar.fillAmount = Thirsty.GetPercentage();
         Stamina.UiBar.fillAmount = Stamina.GetPercentage();
+        Infection.UiBar.fillAmount = Infection.GetPercentage();
     }
     private void Start()
     {
@@ -65,6 +66,7 @@ public class PlayerCondition : MonoBehaviour
         Hunger.CurValue = Hunger.StartValue;
         Thirsty.CurValue = Thirsty.StartValue;
         Stamina.CurValue = Stamina.StartValue;
+        Infection.CurValue = Infection.StartValue;
     }
 
     public void Potion(float amount)
@@ -82,6 +84,16 @@ public class PlayerCondition : MonoBehaviour
         Thirsty.Add(amount);
     }
 
+    public void TakeImmunity(float amount)
+    {
+        Infection.Subtract(amount);
+    }
+
+    public void TakeInfection(float amount)
+    {
+        Infection.Add(amount);
+    }
+
     public void RestoreHealth(float amount)
     {
         Health.Add(Health.RegenRate * Time.deltaTime);
@@ -97,13 +109,13 @@ public class PlayerCondition : MonoBehaviour
             return false;
 
         Stamina.Subtract(amount);
-        return true; 
+        return true;
 
         // attack = 3, run = 2, 아이템줍기 = 1, 스킬값 따로
     }
 
-    public void Die()
+    public void IsDead()
     {
-        //사망
+        //사망애니메이션 하고 몇초뒤에 다시시작?, 게임이 끝나는?
     }
 }
