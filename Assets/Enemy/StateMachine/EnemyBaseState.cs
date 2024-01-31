@@ -80,12 +80,6 @@ public class EnemyBaseState : IState
         return (stateMachine.Target.transform.position - stateMachine.Enemy.transform.position).normalized;
     }
 
-    //private void Move(Vector3 direction)
-    //{
-    //    float movementSpeed = GetMovementSpeed();
-    //    stateMachine.Enemy.Controller.Move(((direction * movementSpeed)+stateMachine.Enemy.ForceReceiver.Movement) * Time.deltaTime);
-    //}
-
     private void Rotate(Vector3 direction)
     {
         if (direction != Vector3.zero)

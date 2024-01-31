@@ -144,7 +144,6 @@ using UnityEngine.InputSystem;
     {
         float movementSpeed = GetMovementSpeed();
         Vector3 movement = movementDirection * movementSpeed + StateMachine.Player.ForceReceiver.Movement;
-        movement.y = 0; // y축 이동 제한
         StateMachine.Player.Controller.Move(movement * Time.deltaTime);
     }
 

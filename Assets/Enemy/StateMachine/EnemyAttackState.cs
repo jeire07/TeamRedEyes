@@ -8,17 +8,20 @@ public class EnemyAttackState : EnemyBaseState
     {
     }
     private bool alreadyAppliedForce;
+    private bool isAnimationCompleted = false;
 
     public override void Enter()
     {
         stateMachine.MovementSpeedModifier = 0f;
         base.Enter();
         StartAnimation(stateMachine.Enemy.AnimationData.AttackParameterHash);
+        isAnimationCompleted = false;
     }
     public override void Exit()
     {
         base.Exit();
         StopAnimation(stateMachine.Enemy.AnimationData.AttackParameterHash);
+        alreadyAppliedForce = false;
     }
 
     public override void Update()
@@ -28,14 +31,17 @@ public class EnemyAttackState : EnemyBaseState
         ForceMove();
 
         float normalizedTime = GetNormalizedTime(stateMachine.Enemy.Animator, "Attack");
-        if (normalizedTime < 1f) 
+        if (normalizedTime < 1f)
         {
-            if (normalizedTime >= stateMachine.Enemy.Data.ForceTransitionTime)
+            if (normalizedTime >= stateMachine.Enemy.Data.ForceTransitionTime && !alreadyAppliedForce)
+            {
                 TryApplyForce();
+            }
         }
-        else
+        else if (!isAnimationCompleted)
         {
-            if (IsInChaseRange())
+            isAnimationCompleted = true;
+            if (IsInChaseRange() || normalizedTime >= 1f) // 추가: 애니메이션이 완료되었을 때도 추적 상태로 전환할 수 있도록 조건 추가
             {
                 stateMachine.ChangeState(stateMachine.ChasingState);
                 return;

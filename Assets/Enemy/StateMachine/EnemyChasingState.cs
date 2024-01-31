@@ -1,3 +1,6 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class EnemyChasingState : EnemyBaseState
 {
@@ -11,7 +14,7 @@ public class EnemyChasingState : EnemyBaseState
         stateMachine.MovementSpeedModifier = groundData.RunSpeedModifier;
         StartAnimation(stateMachine.Enemy.AnimationData.RunParameterHash);
     }
-    public override void Exit() 
+    public override void Exit()
     {
         base.Exit();
         StopAnimation(stateMachine.Enemy.AnimationData.RunParameterHash);
@@ -20,7 +23,6 @@ public class EnemyChasingState : EnemyBaseState
     public override void Update()
     {
         base.Update();
-
         if (IsInAttackRange())
         {
             stateMachine.ChangeState(stateMachine.AttackState);
@@ -32,13 +34,10 @@ public class EnemyChasingState : EnemyBaseState
             return;
         }
     }
+
     private bool IsInAttackRange()
     {
-        //if (stateMachine.Target.IsDead) { return false; }
-
-        float PlayerDistancesqr = (stateMachine.Target.transform.position - stateMachine.Enemy.transform.position).sqrMagnitude;
-
-        return PlayerDistancesqr <= stateMachine.Enemy.Data.AttackRange * stateMachine.Enemy.Data.AttackRange;
+        float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Enemy.transform.position).sqrMagnitude;
+        return playerDistanceSqr <= stateMachine.Enemy.Data.AttackRange * stateMachine.Enemy.Data.AttackRange;
     }
-
 }
