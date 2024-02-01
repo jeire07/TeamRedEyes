@@ -5,19 +5,19 @@ using UnityEngine.InputSystem;
 public class CheckInteraction : MonoBehaviour
 {
     #region SerializeField
-    [SerializeField] private TMP_Text _interactText;
     [SerializeField] private float _checkRate = 0.05f;
     [SerializeField] private float _maxDistance = 3.0f;
-    [SerializeField] private LayerMask _layerMask;
     #endregion
 
     #region private field
-    private float _lastCheckTime;
-
+    private TMP_Text _interactText;
     private GameObject _curGameobject;
-    private IInteractable _curInteractable;
-
     private Camera _camera;
+
+    private IInteractable _curInteractable;
+    private LayerMask _layerMask;
+
+    private float _lastCheckTime;
     #endregion
 
     // Start is called before the first frame update
@@ -71,7 +71,7 @@ public class CheckInteraction : MonoBehaviour
             return;
         }
 
-        if (callbackContext.started && _curInteractable != null)
+        if (callbackContext.phase == InputActionPhase.Started && _curInteractable != null)
         {
             _curInteractable.Interact();
             _interactText.enabled = false;
