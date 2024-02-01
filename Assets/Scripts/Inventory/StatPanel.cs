@@ -25,7 +25,6 @@ public class StatPanel : MonoBehaviour
     {
         GameObject player = GameObject.Find("Player");
         _condition = player.GetComponent<PlayerCondition>();
-        //NameText.text = 플레이어데이터.Name;
     }
 
     private void Update()
