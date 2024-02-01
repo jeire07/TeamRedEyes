@@ -9,6 +9,7 @@ public class EnemyAttackState : EnemyBaseState
     }
     private bool alreadyAppliedForce;
     private bool isAnimationCompleted = false;
+    private bool alreadyAplliedDealing;
 
     public override void Enter()
     {
@@ -62,5 +63,6 @@ public class EnemyAttackState : EnemyBaseState
         stateMachine.Enemy.ForceReceiver.Reset();
 
         stateMachine.Enemy.ForceReceiver.AddForce(stateMachine.Enemy.transform.forward * stateMachine.Enemy.Data.Force);
+
     }
 }

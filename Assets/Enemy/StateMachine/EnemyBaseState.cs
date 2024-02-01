@@ -7,11 +7,15 @@ public class EnemyBaseState : IState
 {
     protected EnemyStateMachine stateMachine;
     protected readonly EnemyGroundData groundData;
+    //protected EnemyStats enemyStats;
+
+    protected Vector3 lastKnownPlayerPosition;
 
     public EnemyBaseState(EnemyStateMachine enemyStateMachine)
     {
         stateMachine = enemyStateMachine;
         groundData = stateMachine.Enemy.Data.EnemyGroundData;
+        //enemyStats = stateMachine.Enemy.Stats;
     }
 
     public virtual void Enter()
@@ -77,7 +81,13 @@ public class EnemyBaseState : IState
 
     private Vector3 GetMovementDirection()
     {
-        return (stateMachine.Target.transform.position - stateMachine.Enemy.transform.position).normalized;
+        // 플레이어 위치가 변경되었을 때만 계산
+        if (stateMachine.Target.transform.position != lastKnownPlayerPosition)
+        {
+            lastKnownPlayerPosition = stateMachine.Target.transform.position;
+            return (lastKnownPlayerPosition - stateMachine.Enemy.transform.position).normalized;
+        }
+        return (lastKnownPlayerPosition - stateMachine.Enemy.transform.position).normalized;
     }
 
     private void Rotate(Vector3 direction)
@@ -96,24 +106,14 @@ public class EnemyBaseState : IState
         return movementSpeed;
     }
 
-    protected float GetNormalizedTime(Animator animator,string tag)
+    protected float GetNormalizedTime(Animator animator, string tag)
     {
-        AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);
-        AnimatorStateInfo nextInfo = animator.GetNextAnimatorStateInfo(0);
-        
-        if (animator.IsInTransition(0) && nextInfo.IsTag(tag))
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        if (animator.IsInTransition(0) && stateInfo.IsTag(tag))
         {
-            return nextInfo.normalizedTime;
+            return animator.GetNextAnimatorStateInfo(0).normalizedTime;
         }
-
-        else if (animator.IsInTransition(0) && currentInfo.IsTag(tag))
-        {
-            return currentInfo.normalizedTime;
-        }
-        else
-        {
-            return 0f;
-        }
+        return stateInfo.IsTag(tag) ? stateInfo.normalizedTime : 0f;
     }
 
     protected bool IsInChaseRange()

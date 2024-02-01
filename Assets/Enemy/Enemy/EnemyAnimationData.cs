@@ -15,6 +15,9 @@ public class EnemyAnimationData
     [SerializeField] private string attackParameterName = "@Z_Attack";
     [SerializeField] private string baseattackParameterName = "Z_BaseAttack";
 
+    [SerializeField] private string hitParameterName = "Z_Hit";
+    [SerializeField] private string isdeadParameterName = "Z_IsDead";
+
     public int GroundParameterHash { get; private set; }
     public int IdleParameterHash { get; private set; }
     public int WalkParameterHash { get; private set; }
@@ -22,6 +25,8 @@ public class EnemyAnimationData
 
     public int AttackParameterHash { get; private set; }
     public int BaseAttackParameterHash { get; private set; }
+    public int HitParameterHash { get; private set; }
+    public int IsDeadParameterHash { get; private set; }
 
     public void Initialize()
     {
@@ -32,5 +37,8 @@ public class EnemyAnimationData
 
         AttackParameterHash = Animator.StringToHash(attackParameterName);
         BaseAttackParameterHash = Animator.StringToHash(baseattackParameterName);
+
+        HitParameterHash = Animator.StringToHash(hitParameterName);
+        IsDeadParameterHash = Animator.StringToHash(isdeadParameterName);
     }
 }
