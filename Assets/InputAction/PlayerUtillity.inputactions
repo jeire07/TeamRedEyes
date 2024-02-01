@@ -1,23 +1,23 @@
 {
-    "name": "Test",
+    "name": "PlayerUtillity",
     "maps": [
         {
-            "name": "New action map",
-            "id": "a8451158-fcc9-4254-b9aa-02f4af911534",
+            "name": "PlayerUtillity",
+            "id": "1683b48e-4c8b-4250-9e8f-bd7e4100583d",
             "actions": [
                 {
-                    "name": "Interaction",
+                    "name": "Inventory",
                     "type": "Button",
-                    "id": "01962b54-3924-4253-ae28-2dc0fee1fb40",
+                    "id": "4e4a07d2-30dd-4e15-9019-8b28d032e984",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Inventory",
+                    "name": "Interaction",
                     "type": "Button",
-                    "id": "7a6f4e6d-73a3-4cb4-923d-b32323689e77",
+                    "id": "2184e95e-58e4-44bb-864f-b0dd5f3a8dfa",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -27,23 +27,23 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "d3df89c2-595a-43b1-819d-8949464177de",
-                    "path": "<Keyboard>/g",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Interaction",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8e28c042-78d2-47d9-9939-08ba0ce24e59",
+                    "id": "5e335d9a-c669-4605-98e0-ec32c20c0a8d",
                     "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Inventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "40a3d40b-3d8e-4b59-8b22-528032287cce",
+                    "path": "<Keyboard>/g",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interaction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Inventory : Singleton<Inventory>
 {
@@ -16,7 +17,6 @@ public class Inventory : Singleton<Inventory>
         {
             Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.None;
-            
         }
         else if (IsOpened == false)
         {
@@ -25,10 +25,13 @@ public class Inventory : Singleton<Inventory>
         }
     }
 
-    public void OnInventory()
+    public void OnInventory(InputAction.CallbackContext context)
     {
-        IsOpened = !IsOpened;
-        InventoryObj.SetActive(IsOpened);
+        if (context.phase == InputActionPhase.Started)
+        {
+            IsOpened = !IsOpened;
+            InventoryObj.SetActive(IsOpened);
+        }
     }
 
 
