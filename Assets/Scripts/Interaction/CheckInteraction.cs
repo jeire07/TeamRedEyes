@@ -64,14 +64,14 @@ public class CheckInteraction : MonoBehaviour
         _interactText.text = _curInteractable.GetInteractText();
     }
 
-    public void OnInteraction(InputAction.CallbackContext callbackContext)
+    public void OnInteraction(InputAction.CallbackContext context)
     {
         if(Inventory.Instance.IsOpened)
         {
             return;
         }
 
-        if (callbackContext.phase == InputActionPhase.Started && _curInteractable != null)
+        if (context.phase == InputActionPhase.Started && _curInteractable != null)
         {
             _curInteractable.Interact();
             _interactText.enabled = false;

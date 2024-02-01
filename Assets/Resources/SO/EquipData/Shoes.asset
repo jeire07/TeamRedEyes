@@ -17,8 +17,10 @@ MonoBehaviour:
   StatName: "\uC18D\uB3C4"
   StatValue: 1
   Type: 2
-  Icon: {fileID: 0}
-  DropPrefab: {fileID: 0}
+  Icon: {fileID: 21300000, guid: ceff83d297964ab4ca0e1303a40ffa4f, type: 3}
+  DropPrefab: {fileID: 6185047641664285619, guid: d34f47f910610d24faecdefbbd495c84,
+    type: 3}
+  IsCorrupted: 0
   CanStack: 0
   MaxStackAmount: 1
   Consumables: []
