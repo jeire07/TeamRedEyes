@@ -966,6 +966,8 @@ GameObject:
   - component: {fileID: 2101374256408335406}
   - component: {fileID: 7172768899040613208}
   - component: {fileID: 5892588088309649931}
+  - component: {fileID: 7900769853585948352}
+  - component: {fileID: 3703711571419944573}
   m_Layer: 0
   m_Name: Stats_Background
   m_TagString: Untagged
@@ -1066,6 +1068,39 @@ MonoBehaviour:
   StaminaText: {fileID: 4893378247038061678}
   StatPointText: {fileID: 395727513105247358}
   InfectionText: {fileID: 8238417032763926425}
+--- !u!114 &7900769853585948352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5183415088669233120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 297e2842f2340d24aab4cefb8e3e1c13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AtkUpButton: {fileID: 6270764139396428434}
+  HealthUpButton: {fileID: 7212282975125065719}
+  StaminaUpButton: {fileID: 9001003427429643465}
+  _nameText: {fileID: 574379728629247638}
+  _levelText: {fileID: 2731616981152530143}
+  _atkText: {fileID: 6898117695951548021}
+  _defText: {fileID: 57860924831077043}
+  _expText: {fileID: 276577015218769595}
+--- !u!114 &3703711571419944573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5183415088669233120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e758576dd9e6f469f5030421e9b2c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StatData: {fileID: 0}
 --- !u!1 &6270764139396428434
 GameObject:
   m_ObjectHideFlags: 0
@@ -1186,7 +1221,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4757327805017431043}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3703711571419944573}
+        m_TargetAssemblyTypeName: StatManager, Assembly-CSharp
+        m_MethodName: OnStatUpButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6575774898294047933
 GameObject:
   m_ObjectHideFlags: 0
@@ -1579,7 +1626,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5543512772252825035}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3703711571419944573}
+        m_TargetAssemblyTypeName: StatManager, Assembly-CSharp
+        m_MethodName: OnStatUpButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7944827775963548172
 GameObject:
   m_ObjectHideFlags: 0
@@ -1973,4 +2032,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2718298994679364881}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3703711571419944573}
+        m_TargetAssemblyTypeName: StatManager, Assembly-CSharp
+        m_MethodName: OnStatUpButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
