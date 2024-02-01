@@ -1,30 +1,51 @@
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class RestUI : MonoBehaviour
 {
-    private Transform _blackBack;
-    private Transform _buttonBox;
+    private Transform[] _UIObjects;
     private TMP_Text[] _restTimeTexts = new TMP_Text[4];
-
-    private int _restLengthScale;
     private readonly int[] _restTimes = { 1, 2, 4, 3 };
+    private int _restLengthScale;
 
     private void Start()
     {
-        _blackBack = transform.GetChild(0);
-        _buttonBox = transform.GetChild(1);
+        _UIObjects = new Transform[transform.childCount];
+
+        for (int i = 0; i < _UIObjects.Length; i++)
+        {
+            _UIObjects[i] = transform.GetChild(i);
+        }
     }
 
     public void OpenUI()
     {
-        _blackBack.gameObject.SetActive(true);
-        _buttonBox.gameObject.SetActive(true);
-
-        TimeManager.Instance.SetGameSpeed(0);
+        for (int i = 0; i < _UIObjects.Length; i++)
+        {
+            _UIObjects[i].gameObject.SetActive(true);
+        }
 
         SetButtons();
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        TimeManager.Instance.SetGameSpeed(0);
+        Time.timeScale = 0;
+    }
+
+    public void CloseUI()
+    {
+        for (int i = 0; i < _UIObjects.Length; i++)
+        {
+            _UIObjects[i].gameObject.SetActive(false);
+        }
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        TimeManager.Instance.SetGameSpeed(1);
+        Time.timeScale = 1;
     }
 
     private void SetButtons()
@@ -40,11 +61,5 @@ public class RestUI : MonoBehaviour
     public void SetRestLengthScale(int scale)
     {
         _restLengthScale = scale;
-    }
-
-    public void CloseUI()
-    {
-        _blackBack.gameObject.SetActive(true);
-        _buttonBox.gameObject.SetActive(true);
     }
 }

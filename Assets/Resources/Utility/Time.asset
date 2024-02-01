@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbe5be012f4039f489d1e926e3027aa4, type: 3}
   m_Name: Time
   m_EditorClassIdentifier: 
-  Day: 24
-  Hour: 2
-  Minute: 9
+  MinutesPerDay: 12
+  TimeScale: 1
+  Day: 2
+  IsAM: 0
+  Hour: 20
+  Minute: 47
   Second: 0
-  IsAM: 1
-  MinutesPerDay: 15
-  TimeScale: 10
+  RestHours: 0

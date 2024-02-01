@@ -16,11 +16,8 @@ public class EnvironmentUI : MonoBehaviour
     {
         _timeText = transform.Find("TimeText").GetComponent<TMP_Text>();
         _AMPMText = transform.Find("AMPMText").GetComponent<TMP_Text>();
-        //_timeText = transform.GetChild(1).GetComponent<TMP_Text>();
-        //_AMPMText = transform.GetChild(2).GetComponent<TMP_Text>();
 
         _WeatherIcon = transform.Find("WeatherInfo").GetComponent<Image>();
-        //WeatherManager.Instance.OnWeatherChange += UpdateWeatherIcon;
 
         TimeManager.Instance.OnMinutePassed += UpdateTimeUI;
     }

@@ -6,25 +6,27 @@ public class TimeManager : Singleton<TimeManager>
     public event Action OnMinutePassed;
     public event Action OnDayPassed;
 
-    [SerializeField] private TimeData _time;
+    [SerializeField] private TimeData _timeData;
 
     private float _currentTime;
     private float _timeRate;
 
     private void Awake()
     {
-        _timeRate = 60 * 60 * 24 / (_time.MinutesPerDay * 60);
-
-        Time.timeScale = 1.0f;
+        _timeData = Resources.Load<TimeData>("Utility/Time");
+        _timeRate = 60 * 60 * 24 / (_timeData.MinutesPerDay * 60);
+        Time.timeScale = _timeData.TimeScale;
+        Debug.Log($"_timeData.TimeScale={_timeData.TimeScale}");
+        Debug.Log($"Time.timeScale={Time.timeScale}");
     }
 
     private void Update()
     {
-        _currentTime += _timeRate * Time.deltaTime * _time.TimeScale;
+        _currentTime += _timeRate * Time.deltaTime;
 
         if(_currentTime > 60)
         {
-            _time.Minute += (int)_currentTime / 60;
+            _timeData.Minute += (int)_currentTime / 60;
             _currentTime %= 60;
             CalcTime();
         }
@@ -32,20 +34,20 @@ public class TimeManager : Singleton<TimeManager>
 
     private void CalcTime()
     {
-        if (_time.Minute >= 60)
+        if (_timeData.Minute >= 60)
         {
-            _time.Minute = 0;
+            _timeData.Minute = 0;
 
-            _time.Hour++;
+            _timeData.Hour++;
 
-            if(_time.Hour % 12 == 0)
+            if(_timeData.Hour % 12 == 0)
             {
                 ToggleIsAM();
 
-                if (_time.Hour >= 24)
+                if (_timeData.Hour >= 24)
                 {
-                    _time.Hour = 0;
-                    _time.Day++;
+                    _timeData.Hour = 0;
+                    _timeData.Day++;
                     OnDayPassed();
                 }
             }
@@ -55,12 +57,16 @@ public class TimeManager : Singleton<TimeManager>
 
     public void SetGameSpeed(int gameSpeed)
     {
-        _time.TimeScale = gameSpeed;
+        _timeData.TimeScale = gameSpeed;
+        Time.timeScale = _timeData.TimeScale;
+
+        Debug.Log($"_timeData.TimeScale={_timeData.TimeScale}");
+        Debug.Log($"Time.timeScale={Time.timeScale}");
     }
 
     public void ToggleIsAM()
     {
-        _time.IsAM = !_time.IsAM;
+        _timeData.IsAM = !_timeData.IsAM;
     }
 
     private void OnDestroy()
