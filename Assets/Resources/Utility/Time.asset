@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Time
   m_EditorClassIdentifier: 
   MinutesPerDay: 12
-  TimeScale: 1
-  Day: 2
+  TimeScale: 0
+  Day: 3
   IsAM: 0
-  Hour: 20
-  Minute: 47
+  Hour: 22
+  Minute: 35
   Second: 0
-  RestHours: 0
+  RestHours: 3

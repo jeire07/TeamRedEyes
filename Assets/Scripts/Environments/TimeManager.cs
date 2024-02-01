@@ -14,10 +14,10 @@ public class TimeManager : Singleton<TimeManager>
     private void Awake()
     {
         _timeData = Resources.Load<TimeData>("Utility/Time");
+
+        _timeData.TimeScale = 1f;
         _timeRate = 60 * 60 * 24 / (_timeData.MinutesPerDay * 60);
         Time.timeScale = _timeData.TimeScale;
-        Debug.Log($"_timeData.TimeScale={_timeData.TimeScale}");
-        Debug.Log($"Time.timeScale={Time.timeScale}");
     }
 
     private void Update()
@@ -55,7 +55,7 @@ public class TimeManager : Singleton<TimeManager>
         OnMinutePassed();
     }
 
-    public void SetGameSpeed(int gameSpeed)
+    public void SetGameSpeed(float gameSpeed)
     {
         _timeData.TimeScale = gameSpeed;
         Time.timeScale = _timeData.TimeScale;

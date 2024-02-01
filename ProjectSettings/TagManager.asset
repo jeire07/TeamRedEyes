@@ -7,7 +7,7 @@ TagManager:
   - Ground
   - Enemy
   - FrequentUI
-  - InfrequentUI
+  - InFrequentUI
   layers:
   - Default
   - TransparentFX

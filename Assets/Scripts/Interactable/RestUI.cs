@@ -1,11 +1,11 @@
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class RestUI : MonoBehaviour
 {
     private Transform[] _UIObjects;
     private TMP_Text[] _restTimeTexts = new TMP_Text[4];
-    private readonly int[] _restTimes = { 1, 2, 4, 3 };
+    private int[] _restTimes = { 1, 2, 4, 3 };
     private int _restLengthScale;
 
     private void Start()
@@ -25,13 +25,12 @@ public class RestUI : MonoBehaviour
             _UIObjects[i].gameObject.SetActive(true);
         }
 
-        SetButtons();
-
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        TimeManager.Instance.SetGameSpeed(0);
-        Time.timeScale = 0;
+        SetButtons();
+
+        TimeManager.Instance.SetGameSpeed(0f);
     }
 
     public void CloseUI()
@@ -44,15 +43,14 @@ public class RestUI : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        TimeManager.Instance.SetGameSpeed(1);
-        Time.timeScale = 1;
+        TimeManager.Instance.SetGameSpeed(1f);
     }
 
     private void SetButtons()
     {
         for (int i = 0; i < _restTimes.Length; i++)
         {
-            _restTimeTexts[i] = transform.GetChild(1).GetChild(i).GetComponentInChildren<TMP_Text>();
+            _restTimeTexts[i] = transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<TMP_Text>();
 
             _restTimeTexts[i].text =$"{_restTimes[i] * _restLengthScale}h";
         }
@@ -61,5 +59,15 @@ public class RestUI : MonoBehaviour
     public void SetRestLengthScale(int scale)
     {
         _restLengthScale = scale;
+    }
+
+    public void OnCancelClick()
+    {
+        CloseUI();
+    }
+
+    public void OnStartClick()
+    {
+
     }
 }

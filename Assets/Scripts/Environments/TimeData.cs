@@ -4,7 +4,7 @@ using UnityEngine;
 public class TimeData : ScriptableObject
 {
     public int MinutesPerDay = 12;
-    public int TimeScale = 1;
+    public float TimeScale = 1f;
 
     public int Day = 0;
     public bool IsAM = false;

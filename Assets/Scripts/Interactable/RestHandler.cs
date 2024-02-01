@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RestHandler : MonoBehaviour
+public class RestHandler : Singleton<RestHandler>
 {
     private TimeData _timeData;
 
@@ -9,8 +9,6 @@ public class RestHandler : MonoBehaviour
 
     private int _hour;
     private int _minute;
-
-    private int _timeScale;
 
     // Start is called before the first frame update
     void Start()
@@ -35,14 +33,18 @@ public class RestHandler : MonoBehaviour
         }
     }
 
+    private void SetTimeScale()
+    {
+        _timeData.TimeScale = _timeData.RestHours * 3;
+        TimeManager.Instance.SetGameSpeed(_timeData.TimeScale);
+    }
+
     public void RestStart()
     {
-        TimeManager.Instance.SetGameSpeed(_timeScale);
-
         if (_timeData.RestHours > 0 && !_isResting)
         {
             _isResting = true;
-            TimeManager.Instance.SetGameSpeed(_timeScale);
+            SetTimeScale();
 
             _restingTime = _timeData.RestHours * _timeData.MinutesPerDay * 60 / _timeData.TimeScale;
         }
