@@ -9,21 +9,6 @@ public class Inventory : Singleton<Inventory>
     public ItemData ItemData;
     public ItemSlot[] ItemSlot;
     public Transform DropPosition;
-    private StatPanel _statPanel; 
-
-    //private void Update() //업데이트에 굳이 쓸 필요 없다
-    //{
-    //    if (IsOpened == true)
-    //    {
-    //        Time.timeScale = 0f;
-    //        Cursor.lockState = CursorLockMode.None;
-    //    }
-    //    else if (IsOpened == false)
-    //    {
-    //        Time.timeScale = 1f;
-    //        Cursor.lockState = CursorLockMode.Locked;
-    //    }
-    //}
 
     public void OnInventory(InputAction.CallbackContext context)
     {
@@ -39,6 +24,7 @@ public class Inventory : Singleton<Inventory>
 
             if (IsOpened == true)
             {
+
                 Time.timeScale = 0f;
                 Cursor.lockState = CursorLockMode.None;
             }
@@ -49,7 +35,6 @@ public class Inventory : Singleton<Inventory>
             }
         }
     }
-
 
     public bool AddItem(ItemData item)
     {
