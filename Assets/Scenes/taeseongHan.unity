@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13b6c565c09fd104eb6576bbef5163a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsOpened: 0
 --- !u!224 &87533868 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3059964981572388932, guid: bb257f7704ef3fb4b9321500809101bc,
@@ -308,6 +309,8 @@ MonoBehaviour:
     runParameterName: Z_Run
     attackParameterName: '@Z_Attack'
     baseattackParameterName: Z_BaseAttack
+    hitParameterName: Z_Hit
+    isdeadParameterName: Z_IsDead
 --- !u!114 &129834683 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4857019286078303010, guid: 84f90fd78e223bb449a6496473089bde,

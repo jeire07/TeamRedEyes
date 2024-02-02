@@ -7,7 +7,7 @@ public class EnemyBaseState : IState
 {
     protected EnemyStateMachine stateMachine;
     protected readonly EnemyGroundData groundData;
-    //protected EnemyStats enemyStats;
+    
 
     protected Vector3 lastKnownPlayerPosition;
 
@@ -15,7 +15,7 @@ public class EnemyBaseState : IState
     {
         stateMachine = enemyStateMachine;
         groundData = stateMachine.Enemy.Data.EnemyGroundData;
-        //enemyStats = stateMachine.Enemy.Stats;
+       
     }
 
     public virtual void Enter()
@@ -90,7 +90,7 @@ public class EnemyBaseState : IState
         return (lastKnownPlayerPosition - stateMachine.Enemy.transform.position).normalized;
     }
 
-    private void Rotate(Vector3 direction)
+    protected void Rotate(Vector3 direction)
     {
         if (direction != Vector3.zero)
         {
@@ -118,10 +118,24 @@ public class EnemyBaseState : IState
 
     protected bool IsInChaseRange()
     {
-        //if (stateMachine.Target.IsDead) { return false; }
+        float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Enemy.transform.position).sqrMagnitude;
+        bool isInChaseRange = playerDistanceSqr <= stateMachine.Enemy.Data.PlayerChasingRange * stateMachine.Enemy.Data.PlayerChasingRange;
 
-        float PlayerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Enemy.transform.position).sqrMagnitude;
+        // ·Î±ë Ãß°¡
+        Debug.Log($"IsInChaseRange: {isInChaseRange}, Distance: {playerDistanceSqr}, ChaseRange: {stateMachine.Enemy.Data.PlayerChasingRange * stateMachine.Enemy.Data.PlayerChasingRange}");
 
-        return PlayerDistanceSqr <= stateMachine.Enemy.Data.PlayerChasingRange * stateMachine.Enemy.Data.PlayerChasingRange;
+        return isInChaseRange;
     }
+
+    protected bool IsInAttackRange()
+    {
+        float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Enemy.transform.position).sqrMagnitude;
+        bool isInAttackRange = playerDistanceSqr <= stateMachine.Enemy.Data.AttackRange * stateMachine.Enemy.Data.AttackRange;
+
+        // ·Î±ë Ãß°¡
+        Debug.Log($"IsInAttackRange: {isInAttackRange}, Distance: {playerDistanceSqr}, AttackRange: {stateMachine.Enemy.Data.AttackRange * stateMachine.Enemy.Data.AttackRange}");
+
+        return isInAttackRange;
+    }
+
 }
