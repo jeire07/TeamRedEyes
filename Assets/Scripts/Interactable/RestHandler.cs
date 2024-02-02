@@ -17,6 +17,9 @@ public class RestHandler : Singleton<RestHandler>
 
         _hour = _timeData.Hour;
         _minute = _timeData.Minute;
+
+        // observer 방식으로 HP 차감 이벤트 구독해서 휴식이 강제로 중단되도록 작업
+        // OnTakeDamage += RestEnd;
     }
 
     // Update is called once per frame
