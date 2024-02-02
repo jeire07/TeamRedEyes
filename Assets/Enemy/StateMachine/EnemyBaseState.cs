@@ -70,7 +70,7 @@ public class EnemyBaseState : IState
     {
         float movementSpeed = GetMovementSpeed();
         Vector3 movement = direction * movementSpeed + stateMachine.Enemy.ForceReceiver.Movement;
-        movement.y = 0; // yÃà ÀÌµ¿ Á¦ÇÑ
+        movement.y = 0; // yï¿½ï¿½ ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½
         stateMachine.Enemy.Controller.Move(movement * Time.deltaTime);
     }
 
@@ -81,7 +81,7 @@ public class EnemyBaseState : IState
 
     private Vector3 GetMovementDirection()
     {
-        // ÇÃ·¹ÀÌ¾î À§Ä¡°¡ º¯°æµÇ¾úÀ» ¶§¸¸ °è»ê
+        // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
         if (stateMachine.Target.transform.position != lastKnownPlayerPosition)
         {
             lastKnownPlayerPosition = stateMachine.Target.transform.position;
@@ -94,7 +94,7 @@ public class EnemyBaseState : IState
     {
         if (direction != Vector3.zero)
         {
-            direction.y = 0; // ³ôÀÌ¸¦ °í·ÁÇÏÁö ¾Ê°í È¸ÀüÇÏµµ·Ï ¼³Á¤
+            direction.y = 0; // ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê°ï¿½ È¸ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             stateMachine.Enemy.transform.rotation = Quaternion.Slerp(stateMachine.Enemy.transform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
         }
@@ -121,9 +121,6 @@ public class EnemyBaseState : IState
         float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Enemy.transform.position).sqrMagnitude;
         bool isInChaseRange = playerDistanceSqr <= stateMachine.Enemy.Data.PlayerChasingRange * stateMachine.Enemy.Data.PlayerChasingRange;
 
-        // ·Î±ë Ãß°¡
-        Debug.Log($"IsInChaseRange: {isInChaseRange}, Distance: {playerDistanceSqr}, ChaseRange: {stateMachine.Enemy.Data.PlayerChasingRange * stateMachine.Enemy.Data.PlayerChasingRange}");
-
         return isInChaseRange;
     }
 
@@ -131,9 +128,6 @@ public class EnemyBaseState : IState
     {
         float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Enemy.transform.position).sqrMagnitude;
         bool isInAttackRange = playerDistanceSqr <= stateMachine.Enemy.Data.AttackRange * stateMachine.Enemy.Data.AttackRange;
-
-        // ·Î±ë Ãß°¡
-        Debug.Log($"IsInAttackRange: {isInAttackRange}, Distance: {playerDistanceSqr}, AttackRange: {stateMachine.Enemy.Data.AttackRange * stateMachine.Enemy.Data.AttackRange}");
 
         return isInAttackRange;
     }
