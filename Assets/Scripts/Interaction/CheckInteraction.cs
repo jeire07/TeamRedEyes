@@ -26,7 +26,7 @@ public class CheckInteraction : MonoBehaviour
         _camera = Camera.main;
         _layerMask = LayerMask.GetMask("Interactable");
 
-        Transform canvas = GameObject.FindGameObjectWithTag("InFrequentUI").GetComponent<Transform>();
+        Transform canvas = GameObject.FindGameObjectWithTag("NotFrequentUI").GetComponent<Transform>();
         _interactText = canvas.Find("InteractionText").GetComponent<TMP_Text>();
     }
 

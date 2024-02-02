@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnvironmentUI : MonoBehaviour
 {
-    [SerializeField] private TimeData _time;
+    [SerializeField] private TimeData _timeData;
 
     [SerializeField] private Image _WeatherIcon;
 
@@ -14,6 +14,8 @@ public class EnvironmentUI : MonoBehaviour
 
     private void Awake()
     {
+        _timeData = Resources.Load<TimeData>("Utility/Time");
+
         _timeText = transform.Find("TimeText").GetComponent<TMP_Text>();
         _AMPMText = transform.Find("AMPMText").GetComponent<TMP_Text>();
 
@@ -41,16 +43,16 @@ public class EnvironmentUI : MonoBehaviour
 
     public string[] GetFormattedTime(bool is24HourFormat = false)
     {
-        string amPm = _time.IsAM ? "오전" : "오후";
+        string amPm = _timeData.IsAM ? "오전" : "오후";
 
         if (is24HourFormat)
         {
-            return new string[] { amPm, $"D+{_time.Day}, {_time.Hour:D2} : {_time.Minute:D2}" };
+            return new string[] { amPm, $"D+{_timeData.Day}, {_timeData.Hour:D2} : {_timeData.Minute:D2}" };
         }
         else
         {
-            int curHour = _time.Hour == 12 ? _time.Hour : _time.Hour % 12;
-            return new string[] { amPm, $"Day {_time.Day} [ {curHour:D2} : {_time.Minute:D2} ]" };
+            int curHour = _timeData.Hour == 12 ? _timeData.Hour : _timeData.Hour % 12;
+            return new string[] { amPm, $"Day {_timeData.Day} [ {curHour:D2} : {_timeData.Minute:D2} ]" };
         }
     }
 }
