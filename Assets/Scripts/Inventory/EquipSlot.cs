@@ -49,7 +49,6 @@ public class EquipSlot : Singleton<EquipSlot>
         else if (itemData.EquipableType == EquipableType.Shoes)
         {
             ShoesIcon.sprite = null;
-
         }
         else if (itemData.EquipableType == EquipableType.Clothes)
         {

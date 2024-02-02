@@ -25,7 +25,7 @@ MonoBehaviour:
   MaxStackAmount: 10
   Consumables:
   - Type: 0
-    Value: 20
-  - Type: 3
     Value: 100
+  - Type: 3
+    Value: 90
   EquipableType: 0
