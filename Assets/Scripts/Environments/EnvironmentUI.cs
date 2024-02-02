@@ -43,7 +43,7 @@ public class EnvironmentUI : MonoBehaviour
 
     public string[] GetFormattedTime(bool is24HourFormat = false)
     {
-        string amPm = _timeData.IsAM ? "¿ÀÀü" : "¿ÀÈÄ";
+        string amPm = _timeData.IsAM ? "ì˜¤ì „" : "ì˜¤í›„";
 
         if (is24HourFormat)
         {

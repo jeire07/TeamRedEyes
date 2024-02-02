@@ -20,7 +20,7 @@ public class Rest : MonoBehaviour, IInteractable
         if (_furnitureName != null && _furnitureName == "Sofa")
             return "[G] 의자에서 휴식하기";
         else
-            return "[G] 침대에서 한숨자기";
+            return "[G] 소파에서 한숨자기"; // To Do : 소파를 침대로
     }
 
     public void Interact()

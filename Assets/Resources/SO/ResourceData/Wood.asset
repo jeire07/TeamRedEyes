@@ -18,8 +18,9 @@ MonoBehaviour:
   StatValue: 
   Type: 0
   Icon: {fileID: 0}
-  DropPrefab: {fileID: 4817350153694833060, guid: 08415e4750c572348ab43ccfbcabe761,
+  DropPrefab: {fileID: 8703672635766211605, guid: b783e781d8a7c4c4ab87535f591ffd7c,
     type: 3}
+  IsCorrupted: 0
   CanStack: 1
   MaxStackAmount: 10
   Consumables: []
