@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class RestHandler : Singleton<RestHandler>
 {
+    private Transform _restUI;
     private TimeData _timeData;
 
     private bool _isResting;
@@ -13,6 +14,9 @@ public class RestHandler : Singleton<RestHandler>
     // Start is called before the first frame update
     void Start()
     {
+        Transform canvas = GameObject.FindGameObjectWithTag("NotFrequentUI").GetComponent<Transform>();
+        _restUI = canvas.Find("RestUI");
+
         _timeData = Resources.Load<TimeData>("Utility/Time");
 
         _hour = _timeData.Hour;
@@ -33,18 +37,14 @@ public class RestHandler : Singleton<RestHandler>
         }
     }
 
-    private void SetTimeScale()
-    {
-        _timeData.TimeScale = _timeData.RestHours * 3;
-        TimeManager.Instance.SetGameSpeed(_timeData.TimeScale);
-    }
-
     public void RestStart()
     {
         if (_timeData.RestHours > 0 && !_isResting)
         {
             _isResting = true;
-            SetTimeScale();
+
+            float timeScale = (float)(_timeData.RestHours * 3);
+            TimeManager.Instance.SetGameSpeed(timeScale);
 
             _restingTime = _timeData.RestHours * _timeData.MinutesPerDay * 60 / _timeData.TimeScale;
         }
@@ -52,9 +52,11 @@ public class RestHandler : Singleton<RestHandler>
 
     private void RestEnd()
     {
+        _timeData.RestHours = 0;
+
         _isResting = false;
         TimeManager.Instance.SetGameSpeed(0);
 
-        transform.parent.GetComponent<RestUI>().CloseUI();
+        _restUI.GetComponent<RestUI>().CloseUI();
     }
 }

@@ -13,15 +13,15 @@ public class Rest : MonoBehaviour, IInteractable
 
     private void Start()
     {
-        _furnitureName = transform.name;
-
-        Transform canvas = GameObject.FindGameObjectWithTag("InFrequentUI").GetComponent<Transform>();
+        Transform canvas = GameObject.FindGameObjectWithTag("NotFrequentUI").GetComponent<Transform>();
         _restUI = canvas.Find("RestUI");
+
+        _furnitureName = transform.name;
     }
 
     public string GetInteractText()
     {
-        if (_furnitureName == "sofa")
+        if (_furnitureName != null && _furnitureName == "Sofa")
             return "[G] 의자에서 휴식하기";
         else
             return "[G] 침대에서 한숨자기";
@@ -29,11 +29,11 @@ public class Rest : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        _restUI.GetComponent<RestUI>().OpenUI();
-
-        if (_furnitureName == "sofa")
+        if (_furnitureName == "Sofa")
             _restUI.GetComponent<RestUI>().SetRestLengthScale((int)RestFurniture.Sofa);
         else
             _restUI.GetComponent<RestUI>().SetRestLengthScale((int)RestFurniture.Bed);
+
+        _restUI.GetComponent<RestUI>().OpenUI();
     }
 }

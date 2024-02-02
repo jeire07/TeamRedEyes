@@ -10,11 +10,17 @@ public class RestUI : MonoBehaviour
 
     private void Start()
     {
-        _UIObjects = new Transform[transform.childCount];
+        _restLengthScale = 1;
 
+        _UIObjects = new Transform[transform.childCount];
         for (int i = 0; i < _UIObjects.Length; i++)
         {
             _UIObjects[i] = transform.GetChild(i);
+        }
+
+        for (int i = 0; i < _restTimes.Length; i++)
+        {
+            _restTimeTexts[i] = _UIObjects[1].GetChild(i).GetChild(0).GetComponent<TMP_Text>();
         }
     }
 
@@ -26,7 +32,6 @@ public class RestUI : MonoBehaviour
         }
 
         Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
 
         SetButtons();
 
@@ -41,7 +46,6 @@ public class RestUI : MonoBehaviour
         }
 
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
 
         TimeManager.Instance.SetGameSpeed(1f);
     }
@@ -50,9 +54,7 @@ public class RestUI : MonoBehaviour
     {
         for (int i = 0; i < _restTimes.Length; i++)
         {
-            _restTimeTexts[i] = transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<TMP_Text>();
-
-            _restTimeTexts[i].text =$"{_restTimes[i] * _restLengthScale}h";
+            _restTimeTexts[i].text = $"{_restTimes[i] * _restLengthScale}h";
         }
     }
 
@@ -68,6 +70,11 @@ public class RestUI : MonoBehaviour
 
     public void OnStartClick()
     {
+        for (int i = 1; i < _UIObjects.Length; i++)
+        {
+            _UIObjects[i].gameObject.SetActive(false);
+        }
 
+        RestHandler.Instance.RestStart();
     }
 }
