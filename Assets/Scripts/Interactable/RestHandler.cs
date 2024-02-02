@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class RestHandler : Singleton<RestHandler>
 {
-    private Transform _restUI;
     private TimeData _timeData;
 
     private bool _isResting;
@@ -14,13 +13,13 @@ public class RestHandler : Singleton<RestHandler>
     // Start is called before the first frame update
     void Start()
     {
-        Transform canvas = GameObject.FindGameObjectWithTag("NotFrequentUI").GetComponent<Transform>();
-        _restUI = canvas.Find("RestUI");
-
         _timeData = Resources.Load<TimeData>("Utility/Time");
 
         _hour = _timeData.Hour;
         _minute = _timeData.Minute;
+
+        // observer 방식으로 HP 차감 이벤트 구독해서 휴식이 강제로 중단되도록 작업
+        // OnTakeDamage += RestEnd;
     }
 
     // Update is called once per frame
@@ -57,6 +56,6 @@ public class RestHandler : Singleton<RestHandler>
         _isResting = false;
         TimeManager.Instance.SetGameSpeed(0);
 
-        _restUI.GetComponent<RestUI>().CloseUI();
+        RestUI.Instance.CloseUI();
     }
 }

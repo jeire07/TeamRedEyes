@@ -61,12 +61,14 @@ public class CheckInteraction : MonoBehaviour
     private void SetPromptText()
     {
         _interactText.enabled = true;
-        _interactText.text = _curInteractable.GetInteractText();
+
+        if(_curInteractable != null)
+            _interactText.text = _curInteractable.GetInteractText();
     }
 
     public void OnInteraction(InputAction.CallbackContext context)
     {
-        if(Inventory.Instance.IsOpened)
+        if(Inventory.Instance.IsOpened || RestUI.Instance.IsOpened)
         {
             return;
         }

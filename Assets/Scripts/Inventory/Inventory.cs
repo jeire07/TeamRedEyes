@@ -11,26 +11,42 @@ public class Inventory : Singleton<Inventory>
     public Transform DropPosition;
     private StatPanel _statPanel; 
 
-    private void Update() //업데이트에 굳이 쓸 필요 없다
-    {
-        if (IsOpened == true)
-        {
-            Time.timeScale = 0f;
-            Cursor.lockState = CursorLockMode.None;
-        }
-        else if (IsOpened == false)
-        {
-            Time.timeScale = 1f;
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-    }
+    //private void Update() //업데이트에 굳이 쓸 필요 없다
+    //{
+    //    if (IsOpened == true)
+    //    {
+    //        Time.timeScale = 0f;
+    //        Cursor.lockState = CursorLockMode.None;
+    //    }
+    //    else if (IsOpened == false)
+    //    {
+    //        Time.timeScale = 1f;
+    //        Cursor.lockState = CursorLockMode.Locked;
+    //    }
+    //}
 
     public void OnInventory(InputAction.CallbackContext context)
     {
+        if(RestUI.Instance.IsOpened)
+        {
+            return;
+        }
+
         if (context.phase == InputActionPhase.Started)
         {
             IsOpened = !IsOpened;
             InventoryObj.SetActive(IsOpened);
+
+            if (IsOpened == true)
+            {
+                Time.timeScale = 0f;
+                Cursor.lockState = CursorLockMode.None;
+            }
+            else if (IsOpened == false)
+            {
+                Time.timeScale = 1f;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
         }
     }
 

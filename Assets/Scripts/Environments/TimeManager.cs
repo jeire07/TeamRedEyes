@@ -48,20 +48,25 @@ public class TimeManager : Singleton<TimeManager>
                 {
                     _timeData.Hour = 0;
                     _timeData.Day++;
-                    OnDayPassed();
+
+                    if(OnDayPassed != null)
+                    {
+                        OnDayPassed();
+                    }
                 }
             }
         }
-        OnMinutePassed();
+        if(OnMinutePassed != null)
+        {
+            OnMinutePassed();
+        }
+        
     }
 
     public void SetGameSpeed(float gameSpeed)
     {
         _timeData.TimeScale = gameSpeed;
         Time.timeScale = _timeData.TimeScale;
-
-        Debug.Log($"_timeData.TimeScale={_timeData.TimeScale}");
-        Debug.Log($"Time.timeScale={Time.timeScale}");
     }
 
     public void ToggleIsAM()

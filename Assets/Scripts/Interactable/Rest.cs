@@ -8,14 +8,10 @@ public enum RestFurniture
 
 public class Rest : MonoBehaviour, IInteractable
 {
-    private Transform _restUI;
     private string _furnitureName;
 
     private void Start()
     {
-        Transform canvas = GameObject.FindGameObjectWithTag("NotFrequentUI").GetComponent<Transform>();
-        _restUI = canvas.Find("RestUI");
-
         _furnitureName = transform.name;
     }
 
@@ -30,10 +26,10 @@ public class Rest : MonoBehaviour, IInteractable
     public void Interact()
     {
         if (_furnitureName == "Sofa")
-            _restUI.GetComponent<RestUI>().SetRestLengthScale((int)RestFurniture.Sofa);
+            RestUI.Instance.SetRestLengthScale((int)RestFurniture.Sofa);
         else
-            _restUI.GetComponent<RestUI>().SetRestLengthScale((int)RestFurniture.Bed);
+            RestUI.Instance.SetRestLengthScale((int)RestFurniture.Bed);
 
-        _restUI.GetComponent<RestUI>().OpenUI();
+        RestUI.Instance.GetComponent<RestUI>().OpenUI();
     }
 }
