@@ -69,17 +69,17 @@ public class PlayerCondition : MonoBehaviour
         Infection.CurValue = Infection.StartValue;
     }
 
-    public void Potion(float amount)
+    public void RecoverHP(float amount)
     {
         Health.Add(amount);
     }
 
-    public void Eat(float amount)
+    public void RecoverHunger(float amount)
     {
         Hunger.Add(amount);
     }
 
-    public void Drink(float amount)
+    public void RecoverThirsty(float amount)
     {
         Thirsty.Add(amount);
     }

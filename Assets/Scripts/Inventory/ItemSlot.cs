@@ -75,11 +75,11 @@ public class ItemSlot : MonoBehaviour
                 switch (Item.Consumables[i].Type)
                 {
                     case ConsumableType.Health:
-                        _Condition.Potion(Item.Consumables[i].Value); break;
+                        _Condition.RecoverHP(Item.Consumables[i].Value); break;
                     case ConsumableType.Hunger:
-                        _Condition.Eat(Item.Consumables[i].Value); break;
+                        _Condition.RecoverHunger(Item.Consumables[i].Value); break;
                     case ConsumableType.Thirsty:
-                        _Condition.Drink(Item.Consumables[i].Value); break;
+                        _Condition.RecoverThirsty(Item.Consumables[i].Value); break;
                     case ConsumableType.Infection:
                         _Condition.TakeInfection(Item.Consumables[i].Value); break;
                     case ConsumableType.Immunity:
@@ -87,7 +87,7 @@ public class ItemSlot : MonoBehaviour
                 }
             }
             Quantity--;
-            QuantityText.text = $"X {Quantity.ToString()}";
+            QuantityText.text = $"X {Quantity}";
             if (Quantity <= 0)
             {
                 ClearItemSlot();
@@ -99,9 +99,9 @@ public class ItemSlot : MonoBehaviour
     {
         if (!IsEquipped)
         {
-            Inventory.Instance.ThrowItem(Item);
+            InventoryManager.Instance.ThrowItem(Item);
             Quantity--;
-            QuantityText.text = $"X {Quantity.ToString()}";
+            QuantityText.text = $"X {Quantity}";
             if (Quantity <= 0)
             {
                 ClearItemSlot();

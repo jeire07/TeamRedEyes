@@ -2,7 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Inventory : Singleton<Inventory>
+public class InventoryManager : Singleton<InventoryManager>
 {
     public GameObject InventoryObj;
     public bool IsOpened = false;
@@ -70,7 +70,7 @@ public class Inventory : Singleton<Inventory>
         Instantiate(item.DropPrefab, DropPosition.position, Quaternion.Euler(Vector3.one * Random.value * 360f));
     }
 
-    void UpdateUI()
+    public void UpdateUI()
     {
         for (int i = 0; i < ItemSlot.Length; i++)
         {
@@ -79,7 +79,7 @@ public class Inventory : Singleton<Inventory>
         }
     }
 
-    ItemSlot GetItemStack(ItemData item)
+    public ItemSlot GetItemStack(ItemData item)
     {
         for (int i = 0; i < ItemSlot.Length; i++)
         {
@@ -89,7 +89,7 @@ public class Inventory : Singleton<Inventory>
         return null;
     }
 
-    ItemSlot GetEmptySlot()
+    public ItemSlot GetEmptySlot()
     {
         for (int i = 0; i < ItemSlot.Length; i++)
         {

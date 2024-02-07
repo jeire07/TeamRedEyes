@@ -18,7 +18,7 @@ public class StatManager : Singleton<StatManager>
     public void GainExp()
     {
         //if(몬스터 죽이면)
-        //_data.CurExp += monsterdata.exp
+        //StatData.CurExp += monsterdata.exp
     }
 
     public void LevelUp()

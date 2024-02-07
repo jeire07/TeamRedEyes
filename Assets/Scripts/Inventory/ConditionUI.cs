@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class StatPanel : MonoBehaviour
+public class ConditionUI : MonoBehaviour
 {
     [SerializeField] PlayerCondition _condition;
 

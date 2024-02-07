@@ -11,9 +11,8 @@ public class ItemObject : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if(Inventory.Instance.AddItem(item))
+        if(InventoryManager.Instance.AddItem(item))
         {
-            //gameObject.SetActive(false); 오브젝트풀로 교체하기
             Destroy(gameObject);
         }
         else

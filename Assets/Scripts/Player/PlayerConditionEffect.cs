@@ -10,7 +10,6 @@ public class PlayerConditionEffect : MonoBehaviour
     public void HungryPercentEffect()
     {
         float hungryPercentage = PlayerCondition.Hunger.ValuePercentage();
-        Debug.Log(hungryPercentage);
 
         if (hungryPercentage >= 80)
         {
