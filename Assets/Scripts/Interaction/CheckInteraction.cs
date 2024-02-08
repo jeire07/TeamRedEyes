@@ -68,7 +68,7 @@ public class CheckInteraction : MonoBehaviour
 
     public void OnInteraction(InputAction.CallbackContext context)
     {
-        if(Inventory.Instance.IsOpened || RestUI.Instance.IsOpened)
+        if(InventoryManager.Instance.IsOpened || RestUI.Instance.IsOpened)
         {
             return;
         }
