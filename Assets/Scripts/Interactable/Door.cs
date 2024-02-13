@@ -11,12 +11,13 @@ public class Door : MonoBehaviour, IInteractable
     #endregion
 
     #region public field
+    public Animator AnimatorDoor;
     public bool _isLocked { get; private set; }
     public bool _isOpened { get; private set; }
     public float OpenCloseTime { get; private set; }
 
     public Vector3 OpenRotation { get; private set; }
-    public Vector3 closeRotation {  get; private set; }
+    public Vector3 CloseRotation { get; private set; }
     #endregion
 
     private void Awake()
@@ -25,14 +26,14 @@ public class Door : MonoBehaviour, IInteractable
         _isOpened = false;
         OpenCloseTime = 1.0f;
         OpenRotation = new Vector3(0, 90, 0);
-        closeRotation = new Vector3(0, 0, 0);
+        CloseRotation = new Vector3(0, 0, 0);
     }
-    
+
     public string GetInteractText()
     {
         if (_isLocked)
             return "문이 잠겨있습니다. 열쇠가 있어야합니다.";
-        else if(_isOpened)
+        else if (_isOpened)
             return "[G] 문 닫기";
         else
             return "[G] 문 열기";
@@ -41,13 +42,15 @@ public class Door : MonoBehaviour, IInteractable
     // 상호 작용 인터페이스의 메서드 구현
     public void Interact()
     {
-        if(_isOpened)
+        if (_isOpened)
         {
-            StartCoroutine(RotateDoor(closeRotation));
+            DoorAnim();
+            //StartCoroutine(RotateDoor(CloseRotation));
         }
-        else if(!_isLocked && !_isOpened)
+        else if (!_isLocked && !_isOpened)
         {
-            StartCoroutine(RotateDoor(OpenRotation));
+            DoorAnim();
+            //StartCoroutine(RotateDoor(OpenRotation));
         }
     }
 
@@ -68,13 +71,41 @@ public class Door : MonoBehaviour, IInteractable
         _isOpened = !_isOpened;
     }
 
+    private void DoorAnim()
+    {
+        if (_isOpened == false)
+        {
+            StartCoroutine(OpenDoor());
+        }
+        else
+        {
+            StartCoroutine(CloseDoor());
+        }
+    }
+
+    private IEnumerator OpenDoor()
+    {
+        print("you are opening the door");
+        AnimatorDoor.Play("OpenDoor");
+        _isOpened = true;
+        yield return new WaitForSeconds(.5f);
+    }
+
+    private IEnumerator CloseDoor()
+    {
+        print("you are closing the door");
+        AnimatorDoor.Play("CloseDoor");
+        _isOpened = false;
+        yield return new WaitForSeconds(.5f);
+    }
+
     // 몬스터는 문 앞뒤로 트리거 충돌 영역을 설정하여 자동으로 열리도록 처리함
     private void OnTriggerEnter(Collider other)
     {
-        if(!_isLocked && !_isOpened && other.gameObject.layer == LayerMask.NameToLayer("Monster"))
+        if (!_isLocked && !_isOpened && other.gameObject.layer == LayerMask.NameToLayer("Monster"))
         {
+            DoorAnim();
             _isOpened = true;
-            StartCoroutine(RotateDoor(OpenRotation));
         }
     }
 }
