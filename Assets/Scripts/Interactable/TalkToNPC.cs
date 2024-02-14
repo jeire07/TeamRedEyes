@@ -20,19 +20,18 @@ public class TalkToNPC : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        //Debug.Log("대화하기를 시전했다. 코드가 미완성이다");
-        dialogueUI.SetActive(true);
-        foreach (var dialogue in npcSO.dialogues)
+        DisplayDialogues(npcSO.dialogues);
+    }
+
+    private void DisplayDialogues(string[] dialogues)
+    {
+        // 대화 내용을 표시하는 UI 로직을 여기에 구현합니다.
+        Debug.Log($"대화 시작: {npcSO.npcName}");
+        foreach (var dialogue in dialogues)
         {
             Debug.Log(dialogue); // 실제 구현에서는 대화 UI에 이 내용을 표시해야 합니다.
         }
-
-        if (npcSO.canRepair)
-        {
-            // 수리 UI 내의 수리 버튼 활성화 로직을 여기에 구현합니다.
-            // 예시 코드에서는 단순화를 위해 수리 UI 자체를 활성화합니다.
-            repairUI.SetActive(true);
-        }
+        // 대화 UI 활성화 및 대화 내용 업데이트 로직 구현 필요
     }
 
     public void OnRepairButtonClick()
