@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4221673333511234083}
   - component: {fileID: 6664967450093331770}
   m_Layer: 6
-  m_Name: Handel
+  m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4381025734109324535}
-  m_Mesh: {fileID: -6285813697874709415, guid: fa7d1468e561f864fa58c63cbaebbab4, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 1e8849a84a3c05146b08d7db9daedd47, type: 2}
 --- !u!23 &6664967450093331770
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 953a9746eaefad24080961e59319076e, type: 2}
+  - {fileID: 2100000, guid: 5fc9ee0eb85ca2f41a3ccbc1086e8997, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -127,7 +127,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8878774690287064743}
-  m_Mesh: {fileID: -7500364243171224284, guid: fa7d1468e561f864fa58c63cbaebbab4, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 3104a04dbfc24be4882953bd57b1d689, type: 2}
 --- !u!23 &5173864163815245538
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -148,7 +148,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4c7b9bf64da841c41b50f7c96207c641, type: 2}
+  - {fileID: 2100000, guid: 66f8de04677baca47a0d70b7db3bcb6b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
