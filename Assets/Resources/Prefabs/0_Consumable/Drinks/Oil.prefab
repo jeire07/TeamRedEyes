@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2747805641863173472}
   - component: {fileID: 4193933355326228606}
   m_Layer: 6
-  m_Name: Water
+  m_Name: Oil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9d9f90793fb067d43a1b7fe2086bad76, type: 2}
+  - {fileID: 2100000, guid: 1d85c746264cd1740b28bf0454cde4d1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
