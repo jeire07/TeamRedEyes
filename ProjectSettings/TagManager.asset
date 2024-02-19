@@ -8,7 +8,6 @@ TagManager:
   - Enemy
   - FrequentUI
   - NotFrequentUI
-  - InFrequentUI
   layers:
   - Default
   - TransparentFX
