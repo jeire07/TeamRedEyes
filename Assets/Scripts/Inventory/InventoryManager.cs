@@ -24,7 +24,6 @@ public class InventoryManager : Singleton<InventoryManager>
 
             if (IsOpened == true)
             {
-
                 Time.timeScale = 0f;
                 Cursor.lockState = CursorLockMode.None;
             }
