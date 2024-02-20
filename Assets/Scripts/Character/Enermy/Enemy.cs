@@ -4,6 +4,7 @@ public class Enemy : MonoBehaviour
 {
     [field: Header("Referense")]
     [field: SerializeField] public EnemySO Data { get; private set; }
+    [field: SerializeField] private float currentHealth;
 
     [field: Header("Animations")]
     [field: SerializeField] public EnemyAnimationData AnimationData { get; private set; }
@@ -25,7 +26,7 @@ public class Enemy : MonoBehaviour
         Animator = GetComponentInChildren<Animator>();
         Controller = GetComponent<CharacterController>();
         ForceReceiver = GetComponent<ForceReceiver>();
-
+        currentHealth = Data.MaxHealth;
         //Stats = new EnemyStats(); // EnemyStats 인스턴스 생성
         //Stats.OnHealthChanged += HandleHealthChanged; // 체력 변경 이벤트 구독
         //Stats.OnDie += HandleDeath; // 사망 이벤트 구독
@@ -52,6 +53,17 @@ public class Enemy : MonoBehaviour
     // 적이 데미지를 받았을 때 호출될 메서드
     public void ReceiveDamage(float damage)
     {
+        currentHealth -= damage;
+        Debug.Log($"Enemy health: {currentHealth}/{Data.MaxHealth}");
+
+        // 체력이 변경될 때 처리
+        HandleHealthChanged(currentHealth / Data.MaxHealth);
+
+        // 체력이 0 이하이면 적 사망 처리
+        if (currentHealth <= 0)
+        {
+            HandleDeath();
+        }
         //Stats.TakeDamage(damage);
     }
 

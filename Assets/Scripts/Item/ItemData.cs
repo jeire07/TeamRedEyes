@@ -53,4 +53,9 @@ public class ItemData : ScriptableObject
 
     [Header("Equipable")]
     public EquipableType EquipableType; // 추가: 어떤 종류의 장비인지를 나타내는 열거형
+
+    [Header("Durability")] //내구도 관련
+    public int CurrentDurability; // 현재 내구도
+    public int MaxDurability; // 최대 내구도
+    public bool NeedsRepair; // 수리가 필요한지 여부
 }
