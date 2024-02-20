@@ -9,6 +9,11 @@ TagManager:
   - FrequentUI
   - NotFrequentUI
   - InFrequentUI
+  - 6F_Cube
+  - 5F_Cube
+  - 4F_Cube
+  - 3F_Cube
+  - 2F_Cube
   layers:
   - Default
   - TransparentFX

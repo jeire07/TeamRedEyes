@@ -4,17 +4,37 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
-    public Transform[] RoomSpawnPoints = new Transform[25];
-    public GameObject[] RoomPrefabs = new GameObject[25];
+    #region Floor Rooms
+    public GameObject _6F_Rooms;
+    public GameObject _5F_Rooms;
+    public GameObject _4F_Rooms;
+    public GameObject _3F_Rooms;
+    public GameObject _2F_Rooms;
+    #endregion
 
+    private Dictionary<string, GameObject> floorObjects = new Dictionary<string, GameObject>();
     private void Start()
     {
-        for (int i = 0; i < 25; i++)
+        floorObjects.Add("6F_Cube", _6F_Rooms);
+        floorObjects.Add("5F_Cube", _5F_Rooms);
+        floorObjects.Add("4F_Cube", _4F_Rooms);
+        floorObjects.Add("3F_Cube", _3F_Rooms);
+        floorObjects.Add("2F_Cube", _2F_Rooms);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
         {
-            string roomName = string.Format("Prefabs/Room/Room_{0}", i);
-            RoomPrefabs[i] = Resources.Load<GameObject>(roomName);
-            Instantiate(RoomPrefabs[i], RoomSpawnPoints[i].position, Quaternion.identity);
-            RoomPrefabs[i].SetActive(false);
+            foreach (var floorObject in floorObjects)
+            {
+                floorObject.Value.SetActive(false);
+            }
+
+            if (floorObjects.ContainsKey(gameObject.tag))
+            {
+                floorObjects[gameObject.tag].SetActive(true);
+            }
         }
     }
 }
