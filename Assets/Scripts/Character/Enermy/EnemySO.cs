@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EnemySO", menuName = "Enemy/Enemy")]
 public class EnemySO : ScriptableObject
 {
+    [field: SerializeField] public float MaxHealth = 100f;
     [field: SerializeField] public float PlayerChasingRange { get; private set; } = 10f;
     [field: SerializeField] public float AttackRange { get; private set; } = 3f;
     [field: SerializeField][field: Range(0f, 3f)] public float ForceTransitionTime { get; private set; }
