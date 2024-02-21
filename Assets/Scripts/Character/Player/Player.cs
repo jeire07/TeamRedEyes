@@ -11,6 +11,10 @@ public class Player : MonoBehaviour
 
     [field: SerializeField] public PlayerAnimationData AnimationData {  get; private set; }
 
+    [field: Header("Stats")]
+    [field: SerializeField] private PlayerStatData playerStatData;
+    [field: SerializeField] private Weapon weapon;
+
     public Rigidbody Rigidbody { get; private set; }
     public Animator Animator { get; private set; }
     public PlayerInput Input { get; private set; }
@@ -36,6 +40,10 @@ public class Player : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         stateMachine.ChangeState(stateMachine.IdleState);
+        if (weapon != null)
+        {
+            weapon.SetPlayer(this);
+        }
     }
 
     private void Update()
@@ -47,5 +55,10 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         stateMachine.PhysicsUpdate();
+    }
+
+    public int GetCurrentAttack()
+    {
+        return playerStatData.Atk;
     }
 }

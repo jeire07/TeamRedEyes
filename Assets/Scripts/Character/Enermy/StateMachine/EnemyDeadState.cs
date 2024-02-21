@@ -12,6 +12,7 @@ public class EnemyDeadState : EnemyBaseState
     {
         base.Enter();
         StartAnimation(stateMachine.Enemy.AnimationData.IsDeadParameterHash); // 사망 애니메이션 재생 시작
+        GameObject.Destroy(stateMachine.Enemy.gameObject, 30f);
     }
 
 }
