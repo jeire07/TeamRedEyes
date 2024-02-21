@@ -41,6 +41,21 @@ using UnityEngine.InputSystem;
     public virtual void Update()
     {
         Move();
+        RotateTowardsMouseCursor();
+    }
+
+    private void RotateTowardsMouseCursor()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            Vector3 targetDirection = hit.point - StateMachine.Player.transform.position;
+            targetDirection.y = 0;
+            Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+            StateMachine.Player.transform.rotation = Quaternion.Slerp(StateMachine.Player.transform.rotation, targetRotation, StateMachine.RotationDamping * Time.deltaTime);
+        }
     }
 
     protected virtual void AddInputActionsCallbacks()

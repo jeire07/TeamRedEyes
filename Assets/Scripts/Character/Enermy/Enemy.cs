@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.ProBuilder;
 
 public class Enemy : MonoBehaviour
 {
@@ -27,9 +28,6 @@ public class Enemy : MonoBehaviour
         Controller = GetComponent<CharacterController>();
         ForceReceiver = GetComponent<ForceReceiver>();
         currentHealth = Data.MaxHealth;
-        //Stats = new EnemyStats(); // EnemyStats 인스턴스 생성
-        //Stats.OnHealthChanged += HandleHealthChanged; // 체력 변경 이벤트 구독
-        //Stats.OnDie += HandleDeath; // 사망 이벤트 구독
 
         stateMachine = new EnemyStateMachine(this);
     }
@@ -50,6 +48,17 @@ public class Enemy : MonoBehaviour
         stateMachine.PhysicsUpdate();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        // 데미지를 주는 오브젝트의 태그
+        if (other.CompareTag("Weapon"))
+        {
+            //  컴포넌트에서 데미지 양을 가져옵니다.
+            float damage = other.GetComponent<Weapon>().Damage;
+            ReceiveDamage(damage);
+        }
+    }
+
     // 적이 데미지를 받았을 때 호출될 메서드
     public void ReceiveDamage(float damage)
     {
@@ -62,9 +71,8 @@ public class Enemy : MonoBehaviour
         // 체력이 0 이하이면 적 사망 처리
         if (currentHealth <= 0)
         {
-            HandleDeath();
+            stateMachine.ChangeState(stateMachine.DeadState);
         }
-        //Stats.TakeDamage(damage);
     }
 
     // 체력이 변경될 때 처리할 메서드
@@ -77,7 +85,6 @@ public class Enemy : MonoBehaviour
     // 적이 사망했을 때 처리할 메서드
     private void HandleDeath()
     {
-        // 적 사망 처리 로직을 여기에 구현
-        Debug.Log("Enemy died.");
+
     }
 }

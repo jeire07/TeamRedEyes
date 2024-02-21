@@ -15,7 +15,7 @@ public class EnemyAnimationData
     [SerializeField] private string attackParameterName = "@Z_Attack";
     [SerializeField] private string baseattackParameterName = "Z_BaseAttack";
 
-    [SerializeField] private string hitParameterName = "Z_Hit";
+    [SerializeField] private string hitParameterName = "@Z_Hit";
     [SerializeField] private string isdeadParameterName = "Z_IsDead";
 
     public int GroundParameterHash { get; private set; }
