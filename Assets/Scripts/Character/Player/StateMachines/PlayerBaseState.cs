@@ -41,21 +41,6 @@ using UnityEngine.InputSystem;
     public virtual void Update()
     {
         Move();
-        RotateTowardsMouseCursor();
-    }
-
-    private void RotateTowardsMouseCursor()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit))
-        {
-            Vector3 targetDirection = hit.point - StateMachine.Player.transform.position;
-            targetDirection.y = 0;
-            Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
-            StateMachine.Player.transform.rotation = Quaternion.Slerp(StateMachine.Player.transform.rotation, targetRotation, StateMachine.RotationDamping * Time.deltaTime);
-        }
     }
 
     protected virtual void AddInputActionsCallbacks()
@@ -137,7 +122,6 @@ using UnityEngine.InputSystem;
 
         Vector3 movementDirection = GetMovementDirection();
 
-        Rotate(movementDirection);
         ApplyMovement(movementDirection);
     }
 
@@ -167,15 +151,6 @@ using UnityEngine.InputSystem;
         StateMachine.Player.Controller.Move(StateMachine.Player.ForceReceiver.Movement * Time.deltaTime);
     }
 
-    private void Rotate(Vector3 movementDirection)
-    {
-        if (movementDirection != Vector3.zero)
-        {
-            Transform playerTransform = StateMachine.Player.transform;
-            Quaternion targetRotation = Quaternion.LookRotation(movementDirection);
-            playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, StateMachine.RotationDamping * Time.deltaTime);
-        }
-    }
     private float GetMovementSpeed()
     {
         float movementSpeed = StateMachine.MovementSpeed * StateMachine.MovementspeedModifier;
