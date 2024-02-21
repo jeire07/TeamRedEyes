@@ -11,12 +11,11 @@ public class PlayerLook : Singleton<PlayerLook>
     [HideInInspector]
     public bool canLook = true;
 
-    // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         _player = transform.root;
         ToggleCursor(false);
-        FindObjectOfType<PlayerControl>().OnLookEvent.AddListener(RotateCamera);
+        transform.GetComponent<PlayerController>().OnLookEvent.AddListener(RotateCamera);
     }
 
     public void ToggleCursor(bool toggle)
@@ -40,10 +39,10 @@ public class PlayerLook : Singleton<PlayerLook>
 
         transform.rotation = Quaternion.Euler(newXRotation, transform.eulerAngles.y, 0f);
 
-        // Player rotation
+        // Only rotate around y-axis for player
         if (_player != null)
         {
-            _player.Rotate(Vector3.up, mouseX); // Only rotate around y-axis for player
+            _player.Rotate(Vector3.up, mouseX);
         }
     }
 }
