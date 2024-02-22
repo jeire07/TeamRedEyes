@@ -7,6 +7,7 @@ public class StatManager : Singleton<StatManager>
     //public event Action OnStatUI; 나중에 컨디션까지 합치고 사용
 
     public PlayerStatData StatData;
+    public EnemySO EnemySO;
     private PlayerCondition _conditionData;
     private StatUI _statUI;
 
@@ -14,13 +15,10 @@ public class StatManager : Singleton<StatManager>
     {
         StatData = Resources.Load<PlayerStatData>("SO/PlayerData/StatData");
     }
-
     public void GainExp()
     {
-        //if(몬스터 죽이면)
-        //StatData.CurExp += monsterdata.exp
+        StatData.CurExp += EnemySO.Exp;
     }
-
     public void LevelUp()
     {
         if(StatData.MaxExp >= StatData.CurExp)
