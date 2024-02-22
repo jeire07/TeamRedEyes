@@ -67,7 +67,6 @@ public class Enemy : MonoBehaviour
         {
             stateMachine.ChangeState(stateMachine.DeadState);
             StatManager.Instance.GainExp();
-            StatManager.Instance.LevelUp();
         }
     }
     private void HandleHealthChanged(float healthPercentage)

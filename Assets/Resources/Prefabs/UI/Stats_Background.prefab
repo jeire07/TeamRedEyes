@@ -967,7 +967,6 @@ GameObject:
   - component: {fileID: 7172768899040613208}
   - component: {fileID: 5892588088309649931}
   - component: {fileID: 7900769853585948352}
-  - component: {fileID: 3703711571419944573}
   m_Layer: 0
   m_Name: Stats_Background
   m_TagString: Untagged
@@ -1087,20 +1086,8 @@ MonoBehaviour:
   _levelText: {fileID: 2731616981152530143}
   _atkText: {fileID: 6898117695951548021}
   _defText: {fileID: 57860924831077043}
+  _statPointText: {fileID: 0}
   _expText: {fileID: 276577015218769595}
---- !u!114 &3703711571419944573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5183415088669233120}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51e758576dd9e6f469f5030421e9b2c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StatData: {fileID: 0}
 --- !u!1 &6270764139396428434
 GameObject:
   m_ObjectHideFlags: 0
@@ -1222,9 +1209,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3703711571419944573}
+      - m_Target: {fileID: 8884465716861570176, guid: c814ae63aee7b0f46b5379481cdb182d,
+          type: 3}
         m_TargetAssemblyTypeName: StatManager, Assembly-CSharp
-        m_MethodName: OnStatUpButton
+        m_MethodName: OnAtkUpButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1627,9 +1615,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3703711571419944573}
+      - m_Target: {fileID: 8884465716861570176, guid: c814ae63aee7b0f46b5379481cdb182d,
+          type: 3}
         m_TargetAssemblyTypeName: StatManager, Assembly-CSharp
-        m_MethodName: OnStatUpButton
+        m_MethodName: OnHealthUpButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2033,9 +2022,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3703711571419944573}
+      - m_Target: {fileID: 8884465716861570176, guid: c814ae63aee7b0f46b5379481cdb182d,
+          type: 3}
         m_TargetAssemblyTypeName: StatManager, Assembly-CSharp
-        m_MethodName: OnStatUpButton
+        m_MethodName: OnStaminaUpButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
