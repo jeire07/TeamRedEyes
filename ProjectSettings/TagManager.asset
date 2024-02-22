@@ -15,6 +15,7 @@ TagManager:
   - 3F_Cube
   - 2F_Cube
   - Item
+  - Weapon
   layers:
   - Default
   - TransparentFX

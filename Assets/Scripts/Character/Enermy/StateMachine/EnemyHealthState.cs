@@ -3,47 +3,28 @@ using UnityEngine;
 
 public class EnemyHealthState : EnemyBaseState
 {
-    private int maxHealth;
+    private int MaxHealth;
     private int currentHealth;
-    private bool isDead = false;
-
+    private bool IsDead = false;
     public event Action<int> OnHealthChanged;
-    public event Action OnDied;
-
 
     public EnemyHealthState(EnemyStateMachine enemyStateMachine, int initialMaxHealth) : base(enemyStateMachine)
     {
-        maxHealth = initialMaxHealth;
-        currentHealth = maxHealth;
-    }
-
-    public override void Enter()
-    {
-        base.Enter();
-        isDead = false; // 사망 상태 초기화
+        currentHealth = initialMaxHealth; // 초기 체력 설정
     }
 
     public void TakeDamage(int damage)
     {
-        if (isDead) return; // 이미 죽었다면 더 이상 처리하지 않음
+        if (currentHealth <= 0) return; // 이미 사망한 경우 처리하지 않음
 
         currentHealth -= damage;
-        OnHealthChanged?.Invoke(currentHealth); // 체력 변화 이벤트 발생
+        OnHealthChanged?.Invoke(currentHealth);
 
         if (currentHealth <= 0)
         {
-            Die();
-        }
-        else
-        {
-            // 피격 애니메이션 재생
-            StartAnimation(stateMachine.Enemy.AnimationData.HitParameterHash);
+            IsDead = true;
+            stateMachine.ChangeState(stateMachine.DeadState);
+            
         }
     }
-
-    private void Die()
-    {
-  
-    }
-
 }
