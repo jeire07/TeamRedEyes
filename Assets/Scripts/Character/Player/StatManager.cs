@@ -8,8 +8,6 @@ public class StatManager : Singleton<StatManager>
 
     public PlayerStatData StatData;
     public EnemySO EnemySO;
-    private PlayerCondition _conditionData;
-    private StatUI _statUI;
 
     private void Start()
     {
@@ -18,34 +16,30 @@ public class StatManager : Singleton<StatManager>
     public void GainExp()
     {
         StatData.CurExp += EnemySO.Exp;
-    }
-    public void LevelUp()
-    {
-        if(StatData.MaxExp >= StatData.CurExp)
+
+        if (StatData.MaxExp <= StatData.CurExp)
         {
             StatData.Level++;
             StatData.StatPoint += 5;
-        }
+            StatData.CurExp = 0;
+            StatData.MaxExp += 10;
+        } 
     }
-    public void OnStatUpButton()
-    {
-        RaiseStat();
-    }
-
-    public void RaiseStat()
+    public void OnAtkUpButton()
     {
         StatData.StatPoint -= 1;
-        if(_statUI.AtkUpButton)
-        {
-            StatData.Atk += 5;
-        }
-        else if (_statUI.HealthUpButton)
-        {
-            _conditionData.Health.MaxValue += 10;
-        }
-        else if(_statUI.StaminaUpButton)
-        {
-            _conditionData.Stamina.MaxValue += 50;
-        }
+        StatData.Atk += 5;
+    }
+
+    public void OnHealthUpButton()
+    {
+        StatData.StatPoint -= 1;
+        PlayerCondition.Instance.Health.MaxValue += 20;
+    }
+
+    public void OnStaminaUpButton()
+    {
+        StatData.StatPoint -= 1;
+        PlayerCondition.Instance.Stamina.MaxValue += 10;
     }
 }
