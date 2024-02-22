@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyBaseState : IState
 {
     protected EnemyStateMachine stateMachine;
-    protected readonly EnemyGroundData groundData;
+    protected EnemyGroundData groundData;
     
 
     protected Vector3 lastKnownPlayerPosition;
@@ -42,21 +42,27 @@ public class EnemyBaseState : IState
 
     protected bool HasParameter(Animator animator, int hash)
     {
-        foreach (AnimatorControllerParameter param in animator.parameters)
+        foreach (var param in animator.parameters)
         {
-            if (param.nameHash == hash)
-                return true;
+            if (param.nameHash == hash) return true;
         }
         return false;
     }
 
-    protected void StartAnimation(int animationHash)
+    protected void StartAnimation(int hash)
     {
-        stateMachine.Enemy.Animator.SetBool(animationHash, true);
+        if (HasParameter(stateMachine.Enemy.Animator, hash))
+        {
+            stateMachine.Enemy.Animator.SetBool(hash, true);
+        }
     }
-    protected void StopAnimation(int animationHash)
+
+    protected void StopAnimation(int hash)
     {
-        stateMachine.Enemy.Animator.SetBool(animationHash, false);
+        if (HasParameter(stateMachine.Enemy.Animator, hash))
+        {
+            stateMachine.Enemy.Animator.SetBool(hash, false);
+        }
     }
 
     private void Move()
@@ -118,18 +124,14 @@ public class EnemyBaseState : IState
 
     protected bool IsInChaseRange()
     {
-        float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Enemy.transform.position).sqrMagnitude;
-        bool isInChaseRange = playerDistanceSqr <= stateMachine.Enemy.Data.PlayerChasingRange * stateMachine.Enemy.Data.PlayerChasingRange;
-
-        return isInChaseRange;
+        float distance = Vector3.Distance(stateMachine.Target.transform.position, stateMachine.Enemy.transform.position);
+        return distance <= stateMachine.Enemy.Data.PlayerChasingRange;
     }
 
     protected bool IsInAttackRange()
     {
-        float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Enemy.transform.position).sqrMagnitude;
-        bool isInAttackRange = playerDistanceSqr <= stateMachine.Enemy.Data.AttackRange * stateMachine.Enemy.Data.AttackRange;
-
-        return isInAttackRange;
+        float distance = Vector3.Distance(stateMachine.Target.transform.position, stateMachine.Enemy.transform.position);
+        return distance <= stateMachine.Enemy.Data.AttackRange;
     }
 
 }
