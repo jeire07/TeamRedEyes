@@ -4945,6 +4945,39 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1120557310524858354
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2415973535084975664}
+  m_Layer: 0
+  m_Name: MonsterSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2415973535084975664
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120557310524858354}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8192673463096732811}
+  - {fileID: 5587337237589383827}
+  m_Father: {fileID: 2807423967545518694}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1149451006106241815
 GameObject:
   m_ObjectHideFlags: 0
@@ -28067,6 +28100,37 @@ Transform:
   m_Father: {fileID: 3257245229654418175}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6787425519315444023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8192673463096732811}
+  m_Layer: 0
+  m_Name: Spawnpoint1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8192673463096732811
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6787425519315444023}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.5739999, y: 0.07, z: -0.64}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2415973535084975664}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6789464231076432677
 GameObject:
   m_ObjectHideFlags: 0
@@ -30919,7 +30983,7 @@ GameObject:
   m_Component:
   - component: {fileID: 286338816015181290}
   m_Layer: 0
-  m_Name: SpawnPoint
+  m_Name: ItemSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38291,6 +38355,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &8717794274509368261
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5587337237589383827}
+  m_Layer: 0
+  m_Name: Spawnpoint2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5587337237589383827
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8717794274509368261}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.24, y: 1.079, z: -8.36}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2415973535084975664}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8740082952507864057
 GameObject:
   m_ObjectHideFlags: 0
@@ -40212,6 +40307,7 @@ Transform:
   - {fileID: 6227935238355697793}
   - {fileID: 50745449015878548}
   - {fileID: 286338816015181290}
+  - {fileID: 2415973535084975664}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -40227,17 +40323,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96f7fab065ee874e8bdd4f800130eda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemPrefabs:
-  - {fileID: 919132149155446097, guid: 7cea39e19afe8d944823a67d736129e7, type: 3}
+  ItemPrefabs:
+  - {fileID: 919132149155446097, guid: 063ed54aa3fe7e54e8e808a4f46610b1, type: 3}
+  - {fileID: 919132149155446097, guid: 82a7534fa95f4194189e966d24356da8, type: 3}
   - {fileID: 1216505430168376, guid: 243eab8f3ec8a274484e7110bc5d3738, type: 3}
+  - {fileID: 1896720402374228, guid: a93aba24c1f26974ea28fb1b5e76db31, type: 3}
   - {fileID: 1985338178271116, guid: b9689ab2cafc2c94987ef03ad2c022f2, type: 3}
   - {fileID: 1987713744733760, guid: 02c13ec289ed88e4487ec8c348bf3fce, type: 3}
-  - {fileID: 1896720402374228, guid: a93aba24c1f26974ea28fb1b5e76db31, type: 3}
-  spawnPoints:
+  MonsterPrefabs:
+  - {fileID: 0}
+  ItemSpawnPoints:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  spawnInterval: 1
-  maxItemsPerRoom: 5
+  MonsterSpawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  LastSpawnTime: 0
+  RespawnTime: 48
