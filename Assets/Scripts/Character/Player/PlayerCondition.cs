@@ -33,7 +33,7 @@ public class Condition
 }
 
 
-public class PlayerCondition : MonoBehaviour
+public class PlayerCondition : Singleton<PlayerCondition>
 {
     public Condition Health;
     public Condition Hunger;
