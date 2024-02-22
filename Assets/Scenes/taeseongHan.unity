@@ -296,6 +296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Data>k__BackingField: {fileID: 11400000, guid: 961f4f4436abc2741b89b8b2f9a545c9,
     type: 2}
+  currentHealth: 0
   <AnimationData>k__BackingField:
     groundParameterName: '@Z_Ground'
     idleParameterName: Z_Idle
@@ -6291,6 +6292,8 @@ MonoBehaviour:
     comboattackParameterName: ComboAttack
     smashParameterName: Smash
     defenseParameterName: Defense
+  playerStatData: {fileID: 0}
+  weapon: {fileID: 0}
 --- !u!4 &1615954216
 Transform:
   m_ObjectHideFlags: 0
