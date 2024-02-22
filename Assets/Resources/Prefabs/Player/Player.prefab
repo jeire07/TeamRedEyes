@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 45996615817075903}
   - component: {fileID: 2435313747690399328}
   - component: {fileID: 3400866105781261090}
-  - component: {fileID: 8655625295521798173}
   - component: {fileID: 1066018169825648795}
   - component: {fileID: 1511270498113188227}
   - component: {fileID: 3304560101707923775}
@@ -39,7 +38,7 @@ Transform:
   m_Children:
   - {fileID: 1700058283879502413}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2435313747690399328
 MonoBehaviour:
@@ -83,32 +82,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c36037e95cc5cd644832588a1faec8a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!143 &8655625295521798173
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3420532695269648129}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 1.5
-  m_Radius: 0.25
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.8, z: 0}
 --- !u!114 &1066018169825648795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e7b98ce7daab71479c37aca2ae2ac26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 8655625295521798173}
+  controller: {fileID: 0}
   drag: 0.1
 --- !u!114 &1511270498113188227
 MonoBehaviour:
