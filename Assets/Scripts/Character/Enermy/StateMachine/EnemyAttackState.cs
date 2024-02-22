@@ -36,6 +36,7 @@ public class EnemyAttackState : EnemyBaseState
         if (normalizedTime < 1f && normalizedTime >= stateMachine.Enemy.Data.ForceTransitionTime && !alreadyAppliedForce)
         {
             TryApplyForce();
+            ApplyDamageToPlayer();
         }
 
         // 애니메이션이 완료되었는지 확인
@@ -98,4 +99,20 @@ public class EnemyAttackState : EnemyBaseState
         alreadyAppliedForce = false;
     }
 
+    private void ApplyDamageToPlayer()
+    {
+        // 플레이어와의 거리를 체크하고, 공격 범위 내에 있으면 데미지를 적용
+        float distanceToPlayer = Vector3.Distance(stateMachine.Enemy.transform.position, stateMachine.Target.position);
+        if (distanceToPlayer <= stateMachine.Enemy.Data.AttackRange)
+        {
+            // 공격이 성공했다고 가정
+            PlayerCondition playerCondition = stateMachine.Target.GetComponent<PlayerCondition>();
+            if (playerCondition != null)
+            {
+                playerCondition.TakeInfection(10); // 감염도 증가
+                playerCondition.Health.Subtract(5); // 체력 감소
+            }
+        }
+
+    }
 }
