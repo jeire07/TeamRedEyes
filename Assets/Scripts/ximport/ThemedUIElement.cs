@@ -5,7 +5,6 @@ using TMPro;
 [System.Serializable]
 public class ThemedUIElement : ThemedUI {
 	[Header("Parameters")]
-	Color outline;
 	Image image;
 	GameObject message;
 	public enum OutlineStyle {solidThin, solidThick, dottedThin, dottedThick};
