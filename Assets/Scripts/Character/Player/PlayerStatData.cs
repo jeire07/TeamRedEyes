@@ -1,15 +1,14 @@
 using UnityEngine;
-using UnityEngine.UI;
-
 
 [CreateAssetMenu(fileName = "StatData", menuName = "PlayerStatData")]
 public class PlayerStatData : ScriptableObject
 {
-    public string Name = "";
+    public string Name = "Han";
     public int Level = 1;
-    public int CurExp = 10;
-    public int MaxExp = 100;
-    public int Atk = 5;
-    public int Def = 1;
-    public int StatPoint = 5;
+    public int CurExp = 0;
+    public int MaxExp = 5;
+    public int Atk = 50;
+    public int Def = 0;
+    public int StatPoint = 0;
+    public Condition[] Conditions;
 }

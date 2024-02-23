@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4dbcfe5e6d9fa33419e49b3eb87345a1, type: 3}
-  m_Name: StatData
+  m_Name: InitData
   m_EditorClassIdentifier: 
   Name: Han
   Level: 1

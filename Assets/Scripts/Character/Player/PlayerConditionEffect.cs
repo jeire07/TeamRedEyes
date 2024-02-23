@@ -1,25 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.EnhancedTouch;
 
 public class PlayerConditionEffect : MonoBehaviour
 {
-    public PlayerCondition PlayerCondition;
+    private Condition[] _conditions;
+
+    private void OnEnable()
+    {
+        _conditions = GameManager.Instance.StatData.Conditions;
+    }
 
     public void HungryPercentEffect()
     {
-        float hungryPercentage = PlayerCondition.Hunger.ValuePercentage();
+        float hungryPercentage = _conditions[(int)ConditionType.Hunger].CurValue;
 
-        if (hungryPercentage >= 80)
+        if (hungryPercentage >= 240)
         {
             // 체력 회복속도 상승, 플레이어 스피드 증가 //PlayerGroundData 속도값 확인
         }
-        else if (hungryPercentage >= 50)
+        else if (hungryPercentage >= 150)
         {
             // 정상
         }
-        else if (hungryPercentage >= 20)
+        else if (hungryPercentage >= 60)
         {
             // 달릴 수 없음, 시야 범위 줄어듬
         }
@@ -35,13 +37,13 @@ public class PlayerConditionEffect : MonoBehaviour
 
     public void ThirstyPercentEffect()
     {
-        float thirstyPercentage = PlayerCondition.Thirsty.ValuePercentage();
+        float thirstyPercentage = _conditions[(int)ConditionType.Thirsty].CurValue;
 
-        if (thirstyPercentage >= 50)
+        if (thirstyPercentage >= 150)
         {
             // 정상
         }
-        else if (thirstyPercentage >= 20)
+        else if (thirstyPercentage >= 60)
         {
             // 어지럼증
         }
@@ -54,6 +56,4 @@ public class PlayerConditionEffect : MonoBehaviour
 
         }
     }
-
 }
-
