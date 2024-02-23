@@ -7,47 +7,39 @@ public class StatManager : Singleton<StatManager>
     //public event Action OnStatUI; 나중에 컨디션까지 합치고 사용
 
     public PlayerStatData StatData;
-    private PlayerCondition _conditionData;
-    private StatUI _statUI;
+    public EnemySO EnemySO;
 
     private void Start()
     {
         StatData = Resources.Load<PlayerStatData>("SO/PlayerData/StatData");
     }
-
     public void GainExp()
     {
-        //if(몬스터 죽이면)
-        //StatData.CurExp += monsterdata.exp
-    }
+        StatData.CurExp += EnemySO.Exp;
 
-    public void LevelUp()
-    {
-        if(StatData.MaxExp >= StatData.CurExp)
+        if (StatData.MaxExp <= StatData.CurExp)
         {
             StatData.Level++;
             StatData.StatPoint += 5;
-        }
+            StatData.CurExp = 0;
+            StatData.MaxExp += 10;
+        } 
     }
-    public void OnStatUpButton()
-    {
-        RaiseStat();
-    }
-
-    public void RaiseStat()
+    public void OnAtkUpButton()
     {
         StatData.StatPoint -= 1;
-        if(_statUI.AtkUpButton)
-        {
-            StatData.Atk += 5;
-        }
-        else if (_statUI.HealthUpButton)
-        {
-            _conditionData.Health.MaxValue += 10;
-        }
-        else if(_statUI.StaminaUpButton)
-        {
-            _conditionData.Stamina.MaxValue += 50;
-        }
+        StatData.Atk += 5;
+    }
+
+    public void OnHealthUpButton()
+    {
+        StatData.StatPoint -= 1;
+        PlayerCondition.Instance.Health.MaxValue += 20;
+    }
+
+    public void OnStaminaUpButton()
+    {
+        StatData.StatPoint -= 1;
+        PlayerCondition.Instance.Stamina.MaxValue += 10;
     }
 }

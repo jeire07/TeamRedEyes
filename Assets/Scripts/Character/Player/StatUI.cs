@@ -14,6 +14,7 @@ public class StatUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _levelText;
     [SerializeField] private TextMeshProUGUI _atkText;
     [SerializeField] private TextMeshProUGUI _defText;
+    [SerializeField] private TextMeshProUGUI _statPointText;
     [SerializeField] private TextMeshProUGUI _expText;
 
     private void Start()
@@ -24,12 +25,13 @@ public class StatUI : MonoBehaviour
     private void Update()
     {
         UpdateText();
+        ToggleButtonState();
     }
 
 
     public void ToggleButtonState()
     {
-        if (StatManager.Instance.StatData.StatPoint == 0)
+        if (_statData.StatPoint == 0)
         {
             AtkUpButton.SetActive(false);
             HealthUpButton.SetActive(false);
@@ -50,5 +52,6 @@ public class StatUI : MonoBehaviour
         _atkText.text = $"공격력 {_statData.Atk}";
         _defText.text = $"방어력 {_statData.Def}";
         _expText.text = $"경험치 {_statData.CurExp} / {_statData.MaxExp}";
+        _statPointText.text = $"StatPoint {_statData.StatPoint}";
     }
 }
