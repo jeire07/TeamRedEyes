@@ -1,106 +1,113 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-//using UnityEngine.AddressableAssets;
-//using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.SceneManagement;
 
 public enum CanvasType
 {
+    Load = 0,
     Start,
-    InGame,
+    Option,
+    Frequent = 10,
+    NotFrequent,
     Dialog,
-    CraftItem,
-    Repair,
-    Rest
+    Rest,
+    Utility
 }
 
-public enum DetailType
+public enum PanelType
 {
-    Load,
-    Status,
+    Stat = 0,
     Inventory,
-    Equipment,
+    Equip,
     Quest,
     Option,
-    CraftItem,
-    Repair
+    Save,
+    Craft = 10,
+    Repair = 20
 }
 
 public class UIManager : Singleton<UIManager>
 {
-    private Dictionary<CanvasType, GameObject> _uiDict = new();
-    private Dictionary<DetailType, GameObject> _detailDict = new();
+    [SerializeField] Transform CanvasGroup;
+    private Dictionary<CanvasType, BaseUI> _UIDict = new();
+    private Dictionary<PanelType, BaseUI> _panelDict = new();
     private string _sceneName;
 
-    private GameObject _currentDetail;
-    private GameObject _currentUI;
+    private PanelType _currentPanel;
+    private CanvasType _currentUI;
+
+    private Animator _anim;
 
     private void Awake()
     {
         _sceneName = SceneManager.GetActiveScene().name;
 
-        if(_sceneName == "StartScene")
+        if (_sceneName == "StartScene")
         {
-            OpenCanvas(CanvasType.Start);
+            LoadCanvas(CanvasType.Load);
         }
         else if(_sceneName == "MainScene")
         {
-            OpenCanvas(CanvasType.InGame);
+            LoadCanvas(CanvasType.Frequent);
         }
     }
 
-    public void ChangeDetail(DetailType uiType)
+    private void Start()
     {
-        if (_detailDict.ContainsKey(uiType))
+        if (_sceneName == "StartScene")
         {
-            _currentUI.SetActive(false);
-
-            _currentUI = Resources.Load<GameObject>($"Prefabs/UI/{Enum.GetName(typeof(DetailType), uiType)}");
-            //Addressables.LoadAssetAsync<GameObject>(uiType.ToString()).Completed += OnLoadDone;
-            Instantiate(_currentUI);
-
-            _detailDict[uiType].SetActive(true);
+            ChangeCanvas(CanvasType.Start);
         }
-        else
+        else if (_sceneName == "MainScene")
         {
-            _currentUI.SetActive(false);
-
-            _currentUI = Resources.Load<GameObject>($"Prefabs/UI/{Enum.GetName(typeof(DetailType), uiType)}");
-            //Addressables.LoadAssetAsync<GameObject>(uiType.ToString()).Completed += OnLoadDone;
-            Instantiate(_currentUI);
+            Show(CanvasType.Frequent);
+            Show(CanvasType.NotFrequent);
         }
     }
 
-    public void OpenCanvas(CanvasType uiType)
+    public void LoadCanvas(CanvasType canvasName)
     {
-        if (!_uiDict.ContainsKey(uiType))
+        while(Enum.IsDefined(typeof(CanvasType), canvasName))
         {
-            _currentUI = Resources.Load<GameObject>($"Prefabs/UI/{uiType.ToString()}");
-            //Addressables.LoadAssetAsync<GameObject>(uiType.ToString()).Completed += OnLoadDone;
-            Instantiate(_currentUI);
-        }
-        else
-        {
-            _uiDict[uiType].SetActive(true);
+            GameObject canvasObj = Resources.Load<GameObject>($"Prefabs/UI/{Enum.GetName(typeof(CanvasType), canvasName)}");
+            Instantiate(canvasObj, CanvasGroup);
+
+            BaseUI panel = canvasObj.GetComponent<BaseUI>();
+            _UIDict.Add(canvasName, panel);
+
+            canvasName++;
         }
     }
 
-    public void ChangeUITab(DetailType detailType)
+    public void Show(CanvasType uiType)
     {
-        if (!_detailDict.ContainsKey(detailType))
-        {
-            _currentUI = Resources.Load<GameObject>($"Prefabs/UI/{Enum.GetName(typeof(DetailType), detailType)}");
-            //Addressables.LoadAssetAsync<GameObject>(uiType.ToString()).Completed += OnLoadDone;
-            Instantiate(_currentUI);
-            _currentUI.transform.SetParent(_currentUI.transform);
-        }
-        else
-        {
-            _detailDict[detailType].SetActive(true);
-        }
+        _UIDict[uiType].Show();
+    }
+
+    public void Hide(CanvasType uiType)
+    {
+        _UIDict[uiType].Hide();
+    }
+
+    public void Toggle(CanvasType uiType)
+    {
+        _UIDict[uiType].Toggle();
+    }
+
+    public void ChangeCanvas(CanvasType uiType)
+    {
+        //animator call
+        //_anim
+    }
+
+    public void ChangePanel(PanelType uiType)
+    {
+        _panelDict[_currentPanel].Hide();
+
+        _panelDict[uiType].Show();
+        _currentPanel = uiType;
     }
 }
