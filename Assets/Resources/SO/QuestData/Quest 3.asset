@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c9b69afc4c559d4691f4d72ebff388d, type: 3}
+  m_Name: Quest 3
+  m_EditorClassIdentifier: 
+  QuestTitle: "6\uCE35\uC5D0\uC11C \uAC15\uBBFC\uC218\uC640 \uC774\uC57C\uAE30\uD558\uC790"
+  Dialogues:
+  - "\uC8FC\uC778\uACF5: \uC544\uC800\uC528 \uC9D1\uC5D0 \uACC4\uC2E0\uAC00\uC694!
+    \uBE68\uB9AC \uD53C\uC2E0\uD558\uB294\uAC8C \uC88B\uC744\uAC83 \uAC19\uC544\uC11C
+    \uC654\uC5B4\uC694!"
+  - "\uAC15\uBBFC\uC218: \uBB50\uC57C \uBB34\uC2A8\uC77C\uC778\uB370 \uCC28\uBD84\uD558\uAC8C
+    \uC124\uBA85\uBD80\uD130 \uD574\uBD10"
+  - "\uC8FC\uC778\uACF5: \uC0AC\uB78C\uB4E4\uC774 \uC774\uC0C1\uD574\uC84C\uC5B4\uC694
+    \uB208\uC774 \uBD89\uAC8C \uBCC0\uD558\uB354\uB2C8 \uB2E4\uB978\uC0AC\uB78C\uC744
+    \uACF5\uACA9\uD558\uACE0\uC788\uC5B4\uC694"
+  - "\uAC15\uBBFC\uC218: \uC77C\uB2E8 \uB09C \uBB38\uC7A0\uAD88\uB193\uACE0 \uC788\uC744\uD14C\uB2C8\uAE4C
+    \uB2E4\uB978 \uC0AC\uB78C\uB4E4\uC5D0\uAC8C\uB3C4 \uB098\uB300\uC2E0 \uC54C\uB824\uC904\uB798?"
+  - "\uC8FC\uC778\uACF5:\uC54C\uACA0\uC5B4\uC694 \uC544\uC800\uC528 \uBAB8\uC870\uC2EC\uD558\uC2DC\uAD6C\uC694! "
