@@ -12,15 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0422ca179b6a759408aea145f1105227, type: 3}
   m_Name: EnemySO
   m_EditorClassIdentifier: 
-  MaxHealth: 100
+  MaxHealth: 250
   <PlayerChasingRange>k__BackingField: 10
   <AttackRange>k__BackingField: 2
+  <Exp>k__BackingField: 5
   <ForceTransitionTime>k__BackingField: 1
   <Force>k__BackingField: 0
   <Dealing_Start_TransitionTime>k__BackingField: 1
   <Dealing_End_TransitionTime>k__BackingField: 1
   <EnemyGroundData>k__BackingField:
-    <BaseSpeed>k__BackingField: 2
+    <BaseSpeed>k__BackingField: 1
     <BaseRotationDamping>k__BackingField: 10
     <WalkSpeedModifier>k__BackingField: 0.5
     <RunSpeedModifier>k__BackingField: 1
