@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: StatData
   m_EditorClassIdentifier: 
   Name: "\uD55C\uD0DC\uC131"
-  Level: 1
-  CurExp: 10
-  MaxExp: 100
-  Atk: 5
+  Level: 3
+  CurExp: 5
+  MaxExp: 120
+  Atk: 20
   Def: 1
-  StatPoint: 5
+  StatPoint: 0
