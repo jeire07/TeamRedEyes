@@ -106,11 +106,11 @@ public class EnemyAttackState : EnemyBaseState
         if (distanceToPlayer <= stateMachine.Enemy.Data.AttackRange)
         {
             // 공격이 성공했다고 가정
-            PlayerCondition playerCondition = stateMachine.Target.GetComponent<PlayerCondition>();
-            if (playerCondition != null)
+            Condition[] conditions = GameManager.Instance.StatData.Conditions;
+            if (conditions != null)
             {
-                playerCondition.TakeInfection(10); // 감염도 증가
-                playerCondition.Health.Subtract(5); // 체력 감소
+                conditions[(int)ConditionType.Infection].Add(2);
+                conditions[(int)ConditionType.Health].Add(-5);
             }
         }
 
