@@ -50,9 +50,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timeData: {fileID: 0}
   _weatherIcon: {fileID: 0}
-  _weatherText: {fileID: 0}
-  _timeText: {fileID: 0}
-  _AMPMText: {fileID: 0}
+  _weatherText: {fileID: 7524660322620164957}
+  _timeText: {fileID: 4031136287514301765}
+  _AMPMText: {fileID: 993179577955230190}
   _is24HourFormat: 0
 --- !u!1 &4601725986628226760
 GameObject:
@@ -531,8 +531,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2413806693520163455, guid: ebfd80548f8f00e47a034492a6aa02fe,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: ebfd80548f8f00e47a034492a6aa02fe, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

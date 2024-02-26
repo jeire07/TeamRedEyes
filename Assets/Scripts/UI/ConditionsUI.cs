@@ -12,12 +12,12 @@ public class ConditionsUI : MonoBehaviour
     {
         GameObject player = GameManager.Instance.PlayerCharacter;
         _conditions = player.GetComponent<PlayerCondition>().Conditions;
+        _conditionBars = new Image[_conditions.Length];
 
-        for(int i = 0; i < transform.childCount; i++)
+        for (int i = 0; i < transform.childCount; i++)
         {
             _conditionBars[i] = transform.GetChild(i).GetChild(1).GetComponent<Image>();
         }
-        
     }
 
     private void Update()
@@ -29,7 +29,7 @@ public class ConditionsUI : MonoBehaviour
     {
         for (int i = 0; i < _conditionBars.Length; i++)
         {
-            _conditionBars[i].fillAmount = _conditions[(int)ConditionType.Health].CurValue / _conditions[(int)ConditionType.Health].MaxValue;
+            _conditionBars[i].fillAmount = _conditions[i].CurValue / _conditions[i].MaxValue;
         }
     }
 }
