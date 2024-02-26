@@ -29,20 +29,32 @@ public class PlayerLook : Singleton<PlayerLook>
         float mouseX = delta.x * lookSensitivity / 100;
         float mouseY = delta.y * lookSensitivity / 100;
 
-        transform.Rotate(Vector3.up, mouseX);
-        transform.Rotate(Vector3.left, mouseY);
-
-        float currentXRotation = transform.eulerAngles.x;
-        if (currentXRotation > 180f)
-            currentXRotation -= 360f;
-        float newXRotation = Mathf.Clamp(currentXRotation, minXLook, maxXLook);
-
-        transform.rotation = Quaternion.Euler(newXRotation, transform.eulerAngles.y, 0f);
-
         // Only rotate around y-axis for player
         if (_player != null)
         {
             _player.Rotate(Vector3.up, mouseX);
         }
+
+        float currentXRotation = transform.localEulerAngles.x;
+        currentXRotation -= mouseY;
+
+        if (currentXRotation > 180f)
+            currentXRotation -= 360f;
+
+        float newXRotation = Mathf.Clamp(currentXRotation, minXLook, maxXLook);
+
+        // Only rotate around x-axis for camera
+        transform.localRotation = Quaternion.Euler(newXRotation, 0, 0);
+
+        //transform.Rotate(Vector3.up, mouseX);
+        //transform.Rotate(Vector3.left, mouseY);
+
+        //float currentXRotation = transform.eulerAngles.x;
+        //if (currentXRotation > 180f)
+        //    currentXRotation -= 360f;
+        //float newXRotation = Mathf.Clamp(currentXRotation, minXLook, maxXLook);
+
+        ////transform.rotation = Quaternion.Euler(newXRotation, transform.eulerAngles.y, 0f);
+        //transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0f);
     }
 }
