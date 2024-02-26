@@ -34,7 +34,7 @@ public class PlayerCondition : Singleton<PlayerCondition>
 {
     public Condition[] Conditions { get; set; }
 
-    private void Start()
+    private void Awake()
     {
         Conditions = Resources.Load<PlayerStatData>("SO/PlayerData/StatData").Conditions;
     }

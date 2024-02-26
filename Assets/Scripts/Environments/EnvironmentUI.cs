@@ -12,7 +12,7 @@ public class EnvironmentUI : MonoBehaviour
     [SerializeField] private TMP_Text _AMPMText;
     [SerializeField] private bool _is24HourFormat = false;
 
-    private void Awake()
+    private void Start()
     {
         _timeData = Resources.Load<TimeData>("Utility/Time");
 
