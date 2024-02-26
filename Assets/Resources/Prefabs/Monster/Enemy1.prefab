@@ -1331,7 +1331,7 @@ GameObject:
   - component: {fileID: 8742954496198554941}
   - component: {fileID: 1813220457413851294}
   - component: {fileID: 2625336027926044930}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy1
   m_TagString: Enermy1
   m_Icon: {fileID: 0}

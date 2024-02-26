@@ -6,9 +6,6 @@ TagManager:
   tags:
   - Ground
   - Enemy
-  - FrequentUI
-  - NotFrequentUI
-  - InFrequentUI
   - 6F_Cube
   - 5F_Cube
   - 4F_Cube
@@ -25,7 +22,7 @@ TagManager:
   - Water
   - UI
   - Interactable
-  - 
+  - NotInteractable
   - 
   - 
   - 

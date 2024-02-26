@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5780320086613283160}
   - component: {fileID: 110401911272989753}
   - component: {fileID: 4489546610080404368}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EdgeRail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
