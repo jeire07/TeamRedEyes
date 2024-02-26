@@ -6,7 +6,7 @@ public class PlayerConditionEffect : MonoBehaviour
 
     private void OnEnable()
     {
-        _conditions = GameManager.Instance.StatData.Conditions;
+        _conditions = PlayerCondition.Instance.Conditions;
     }
 
     public void HungryPercentEffect()

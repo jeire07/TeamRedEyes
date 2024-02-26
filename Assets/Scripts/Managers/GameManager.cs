@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    public PlayerStatData InitData;
-    public PlayerStatData StatData;
+    private PlayerStatData _initData;
+    public PlayerStatData StatData { get; set; }
     public GameObject PlayerCharacter;
 
     private void Awake()
     {
-        InitData = Resources.Load<PlayerStatData>("SO/PlayerData/InitData");
+        _initData = Resources.Load<PlayerStatData>("SO/PlayerData/InitData");
         StatData = Resources.Load<PlayerStatData>("SO/PlayerData/StatData");
     }
 
@@ -19,14 +19,14 @@ public class GameManager : Singleton<GameManager>
 
     public void NewGame()
     {
-        StatData.Name = InitData.Name;
-        StatData.Level = InitData.Level;
-        StatData.CurExp = InitData.CurExp;
-        StatData.MaxExp = InitData.MaxExp;
-        StatData.Atk = InitData.Atk;
-        StatData.Def = InitData.Def;
-        StatData.StatPoint = InitData.StatPoint;
-        StatData.Conditions = (Condition[])InitData.Conditions.Clone();
+        StatData.Name = _initData.Name;
+        StatData.Level = _initData.Level;
+        StatData.CurExp = _initData.CurExp;
+        StatData.MaxExp = _initData.MaxExp;
+        StatData.Atk = _initData.Atk;
+        StatData.Def = _initData.Def;
+        StatData.StatPoint = _initData.StatPoint;
+        StatData.Conditions = (Condition[])_initData.Conditions.Clone();
     }
 
     public void LoadGame(int LoadSlotNum)

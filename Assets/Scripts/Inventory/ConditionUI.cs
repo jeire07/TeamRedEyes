@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ConditionUI : MonoBehaviour
 {
-    [SerializeField] PlayerCondition _condition;
+    [SerializeField] private Condition[] _conditions;
 
     #region Text
     public TextMeshProUGUI NameText;
@@ -23,8 +23,8 @@ public class ConditionUI : MonoBehaviour
 
     private void Awake()
     {
-        GameObject player = GameObject.Find("Player");
-        _condition = player.GetComponent<PlayerCondition>();
+        GameObject player = GameManager.Instance.PlayerCharacter;
+        _conditions = player.GetComponent<PlayerCondition>().Conditions;
     }
 
     private void Update()
@@ -34,10 +34,10 @@ public class ConditionUI : MonoBehaviour
 
     public void UpdateStatPanel()
     {
-        HungryText.text = $"배고픔 {(int)_condition.Hunger.CurValue} / {(int)_condition.Hunger.MaxValue}";
-        ThirstyText.text = $"갈증 {(int)_condition.Thirsty.CurValue} / {(int)_condition.Thirsty.MaxValue}";
-        StaminaText.text = $"SP {(int)_condition.Stamina.CurValue} / {(int)_condition.Stamina.MaxValue}";
-        InfectionText.text = $"감염도 {(int)_condition.Infection.CurValue} / {(int)_condition.Infection.MaxValue}";
-        HealthText.text = $"체력 {(int)_condition.Health.CurValue} / {(int)_condition.Health.MaxValue}";
+        HealthText.text = $"체력 {_conditions[(int)ConditionType.Health].CurValue} / {_conditions[(int)ConditionType.Health].MaxValue}";
+        HungryText.text = $"배고픔 {_conditions[(int)ConditionType.Hunger].CurValue} / {_conditions[(int)ConditionType.Hunger].MaxValue}";
+        ThirstyText.text = $"갈증 {_conditions[(int)ConditionType.Thirsty].CurValue} / {_conditions[(int)ConditionType.Thirsty].MaxValue}";
+        StaminaText.text = $"SP {_conditions[(int)ConditionType.Stamina].CurValue} / {_conditions[(int)ConditionType.Stamina].MaxValue}";
+        InfectionText.text = $"감염도 {_conditions[(int)ConditionType.Infection].CurValue} / {_conditions[(int)ConditionType.Infection].MaxValue}";
     }
 }

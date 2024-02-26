@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum ConditionType
@@ -31,35 +32,29 @@ public class Condition
 
 public class PlayerCondition : Singleton<PlayerCondition>
 {
-    private Condition[] _conditions;
-
-    public Condition Health { get; set; }
-    public Condition Hunger { get; set; }
-    public Condition Thirsty { get; set; }
-    public Condition Stamina { get; set; }
-    public Condition Infection { get; set; }
+    public Condition[] Conditions { get; set; }
 
     private void Start()
     {
-        _conditions = Resources.Load<PlayerStatData>("SO/PlayerData/StatData").Conditions;
+        Conditions = Resources.Load<PlayerStatData>("SO/PlayerData/StatData").Conditions;
     }
 
     private void Update()
     {
         for(ConditionType type = ConditionType.Health; type <= ConditionType.Infection; type++)
         {
-            _conditions[(int)type].Add(_conditions[(int)type].RegenRate * Time.deltaTime);
+            Conditions[(int)type].Add(Conditions[(int)type].RegenRate * Time.deltaTime);
         }
 
-        if (Hunger.CurValue <= 0.0f || Thirsty.CurValue <= 0.0f)
-            _conditions[(int)ConditionType.Health].RegenRate = -2;
+        if (Conditions[(int)ConditionType.Hunger].CurValue <= 0.0f || Conditions[(int)ConditionType.Thirsty].CurValue <= 0.0f)
+            Conditions[(int)ConditionType.Health].RegenRate = -2;
 
-        if (Health.CurValue == 0.0f)
-            IsDead();
+        if (Conditions[(int)ConditionType.Health].CurValue == 0.0f)
+            SetDead();
     }
 
-    public void IsDead()
+    public void SetDead()
     {
-        //사망애니메이션 하고 몇초뒤에 다시시작?, 게임이 끝나는?
+        //stateMachine의 isDead를 true로 바꿔주는 코드
     }
 }
