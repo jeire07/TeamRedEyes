@@ -22,6 +22,11 @@ public class GameManager : Singleton<GameManager>
         StatData.Def = _initData.Def;
         StatData.StatPoint = _initData.StatPoint;
         StatData.Conditions = (Condition[])_initData.Conditions.Clone();
+
+        foreach(Condition condition in StatData.Conditions)
+        {
+            condition.CurValue = condition.StartValue;
+        }
     }
 
     public void LoadGame(int LoadSlotNum)

@@ -2,12 +2,16 @@ using UnityEngine;
 
 abstract public class BaseUI : MonoBehaviour
 {
-    bool _isActive = false;
+    private bool _isActive;
 
-    virtual protected void Awake()
+    virtual public void OnEnable()
     {
-        this.gameObject.SetActive(false);
-        _isActive = false;
+
+    }
+
+    virtual public void OnDisable()
+    {
+
     }
 
     virtual public void Show()

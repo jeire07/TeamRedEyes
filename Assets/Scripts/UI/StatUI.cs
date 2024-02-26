@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StatusUI : BaseUI
+public class StatusUI : MonoBehaviour
 {
     [SerializeField] private Button[] _buttons;
     [SerializeField] private TMP_Text[] _basicStatTexts;

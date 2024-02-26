@@ -12,10 +12,13 @@ public class EnvironmentUI : MonoBehaviour
     [SerializeField] private TMP_Text _AMPMText;
     [SerializeField] private bool _is24HourFormat = false;
 
-    private void Start()
+    private void Awake()
     {
         _timeData = Resources.Load<TimeData>("Utility/Time");
+    }
 
+    private void Start()
+    {
         _weatherIcon = transform.Find("WeatherIcon").GetComponent<Image>();
         _weatherText = transform.Find("WeatherText").GetComponent<TMP_Text>();
         _timeText = transform.Find("TimeText").GetComponent<TMP_Text>();

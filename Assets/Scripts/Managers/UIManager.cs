@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public enum CanvasType
@@ -10,11 +8,10 @@ public enum CanvasType
     Load = 0,
     Start,
     Option,
-    Frequent = 10,
+    Combined = 10,
     NotFrequent,
-    Dialog,
-    Rest,
-    Utility
+    Frequent,
+    Null = -1
 }
 
 public enum PanelType
@@ -25,19 +22,23 @@ public enum PanelType
     Quest,
     Option,
     Save,
-    Craft = 10,
-    Repair = 20
+    Craft,
+    Repair,
+    Rest = 10,
+    Dialog = 11,
+    Null = -1
 }
 
 public class UIManager : Singleton<UIManager>
 {
-    [SerializeField] Transform CanvasGroup;
-    private Dictionary<CanvasType, BaseUI> _UIDict = new();
-    private Dictionary<PanelType, BaseUI> _panelDict = new();
     private string _sceneName;
+    [SerializeField] private Transform CanvasParent;
 
-    private PanelType _currentPanel;
-    private CanvasType _currentUI;
+    public Dictionary<CanvasType, GameObject> UIDict { get; private set; } = new();
+    public Dictionary<PanelType, GameObject> PanelDict { get; private set; } = new();
+
+    public PanelType CurrentPanel { get; private set; }
+    public CanvasType CurrentUI { get; private set; }
 
     private Animator _anim;
 
@@ -49,9 +50,9 @@ public class UIManager : Singleton<UIManager>
         {
             LoadCanvas(CanvasType.Load);
         }
-        else if(_sceneName == "MainScene")
+        else// if(_sceneName == "MainScene")
         {
-            LoadCanvas(CanvasType.Frequent);
+            LoadCanvas(CanvasType.Combined);
         }
     }
 
@@ -63,10 +64,11 @@ public class UIManager : Singleton<UIManager>
         {
             ChangeCanvasInStartScene(CanvasType.Start);
         }
-        else if (_sceneName == "MainScene")
+        else if (_sceneName == "MainScene" || _sceneName == "TutorialScene")
         {
-            Show(CanvasType.Frequent);
-            Show(CanvasType.NotFrequent);
+            HidePanel(PanelType.Rest);
+            HidePanel(PanelType.Dialog);
+            HideCanvas(CanvasType.Combined, PanelType.Stat);
         }
     }
 
@@ -74,43 +76,85 @@ public class UIManager : Singleton<UIManager>
     {
         while(Enum.IsDefined(typeof(CanvasType), canvasName))
         {
-            GameObject canvasObj = Resources.Load<GameObject>($"Prefabs/UI/{Enum.GetName(typeof(CanvasType), canvasName)}");
-            Instantiate(canvasObj, CanvasGroup);
+            GameObject canvasPrefab = Resources.Load<GameObject>($"Prefabs/UI/Canvas/{Enum.GetName(typeof(CanvasType), canvasName)}Canvas");
+            GameObject instance = Instantiate(canvasPrefab, CanvasParent);
+            UIDict.Add(canvasName, instance);
 
-            BaseUI panel = canvasObj.GetComponent<BaseUI>();
-            _UIDict.Add(canvasName, panel);
+            SetPanel(canvasName);
 
             canvasName++;
         }
     }
 
-    public void Show(CanvasType uiType)
+    public void SetPanel(CanvasType canvasName)
     {
-        _UIDict[uiType].Show();
-        _currentUI = uiType;
+        Transform canvas = UIDict[canvasName].GetComponent<Transform>();
+
+        Transform panelParent = canvas.Find("Panels");
+
+        if (panelParent != null)
+        {
+            for (int i = 0; i < panelParent.childCount; i++)
+            {
+                GameObject panel = panelParent.GetChild(i).gameObject;
+                PanelDict.Add((PanelType)(i + ((int)canvasName - 10) * 10), panel);
+                panel.SetActive(false);
+            }
+        }
     }
 
-    public void Hide(CanvasType uiType)
+    public void ShowCanvas(CanvasType uiType)
     {
-        _UIDict[uiType].Hide();
+        UIDict[uiType].SetActive(true);
     }
 
-    public void Toggle(CanvasType uiType)
+    public void HideCanvas(CanvasType uiType, PanelType panelType)
     {
-        _UIDict[uiType].Toggle();
+        HidePanel(panelType);
+
+        UIDict[uiType].SetActive(false);
+        CurrentUI = CanvasType.Null;
+    }
+
+    public bool GetIsOpened(CanvasType uiType)
+    {
+        return UIDict[uiType].activeSelf;
+    }
+
+    public bool GetIsOpened(PanelType uiType)
+    {
+        return PanelDict[uiType].activeSelf;
     }
 
     public void ChangeCanvasInStartScene(CanvasType uiType)
     {
-        _anim.SetFloat("Animate", 0);
-        _currentUI = uiType;
+        if (CurrentUI == CanvasType.Load)
+            _anim.SetFloat("Animate", 0);
+        else if (CurrentUI == CanvasType.Start && uiType == CanvasType.Load)
+            _anim.SetFloat("Animate", 1);
+        else if (CurrentUI == CanvasType.Start && uiType == CanvasType.Option)
+            _anim.SetFloat("Animate", 2);
+        else // (_currentUI == CanvasType.Option)
+            _anim.SetFloat("Animate", 3);
+        CurrentUI = uiType;
     }
 
     public void ChangePanel(PanelType uiType)
     {
-        _panelDict[_currentPanel].Hide();
+        PanelDict[CurrentPanel].SetActive(false);
 
-        _panelDict[uiType].Show();
-        _currentPanel = uiType;
+        ShowPanel(uiType);
+    }
+
+    public void ShowPanel(PanelType uiType)
+    {
+        PanelDict[uiType].SetActive(true);
+        CurrentPanel = uiType;
+    }
+
+    public void HidePanel(PanelType uiType)
+    {
+        PanelDict[uiType].SetActive(false);
+        CurrentPanel = PanelType.Null;
     }
 }

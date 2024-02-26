@@ -3,21 +3,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum UtilButton
-{
-    Stat,
-    Item,
-    Equip,
-    Quest,
-    Option,
-    Save
-}
-
 public class CombinedUI : MonoBehaviour
 {
     private Button[] _buttons;
-    private GameObject[] _panels;
-    private GameObject _currentPanel;
 
     void Start()
     {
@@ -32,28 +20,13 @@ public class CombinedUI : MonoBehaviour
             if (button != null)
             {
                 _buttons[i] = button;
-                _buttons[i].onClick.AddListener(() => OnButtonClick((UtilButton)i));
-            }
-        }
-
-        for (int i = 0; i < buttonParent.childCount; i++)
-        {
-            Transform childTransform = buttonParent.GetChild(i);
-            GameObject panel = childTransform.GetComponent<GameObject>();
-
-            if (panel != null)
-            {
-                _panels[i] = panel;
+                _buttons[i].onClick.AddListener(() => OnButtonClick((PanelType)i));
             }
         }
     }
 
-    //public void OnButtonClick(int buttonType)
-    public void OnButtonClick(UtilButton type)
+    public void OnButtonClick(PanelType type)
     {
-
-
-        _currentPanel.SetActive(false);
-
+        UIManager.Instance.ChangePanel(type);
     }
 }

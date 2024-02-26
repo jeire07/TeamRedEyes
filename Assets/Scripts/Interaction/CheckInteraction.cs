@@ -24,9 +24,9 @@ public class CheckInteraction : MonoBehaviour
     void Start()
     {
         _camera = Camera.main;
-        _layerMask = LayerMask.GetMask("Interactable");
+        _layerMask = LayerMask.GetMask("Interactable", "NotInteractable");
 
-        Transform canvas = GameObject.FindGameObjectWithTag("NotFrequentUI").GetComponent<Transform>();
+        Transform canvas = UIManager.Instance.UIDict[CanvasType.NotFrequent].GetComponent<Transform>();
         _interactText = canvas.Find("InteractionText").GetComponent<TMP_Text>();
     }
 
@@ -68,7 +68,9 @@ public class CheckInteraction : MonoBehaviour
 
     public void OnInteraction(InputAction.CallbackContext context)
     {
-        if(InventoryManager.Instance.IsOpened || RestUI.Instance.IsOpened)
+        if(UIManager.Instance.GetIsOpened(PanelType.Rest) ||
+            UIManager.Instance.GetIsOpened(PanelType.Dialog) ||
+            UIManager.Instance.GetIsOpened(CanvasType.Combined))
         {
             return;
         }

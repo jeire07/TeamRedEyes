@@ -25,11 +25,14 @@ public class Rest : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if (_furnitureName == "Sofa")
-            RestUI.Instance.SetRestLengthScale((int)RestFurniture.Sofa);
-        else
-            RestUI.Instance.SetRestLengthScale((int)RestFurniture.Bed);
+        UIManager.Instance.ShowCanvas(CanvasType.NotFrequent);
+        UIManager.Instance.ShowPanel(PanelType.Rest);
 
-        RestUI.Instance.GetComponent<RestUI>().OpenUI();
+        RestUI restUI = UIManager.Instance.PanelDict[PanelType.Rest].GetComponent<RestUI>();
+
+        if (_furnitureName == "Sofa")
+            restUI.SetRestLengthScale((int)RestFurniture.Sofa);
+        else
+            restUI.SetRestLengthScale((int)RestFurniture.Bed);
     }
 }

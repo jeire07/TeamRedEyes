@@ -6,7 +6,7 @@
             "id": "1683b48e-4c8b-4250-9e8f-bd7e4100583d",
             "actions": [
                 {
-                    "name": "Inventory",
+                    "name": "OpenCombinedCanvas",
                     "type": "Button",
                     "id": "4e4a07d2-30dd-4e15-9019-8b28d032e984",
                     "expectedControlType": "Button",
@@ -59,7 +59,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Inventory",
+                    "action": "OpenCombinedCanvas",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

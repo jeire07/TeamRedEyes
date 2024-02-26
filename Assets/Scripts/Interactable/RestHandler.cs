@@ -56,6 +56,6 @@ public class RestHandler : Singleton<RestHandler>
         _isResting = false;
         TimeManager.Instance.SetGameSpeed(0);
 
-        RestUI.Instance.CloseUI();
+        UIManager.Instance.PanelDict[PanelType.Rest].GetComponent<RestUI>().CloseUI();
     }
 }
