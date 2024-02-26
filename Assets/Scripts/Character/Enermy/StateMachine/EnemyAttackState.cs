@@ -113,6 +113,5 @@ public class EnemyAttackState : EnemyBaseState
                 conditions[(int)ConditionType.Health].Add(-5);
             }
         }
-
     }
 }

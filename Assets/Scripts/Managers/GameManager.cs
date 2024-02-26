@@ -34,6 +34,7 @@ public class GameManager : Singleton<GameManager>
         PlayerStatData loadData;
         loadData = new PlayerStatData();
         //To Do : write code for load data from Json file
+        //To Do : writecode for load data from Json file
 
         StatData.Name = loadData.Name;
         StatData.Level = loadData.Level;

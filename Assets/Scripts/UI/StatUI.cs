@@ -22,10 +22,31 @@ public class StatusUI : BaseUI
             _statTexts[index - 1] = basicTextParent.GetChild(index).Find("Value").GetComponent<TMP_Text>();
         }
 
-        StatManager.Instance.OnStatUpdateEvent.AddListener(UpdateUI);
+        StatManager.Instance.OnStatUpdateEvent.AddListener(UpdateStat);
+        StatManager.Instance.OnStatUpdateEvent.AddListener(ToggleButtonState);
     }
 
-    private void UpdateUI()
+    public void ToggleButtonState()
+    {
+        if (GameManager.Instance.StatData.StatPoint == 0)
+        {
+            foreach(Button button in _buttons)
+            {
+                GameObject obj = button.gameObject;
+                obj.SetActive(false);
+            }
+        }
+        else
+        {
+            foreach (Button button in _buttons)
+            {
+                GameObject obj = button.gameObject;
+                obj.SetActive(true);
+            }
+        }
+    }
+
+    private void UpdateStat()
     {
         PlayerStatData stat = GameManager.Instance.StatData;
 

@@ -39,8 +39,6 @@ public class PlayerCondition : Singleton<PlayerCondition>
     public Condition Stamina { get; set; }
     public Condition Infection { get; set; }
 
-    public float NoFoodWaterHealthDecay { get; set; }
-
     private void Start()
     {
         _conditions = Resources.Load<PlayerStatData>("SO/PlayerData/StatData").Conditions;
@@ -58,42 +56,6 @@ public class PlayerCondition : Singleton<PlayerCondition>
 
         if (Health.CurValue == 0.0f)
             IsDead();
-    }
-
-    public void RecoverHP(float amount)
-    {
-        Health.Add(amount);
-    }
-
-    public void RecoverHunger(float amount)
-    {
-        Hunger.Add(amount);
-    }
-
-    public void RecoverThirsty(float amount)
-    {
-        Thirsty.Add(amount);
-    }
-
-    public void TakeImmunity(float amount)
-    {
-        Infection.Add(-amount);
-    }
-
-    public void TakeInfection(float amount)
-    {
-        Infection.Add(amount);
-    }
-
-    public bool UseStamina(float amount)
-    {
-        if(Stamina.CurValue -amount < 0)
-            return false;
-
-        Stamina.Add(-amount);
-        return true;
-
-        // attack = 3, run = 2, 아이템줍기 = 1, 스킬값 따로
     }
 
     public void IsDead()
