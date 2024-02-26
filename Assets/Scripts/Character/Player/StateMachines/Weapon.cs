@@ -20,9 +20,15 @@ public class Weapon : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy") && player != null) // player 참조를 직접 사용
+        if (other.CompareTag("Enemy") && player != null)
         {
             float totalDamage = BaseDamage + player.GetCurrentAttack();
+            // 적에게 데미지를 적용합니다.
+            Enemy enemy = other.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(totalDamage);
+            }
         }
     }
 }

@@ -13,7 +13,7 @@ public class EnemyHealthState : EnemyBaseState
         currentHealth = initialMaxHealth; // 초기 체력 설정
     }
 
-    public void TakeDamage(int damage)
+    public override void TakeDamage(int damage)
     {
         if (currentHealth <= 0) return; // 이미 사망한 경우 처리하지 않음
 
