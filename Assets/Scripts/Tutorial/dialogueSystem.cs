@@ -1,12 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class dialogueSystem: MonoBehaviour
 {
     public TMP_Text dialogueText;
     public QuestData[] questData;
     public GameObject CanvasDialogues;
+    public GameObject NPC;
     
     private int currentQuestIndex = 0;
     private int currentDialogueIndex = 0;
@@ -14,17 +16,29 @@ public class dialogueSystem: MonoBehaviour
 
     private void OnEnable()
     {
-        UpdateQuestDialogue();
+        EnableDialogues();
+    }
+
+    public void OnEnterKey(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            UpdateQuestDialogue();
+        }
+        if (!CanvasDialogues.activeSelf)
+        {
+            NPC.SetActive(false);
+        }
     }
 
     public void UpdateQuestProgress()
     {
-        currentQuestIndex++;   
+        currentQuestIndex++;
     }
 
     public void EnableDialogues()
     { 
-        CanvasDialogues.SetActive(true);    
+        CanvasDialogues.SetActive(true);
     }
     public void UpdateQuestDialogue()
     {

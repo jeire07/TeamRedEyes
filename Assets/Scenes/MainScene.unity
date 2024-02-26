@@ -1247,6 +1247,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6791178816305278907, guid: 3ff8122e6912edc43bfe5890666779e4,
+        type: 3}
+      propertyPath: MonsterPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 6505124105138068670, guid: d080f4d9e2eae254abe0872bf2d988d8,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -8026,6 +8032,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6791178816305278907, guid: 3ff8122e6912edc43bfe5890666779e4,
+        type: 3}
+      propertyPath: MonsterPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 6505124105138068670, guid: d080f4d9e2eae254abe0872bf2d988d8,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -9495,6 +9507,12 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 6791178816305278907, guid: 3ff8122e6912edc43bfe5890666779e4,
+        type: 3}
+      propertyPath: MonsterPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 6505124105138068670, guid: d080f4d9e2eae254abe0872bf2d988d8,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -13898,6 +13916,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6791178816305278907, guid: 3ff8122e6912edc43bfe5890666779e4,
+        type: 3}
+      propertyPath: MonsterPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 6505124105138068670, guid: d080f4d9e2eae254abe0872bf2d988d8,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14766,6 +14790,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6791178816305278907, guid: 3ff8122e6912edc43bfe5890666779e4,
+        type: 3}
+      propertyPath: MonsterPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 6505124105138068670, guid: d080f4d9e2eae254abe0872bf2d988d8,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

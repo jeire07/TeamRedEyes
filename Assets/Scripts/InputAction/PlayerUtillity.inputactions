@@ -33,9 +33,18 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "MouseClick",
+                    "name": "Dialog",
                     "type": "Button",
-                    "id": "34344747-ac9d-4f8b-bda7-454adb2e82c4",
+                    "id": "d793575b-a1ae-4afa-a24c-883fcfa9ab20",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Help",
+                    "type": "Button",
+                    "id": "cfd24418-18ea-46c3-99ec-1864277db553",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -78,12 +87,23 @@
                 },
                 {
                     "name": "",
-                    "id": "932afafe-ece4-40ec-8b51-f54371773c8b",
-                    "path": "<Mouse>/leftButton",
+                    "id": "747ba225-bc10-41d7-a45e-c6fc50915b23",
+                    "path": "<Keyboard>/enter",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MouseClick",
+                    "action": "Dialog",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "474bb9c9-b2ae-4129-8189-1f0d951bf22e",
+                    "path": "<Keyboard>/f1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Help",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
