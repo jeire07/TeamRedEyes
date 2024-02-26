@@ -13,7 +13,7 @@ public enum UtilButton
     Save
 }
 
-public class UtilityUI : MonoBehaviour
+public class CombinedUI : MonoBehaviour
 {
     private Button[] _buttons;
     private GameObject[] _panels;

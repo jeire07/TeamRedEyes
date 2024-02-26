@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 4441911808153414714}
   - component: {fileID: 9196406964586634601}
   m_Layer: 5
-  m_Name: Utility
+  m_Name: CombinedUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -344,7 +344,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &4441911808153414714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1251,7 +1251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buttons: []
   _basicStatTexts: []
-  _statTexts: []
+  _ConditionsTexts: []
 --- !u!1 &8783065997520953396
 GameObject:
   m_ObjectHideFlags: 0
