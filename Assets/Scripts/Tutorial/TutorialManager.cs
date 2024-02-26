@@ -1,33 +1,39 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 
 public class TutorialManager : MonoBehaviour
 {
-    public TutorialState currentState;
+    public GameObject Help;
+    public bool IsOpened = false;
+    public GameObject Enemy;
+    public GameObject NthDoorBlock;
+    public GameObject DoorBlock;
+    public GameObject NPC;
 
-    public void ProceedToNextStep()
+    private void Start()
     {
-        if (currentState != null)
+        Enemy = GameObject.FindWithTag("Enemy");
+    }
+    private void Update()
+    {
+        if(Enemy == null)
         {
-            currentState.HandleState();
-            currentState = GetNextState(currentState);
+            NthDoorBlock.SetActive(false);
+        }
+        if(!NPC.activeSelf)
+        {
+            DoorBlock.SetActive(false);
         }
     }
 
-    private TutorialState GetNextState(TutorialState currentState)
+    public void OnF1Key(InputAction.CallbackContext context) // 나중에 옮기기
     {
-        if (currentState is TutorialStep1State)
+        if (context.phase == InputActionPhase.Started)
         {
-            return new TutorialStep2State();
-        }
-        else if (currentState is TutorialStep2State)
-        {
-            return new TutorialStep3State();
-        }
-        else
-        {
-            return null;
+            IsOpened = !IsOpened;
+            Help.SetActive(IsOpened);
         }
     }
 }
