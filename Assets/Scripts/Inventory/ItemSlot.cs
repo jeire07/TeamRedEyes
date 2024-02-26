@@ -1,7 +1,6 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 
 public class ItemSlot : MonoBehaviour
@@ -10,7 +9,7 @@ public class ItemSlot : MonoBehaviour
     public GameObject EquipIcon;
     public bool IsEquipped;
 
-    #region Text    
+    #region Text
     public TextMeshProUGUI DisplayName;
     public TextMeshProUGUI Information;
     public TextMeshProUGUI QuantityText;
@@ -29,9 +28,11 @@ public class ItemSlot : MonoBehaviour
     public int Quantity;
     private PlayerCondition _Condition;
 
+    private PlayerStatData _PlayerStat;
+
     private void Awake()
     {
-        GameObject player = GameObject.Find("Player"); //Find 사용말고 다른방법 질문, 왜 지양해야 하는지, Find말고 다른방법으로 바꿔보기
+        GameObject player = GameObject.Find("Player");
         _Condition = player.GetComponent<PlayerCondition>();
         EquipIcon.SetActive(false);
     }
@@ -72,6 +73,8 @@ public class ItemSlot : MonoBehaviour
         {
             for (int i = 0; i < Item.Consumables.Length; i++)
             {
+
+
                 switch (Item.Consumables[i].Type)
                 {
                     case ConsumableType.Health:
@@ -86,6 +89,7 @@ public class ItemSlot : MonoBehaviour
                         _Condition.TakeImmunity(Item.Consumables[i].Value); break;
                 }
             }
+
             Quantity--;
             QuantityText.text = $"X {Quantity}";
             if (Quantity <= 0)

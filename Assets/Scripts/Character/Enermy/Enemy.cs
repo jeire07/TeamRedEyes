@@ -78,4 +78,17 @@ public class Enemy : MonoBehaviour
     {
 
     }
+
+    public void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+        Debug.Log($"Enemy health: {currentHealth}/{Data.MaxHealth}");
+
+        stateMachine.CurrentState.TakeDamage((int)damage); // 캐스팅 추가
+
+        if (currentHealth <= 0)
+        {
+            // 적 사망 처리...
+        }
+    }
 }

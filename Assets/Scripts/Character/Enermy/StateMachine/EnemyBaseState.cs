@@ -39,6 +39,10 @@ public class EnemyBaseState : IState
     {
 
     }
+    public virtual void TakeDamage(int damage)
+    {
+
+    }
 
     protected bool HasParameter(Animator animator, int hash)
     {

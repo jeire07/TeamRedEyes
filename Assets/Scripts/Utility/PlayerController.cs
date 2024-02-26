@@ -14,6 +14,6 @@ public class PlayerController : MonoBehaviour
     public void OnLook(InputAction.CallbackContext context)
     {
         Vector2 mouseDelta = context.ReadValue<Vector2>();
-        OnLookEvent.Invoke(mouseDelta);
+        OnLookEvent?.Invoke(mouseDelta);
     }
 }

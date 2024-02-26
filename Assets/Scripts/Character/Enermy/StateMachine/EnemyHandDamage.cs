@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyHandDamage : MonoBehaviour
 {
     public float damageAmount = 10f; // 데미지 양
-    public float infectionAmount = 5f; // 감염도 증가량
+    public float infectionAmount = 2f; // 감염도 증가량
     public float pushBackForce = 2f; // 밀어내는 힘의 정도
 
     private void OnTriggerEnter(Collider other)
@@ -15,7 +15,7 @@ public class EnemyHandDamage : MonoBehaviour
             if (playerCondition != null)
             {
                 // 체력감소 감염도증가 
-                playerCondition.Health.Subtract(damageAmount);
+                playerCondition.Health.Add(-damageAmount);
                 playerCondition.Infection.Add(infectionAmount);
 
                 // 밀어내기 효과

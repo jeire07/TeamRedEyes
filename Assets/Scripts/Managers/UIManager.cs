@@ -57,9 +57,11 @@ public class UIManager : Singleton<UIManager>
 
     private void Start()
     {
+        _anim = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>();
+
         if (_sceneName == "StartScene")
         {
-            ChangeCanvas(CanvasType.Start);
+            ChangeCanvasInStartScene(CanvasType.Start);
         }
         else if (_sceneName == "MainScene")
         {
@@ -85,6 +87,7 @@ public class UIManager : Singleton<UIManager>
     public void Show(CanvasType uiType)
     {
         _UIDict[uiType].Show();
+        _currentUI = uiType;
     }
 
     public void Hide(CanvasType uiType)
@@ -97,10 +100,10 @@ public class UIManager : Singleton<UIManager>
         _UIDict[uiType].Toggle();
     }
 
-    public void ChangeCanvas(CanvasType uiType)
+    public void ChangeCanvasInStartScene(CanvasType uiType)
     {
-        //animator call
-        //_anim
+        _anim.SetFloat("Animate", 0);
+        _currentUI = uiType;
     }
 
     public void ChangePanel(PanelType uiType)
