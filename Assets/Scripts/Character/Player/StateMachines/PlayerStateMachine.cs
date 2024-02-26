@@ -27,7 +27,8 @@ public class PlayerStateMachine : StateMachine
     public float JumpForce { get; set; }
     public Transform MainCameraTransform { get; set; }
 
-    public bool IsDead { get; set; }
+    public PlayerDeadState DeadState{ get; set; }
+
 
     public PlayerStateMachine(Player player)
     {
@@ -41,6 +42,7 @@ public class PlayerStateMachine : StateMachine
         RollState = new PlayerRollState(this);
         SitState = new PlayerSitState(this);
         ComboAttackState = new PlayerComboAttackState(this);
+        DeadState = new PlayerDeadState(this);
 
         MainCameraTransform = Camera.main.transform;
 
@@ -50,7 +52,7 @@ public class PlayerStateMachine : StateMachine
 
         IsRolling = false;
         IsSitting = false;
-        IsDead = false;
+        
     }
  
 }

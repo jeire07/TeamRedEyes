@@ -12,6 +12,15 @@ public class PlayerDeadState : PlayerBaseState
     {
         base.Enter();
         StartAnimation(StateMachine.Player.AnimationData.IsDeadParameterHash);
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        GameOverController gameOverController = GameObject.FindObjectOfType<GameOverController>();
+        if (gameOverController != null)
+        {
+            gameOverController.TriggerIsDead();
+        }
     }
 
 }
