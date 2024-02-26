@@ -6,8 +6,8 @@ public class EnvironmentUI : MonoBehaviour
 {
     [SerializeField] private TimeData _timeData;
 
-    [SerializeField] private Image _WeatherIcon;
-
+    [SerializeField] private Image _weatherIcon;
+    [SerializeField] private TMP_Text _weatherText;
     [SerializeField] private TMP_Text _timeText;
     [SerializeField] private TMP_Text _AMPMText;
     [SerializeField] private bool _is24HourFormat = false;
@@ -16,18 +16,19 @@ public class EnvironmentUI : MonoBehaviour
     {
         _timeData = Resources.Load<TimeData>("Utility/Time");
 
+        _weatherIcon = transform.Find("WeatherIcon").GetComponent<Image>();
+        _weatherText = transform.Find("WeatherText").GetComponent<TMP_Text>();
         _timeText = transform.Find("TimeText").GetComponent<TMP_Text>();
         _AMPMText = transform.Find("AMPMText").GetComponent<TMP_Text>();
-
-        _WeatherIcon = transform.Find("WeatherInfo").GetComponent<Image>();
-
+        
         TimeManager.Instance.OnMinutePassed += UpdateTimeUI;
     }
 
     private void UpdateWeatherIcon(string weatherName)
     {
-        //Sprite icon = Resources.Load<Sprite>($"WeatherIcon/{weatherName}"};
-        //_WeatherIcon.sprite = icon;
+        Sprite icon = Resources.Load<Sprite>($"Icon/UI/Weather/{weatherName}");
+        _weatherIcon.sprite = icon;
+        _weatherText.text = weatherName;
     }
 
     private void UpdateTimeUI()
