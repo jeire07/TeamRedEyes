@@ -11,6 +11,7 @@ public class TutorialManager : MonoBehaviour
     public GameObject NthDoorBlock;
     public GameObject DoorBlock;
     public GameObject NPC;
+    public GameObject CanvasDialogues;
 
     private void Start()
     {
@@ -25,6 +26,10 @@ public class TutorialManager : MonoBehaviour
         if(!NPC.activeSelf)
         {
             DoorBlock.SetActive(false);
+        }
+        if (!CanvasDialogues.activeSelf)
+        {
+            NPC.SetActive(false);
         }
     }
 
