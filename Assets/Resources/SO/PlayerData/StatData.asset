@@ -21,7 +21,7 @@ MonoBehaviour:
   StatPoint: 35
   Conditions:
   - StatName: Health
-    CurValue: 0
+    CurValue: 63.37061
     MaxValue: 1000
     StartValue: 1
     RegenRate: -2
