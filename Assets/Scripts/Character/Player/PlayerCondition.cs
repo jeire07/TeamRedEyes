@@ -40,6 +40,7 @@ public class PlayerCondition : Singleton<PlayerCondition>
     public Condition Infection { get; set; }
 
     public float NoFoodWaterHealthDecay { get; set; }
+    public PlayerStateMachine playerStateMachine;
 
     private void Start()
     {
@@ -98,6 +99,6 @@ public class PlayerCondition : Singleton<PlayerCondition>
 
     public void IsDead()
     {
-        //사망애니메이션 하고 몇초뒤에 다시시작?, 게임이 끝나는?
+        playerStateMachine.ChangeState(new PlayerDeadState(playerStateMachine));
     }
 }

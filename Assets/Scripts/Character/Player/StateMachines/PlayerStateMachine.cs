@@ -27,6 +27,8 @@ public class PlayerStateMachine : StateMachine
     public float JumpForce { get; set; }
     public Transform MainCameraTransform { get; set; }
 
+    public bool IsDead { get; set; }
+
     public PlayerStateMachine(Player player)
     {
         this.Player = player;
@@ -40,7 +42,6 @@ public class PlayerStateMachine : StateMachine
         SitState = new PlayerSitState(this);
         ComboAttackState = new PlayerComboAttackState(this);
 
-
         MainCameraTransform = Camera.main.transform;
 
         MovementSpeed = player.Data.GroundData.BaseSpeed;
@@ -49,6 +50,7 @@ public class PlayerStateMachine : StateMachine
 
         IsRolling = false;
         IsSitting = false;
+        IsDead = false;
     }
  
 }
