@@ -106,13 +106,12 @@ public class EnemyAttackState : EnemyBaseState
         if (distanceToPlayer <= stateMachine.Enemy.Data.AttackRange)
         {
             // 공격이 성공했다고 가정
-            Condition[] conditions = GameManager.Instance.StatData.Conditions;
+            Condition[] conditions = PlayerCondition.Instance.Conditions;
             if (conditions != null)
             {
                 conditions[(int)ConditionType.Infection].Add(2);
-                conditions[(int)ConditionType.Health].Add(-5);
+                conditions[(int)ConditionType.Health].Add(-5);  // To Do apply monster's level
             }
         }
-
     }
 }

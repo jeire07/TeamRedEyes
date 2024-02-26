@@ -14,9 +14,9 @@ public class EnemyHandDamage : MonoBehaviour
             PlayerCondition playerCondition = other.GetComponent<PlayerCondition>();
             if (playerCondition != null)
             {
-                // 체력감소 감염도증가 
-                playerCondition.Health.Add(-damageAmount);
-                playerCondition.Infection.Add(infectionAmount);
+                // 체력감소 감염도증가
+                playerCondition.Conditions[(int)ConditionType.Health].Add(-damageAmount);
+                playerCondition.Conditions[(int)ConditionType.Infection].Add(infectionAmount);
 
                 // 밀어내기 효과
                 Vector3 pushDirection = other.transform.position - transform.position;

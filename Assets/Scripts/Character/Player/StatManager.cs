@@ -11,7 +11,7 @@ public class StatManager : Singleton<StatManager>
 
     private void Start()
     {
-        StatData = Resources.Load<PlayerStatData>("SO/PlayerData/StatData");
+        StatData = GameManager.Instance.StatData;
     }
 
     private void OnDisable()

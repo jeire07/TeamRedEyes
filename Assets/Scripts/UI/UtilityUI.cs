@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,10 +16,13 @@ public enum UtilButton
 public class UtilityUI : MonoBehaviour
 {
     private Button[] _buttons;
+    private GameObject[] _panels;
+    private GameObject _currentPanel;
 
     void Start()
     {
         Transform buttonParent = transform.Find("Buttons");
+        Transform panelParent = transform.Find("Panels");
         
         for (int i = 0; i < buttonParent.childCount; i++)
         {
@@ -31,15 +35,25 @@ public class UtilityUI : MonoBehaviour
                 _buttons[i].onClick.AddListener(() => OnButtonClick((UtilButton)i));
             }
         }
-    }
-    
-    void Update()
-    {
-        
+
+        for (int i = 0; i < buttonParent.childCount; i++)
+        {
+            Transform childTransform = buttonParent.GetChild(i);
+            GameObject panel = childTransform.GetComponent<GameObject>();
+
+            if (panel != null)
+            {
+                _panels[i] = panel;
+            }
+        }
     }
 
-    private void OnButtonClick(UtilButton buttonType)
+    //public void OnButtonClick(int buttonType)
+    public void OnButtonClick(UtilButton type)
     {
-        
+
+
+        _currentPanel.SetActive(false);
+
     }
 }
