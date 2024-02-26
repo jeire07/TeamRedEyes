@@ -26,14 +26,12 @@ public class ItemSlot : MonoBehaviour
 
     public ItemData Item;
     public int Quantity;
-    private PlayerCondition _Condition;
 
     private PlayerStatData _PlayerStat;
 
     private void Awake()
     {
         GameObject player = GameObject.Find("Player");
-        _Condition = player.GetComponent<PlayerCondition>();
         EquipIcon.SetActive(false);
     }
 
@@ -58,7 +56,7 @@ public class ItemSlot : MonoBehaviour
         StatName.text = Item.StatName;
         StatValue.text = Item.StatValue;
         ItemIcon.sprite = Item.Icon;
-        QuantityText.text = Quantity > 1 ? $"X {Quantity.ToString()}" : "X 1";
+        QuantityText.text = Quantity > 1 ? $"X {Quantity}" : "X 1";
     }
 
     public void Set()
@@ -73,20 +71,23 @@ public class ItemSlot : MonoBehaviour
         {
             for (int i = 0; i < Item.Consumables.Length; i++)
             {
-
-
                 switch (Item.Consumables[i].Type)
                 {
                     case ConsumableType.Health:
-                        _Condition.RecoverHP(Item.Consumables[i].Value); break;
+                        _PlayerStat.Conditions[(int)ConditionType.Health].Add(Item.Consumables[i].Value);
+                        break;
                     case ConsumableType.Hunger:
-                        _Condition.RecoverHunger(Item.Consumables[i].Value); break;
+                        _PlayerStat.Conditions[(int)ConditionType.Hunger].Add(Item.Consumables[i].Value);
+                        break;
                     case ConsumableType.Thirsty:
-                        _Condition.RecoverThirsty(Item.Consumables[i].Value); break;
+                        _PlayerStat.Conditions[(int)ConditionType.Thirsty].Add(Item.Consumables[i].Value);
+                        break;
                     case ConsumableType.Infection:
-                        _Condition.TakeInfection(Item.Consumables[i].Value); break;
+                        _PlayerStat.Conditions[(int)ConditionType.Infection].Add(Item.Consumables[i].Value);
+                        break;
                     case ConsumableType.Immunity:
-                        _Condition.TakeImmunity(Item.Consumables[i].Value); break;
+                        _PlayerStat.Conditions[(int)ConditionType.Infection].Add(-1 * Item.Consumables[i].Value);
+                        break;
                 }
             }
 
