@@ -84,11 +84,11 @@ public class Enemy : MonoBehaviour
         currentHealth -= damage;
         Debug.Log($"Enemy health: {currentHealth}/{Data.MaxHealth}");
 
-        stateMachine.CurrentState.TakeDamage((int)damage); // 캐스팅 추가
-
         if (currentHealth <= 0)
         {
-            // 적 사망 처리...
+            Debug.Log("Enemy is dead.");
+            stateMachine.ChangeState(stateMachine.DeadState); // 상태 머신을 통해 사망 상태로 전환
         }
+       
     }
 }

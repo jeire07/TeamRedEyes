@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     public CharacterController Controller { get; private set; }
     public ForceReceiver ForceReceiver { get; private set; }
 
-    private PlayerStateMachine stateMachine;
+    public PlayerStateMachine StateMachine;
 
     private void Awake()
     {
@@ -33,13 +33,13 @@ public class Player : MonoBehaviour
         Controller = GetComponent<CharacterController>();
         ForceReceiver = GetComponent<ForceReceiver>();
 
-        stateMachine = new PlayerStateMachine(this);
+        StateMachine = new PlayerStateMachine(this);
     }
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        stateMachine.ChangeState(stateMachine.IdleState);
+        StateMachine.ChangeState(StateMachine.IdleState);
         if (weapon != null)
         {
             weapon.SetPlayer(this);
@@ -48,13 +48,13 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        stateMachine.HandleInput();
-        stateMachine.Update();
+        StateMachine.HandleInput();
+        StateMachine.Update();
     }
 
     private void FixedUpdate()
     {
-        stateMachine.PhysicsUpdate();
+        StateMachine.PhysicsUpdate();
     }
 
     public int GetCurrentAttack()
