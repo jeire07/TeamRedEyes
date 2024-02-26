@@ -1325,6 +1325,37 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.4724011, y: 0.048154786, z: 0.00000047683716}
     m_Extent: {x: 0.40372226, y: 0.21734391, z: 0.9731959}
   m_DirtyAABB: 0
+--- !u!1 &2554701007993007245
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7709498774169655248}
+  m_Layer: 0
+  m_Name: DropPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7709498774169655248
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2554701007993007245}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.13}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 45996615817075903}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2557058938078432723
 GameObject:
   m_ObjectHideFlags: 0
@@ -1841,6 +1872,7 @@ Transform:
   m_Children:
   - {fileID: 2189165697742768765}
   - {fileID: 5420215504711834959}
+  - {fileID: 7709498774169655248}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1912,42 +1944,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16d51bad99744f140a63a2a43656fa05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health:
-    CurValue: 100
-    MaxValue: 100
-    StartValue: 100
-    RegenRate: 0
-    DecayRate: 0
-    UiBar: {fileID: 0}
-  Hunger:
-    CurValue: 100
-    MaxValue: 300
-    StartValue: 300
-    RegenRate: 0
-    DecayRate: 1
-    UiBar: {fileID: 0}
-  Thirsty:
-    CurValue: 100
-    MaxValue: 300
-    StartValue: 300
-    RegenRate: 0
-    DecayRate: 1
-    UiBar: {fileID: 0}
-  Stamina:
-    CurValue: 100
-    MaxValue: 100
-    StartValue: 100
-    RegenRate: 0
-    DecayRate: 0
-    UiBar: {fileID: 0}
-  Infection:
-    CurValue: 0
-    MaxValue: 100
-    StartValue: 0
-    RegenRate: 0
-    DecayRate: 0
-    UiBar: {fileID: 0}
-  NoFoodWaterHealthDecay: 2
 --- !u!114 &3304560101707923775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1988,7 +1984,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  DropPosition: {fileID: 0}
+  DropPosition: {fileID: 7709498774169655248}
 --- !u!114 &8217903501212962610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2001,7 +1997,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0992f0fd465d5a4a8e5c442408b3ca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerCondition: {fileID: 1511270498113188227}
 --- !u!114 &8539193732607330056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2077,9 +2072,37 @@ MonoBehaviour:
     m_ActionId: 3dbe87eb-c3b0-48df-8b3d-dc1ec61701db
     m_ActionName: PlayerUtillity/Look[/Mouse/delta]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 34344747-ac9d-4f8b-bda7-454adb2e82c4
-    m_ActionName: PlayerUtillity/MouseClick[/Mouse/leftButton]
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d793575b-a1ae-4afa-a24c-883fcfa9ab20
+    m_ActionName: PlayerUtillity/Dialog[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: cfd24418-18ea-46c3-99ec-1864277db553
+    m_ActionName: PlayerUtillity/Help[/Keyboard/f1]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerUtillity
@@ -2097,6 +2120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51e758576dd9e6f469f5030421e9b2c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStatUpdateEvent:
+    m_PersistentCalls:
+      m_Calls: []
   StatData: {fileID: 11400000, guid: 18ba5b258c352df40ab7989ea2ed0686, type: 2}
   EnemySO: {fileID: 11400000, guid: 961f4f4436abc2741b89b8b2f9a545c9, type: 2}
 --- !u!114 &8761460662597425294
@@ -3054,7 +3080,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6315566610020146998}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.8, z: 0.1}
+  m_LocalPosition: {x: 0, y: 0.8, z: 0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

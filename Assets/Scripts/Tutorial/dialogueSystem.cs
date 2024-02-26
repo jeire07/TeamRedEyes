@@ -8,7 +8,6 @@ public class dialogueSystem: MonoBehaviour
     public TMP_Text dialogueText;
     public QuestData[] questData;
     public GameObject CanvasDialogues;
-    public GameObject NPC;
     
     private int currentQuestIndex = 0;
     private int currentDialogueIndex = 0;
@@ -24,10 +23,6 @@ public class dialogueSystem: MonoBehaviour
         if (context.phase == InputActionPhase.Started)
         {
             UpdateQuestDialogue();
-        }
-        if (!CanvasDialogues.activeSelf)
-        {
-            NPC.SetActive(false);
         }
     }
 
