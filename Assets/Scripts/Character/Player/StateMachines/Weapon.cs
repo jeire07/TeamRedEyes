@@ -23,6 +23,7 @@ public class Weapon : MonoBehaviour
         if (other.CompareTag("Enemy") && player != null)
         {
             float totalDamage = BaseDamage + player.GetCurrentAttack();
+            //Debug.Log($"Weapon Damage: {BaseDamage}, Player Attack: {player.GetCurrentAttack()}, Total Damage: {totalDamage}");
             // 적에게 데미지를 적용합니다.
             Enemy enemy = other.GetComponent<Enemy>();
             if (enemy != null)

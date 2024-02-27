@@ -79,8 +79,15 @@ public class EnemyBaseState : IState
     private void ApplyMovement(Vector3 direction)
     {
         float movementSpeed = GetMovementSpeed();
+        // 지면에 닿아 있지 않을 경우 중력 적용
+        if (!stateMachine.Enemy.Controller.isGrounded)
+        {
+            stateMachine.Enemy.ForceReceiver.AddForce(Physics.gravity);
+        }
+
+        // 중력 영향을 받는 이동력 계산
         Vector3 movement = direction * movementSpeed + stateMachine.Enemy.ForceReceiver.Movement;
-        movement.y = 0; // y�� �̵� ����
+        movement.y += stateMachine.Enemy.ForceReceiver.Movement.y; // 중력 값 적용
         stateMachine.Enemy.Controller.Move(movement * Time.deltaTime);
     }
 

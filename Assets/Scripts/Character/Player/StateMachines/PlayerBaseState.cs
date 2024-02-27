@@ -31,7 +31,10 @@ using UnityEngine.InputSystem;
         ReadMovementInput();
     }
 
-   
+    public virtual void FixedUpdate()
+    {
+
+    }
 
     public virtual void PhysicsUpdate()
     {

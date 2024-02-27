@@ -18,6 +18,7 @@ public class Condition
     public float StartValue;
     public float RegenRate;
 
+
     public void Add(float amount)
     {
         CurValue = Mathf.Clamp(CurValue + amount, 0, MaxValue);
@@ -32,10 +33,13 @@ public class Condition
 public class PlayerCondition : Singleton<PlayerCondition>
 {
     public Condition[] Conditions { get; set; }
+    public PlayerStateMachine playerStateMachine;
+    private bool IsDead = false;
 
     private void Awake()
     {
         Conditions = Resources.Load<PlayerStatData>("SO/PlayerData/StatData").Conditions;
+        playerStateMachine = GetComponent<Player>().StateMachine;
     }
 
     private void Update()
@@ -48,12 +52,16 @@ public class PlayerCondition : Singleton<PlayerCondition>
         if (Conditions[(int)ConditionType.Hunger].CurValue <= 0.0f || Conditions[(int)ConditionType.Thirsty].CurValue <= 0.0f)
             Conditions[(int)ConditionType.Health].RegenRate = -2;
 
-        if (Conditions[(int)ConditionType.Health].CurValue == 0.0f)
+        if (Conditions[(int)ConditionType.Health].CurValue <= 0.0f && IsDead == false)
+        {
+            IsDead = true;
             SetDead();
+        }
     }
 
     public void SetDead()
     {
-        //stateMachine의 isDead를 true로 바꿔주는 코드
+        Debug.Log("사망");
+        playerStateMachine.ChangeState(playerStateMachine.DeadState);
     }
 }
