@@ -72,11 +72,6 @@ public class StatUI : MonoBehaviour
     {
         PlayerStatData stat = GameManager.Instance.StatData;
 
-        Debug.Log($"{stat.Level}");
-        Debug.Log($"{stat.CurExp}");
-        Debug.Log($"{stat.MaxExp}");
-        Debug.Log($"{stat.StatPoint}");
-
         _basicStatTexts[0].text = $"Lv. {stat.Level}";
         _basicStatTexts[1].text = $"{stat.CurExp} / {stat.MaxExp}";
         _basicStatTexts[2].text = stat.StatPoint.ToString();
