@@ -12,7 +12,7 @@ public class GameManager : Singleton<GameManager>
         StatData = Resources.Load<PlayerStatData>("SO/PlayerData/StatData");
     }
 
-    private void Start()
+    public void OnEnable()
     {
         NewGame();
     }
