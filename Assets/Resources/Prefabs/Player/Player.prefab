@@ -1904,6 +1904,7 @@ MonoBehaviour:
     comboattackParameterName: ComboAttack
     smashParameterName: Smash
     defenseParameterName: Defense
+    IsDeadParameterName: IsDead
   playerStatData: {fileID: 11400000, guid: 18ba5b258c352df40ab7989ea2ed0686, type: 2}
   weapon: {fileID: 4237444110266948966}
 --- !u!114 &3400866105781261090
@@ -3205,6 +3206,15 @@ MonoBehaviour:
   minXLook: -80
   maxXLook: 80
   lookSensitivity: 3
+  lookAction:
+    m_Name: Look
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: b2daa48d-f180-4561-aefc-2336cec52057
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   canLook: 1
 --- !u!114 &3191048499600136040
 MonoBehaviour:

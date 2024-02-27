@@ -3904,12 +3904,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanvasParent: {fileID: 0}
-  FrequentUI: {fileID: 1689486493}
-  NotFrequentUI: {fileID: 1796425682}
-  Panels:
-  - {fileID: 1900812470}
-  - {fileID: 0}
-  - {fileID: 32835731}
+  FrequentUI: {fileID: 0}
+  NotFrequentUI: {fileID: 0}
+  Panels: []
 --- !u!114 &799994709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11998,12 +11995,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7839d9428013a940b9908b90205a02b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1900812470 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7553768544958465469, guid: fc53f48515ff2aa46ab4a5deab47338d,
-    type: 3}
-  m_PrefabInstance: {fileID: 197332936074263069}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1900812471 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6770107225789352465, guid: fc53f48515ff2aa46ab4a5deab47338d,
