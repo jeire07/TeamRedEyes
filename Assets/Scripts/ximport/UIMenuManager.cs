@@ -294,10 +294,7 @@ public class UIMenuManager : MonoBehaviour
 				loadPromptText.text = "Press " + userPromptKey.ToString().ToUpper() + " to continue";
 				loadingBar.value = 1;
 
-				if (Input.GetKeyDown(userPromptKey))
-				{
-					operation.allowSceneActivation = true;
-				}
+				operation.allowSceneActivation = true;
             }
 			else if(operation.progress >= 0.9f && !waitForInput)
 			{

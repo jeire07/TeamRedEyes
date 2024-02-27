@@ -200,7 +200,7 @@ public class UISettingsManager : MonoBehaviour
 	}
 
 	public void Update (){
-		//sliderValue = musicSlider.GetComponent<Slider>().value;
+		sliderValue = musicSlider.GetComponent<Slider>().value;
 		sliderValueXSensitivity = sensitivityXSlider.GetComponent<Slider>().value;
 		sliderValueYSensitivity = sensitivityYSlider.GetComponent<Slider>().value;
 		sliderValueSmoothing = mouseSmoothSlider.GetComponent<Slider>().value;
@@ -218,9 +218,10 @@ public class UISettingsManager : MonoBehaviour
 	}
 
 	public void MusicSlider (){
-		//PlayerPrefs.SetFloat("MusicVolume", sliderValue);
+		PlayerPrefs.SetFloat("MusicVolume", sliderValue);
 		PlayerPrefs.SetFloat("MusicVolume", musicSlider.GetComponent<Slider>().value);
-	}
+		CheckMusicVolume.Instance.UpdateVolume();
+    }
 
 	public void SensitivityXSlider (){
 		PlayerPrefs.SetFloat("XSensitivity", sliderValueXSensitivity);

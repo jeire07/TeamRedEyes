@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class CheckMusicVolume : MonoBehaviour
+public class CheckMusicVolume : Singleton<CheckMusicVolume>
 {
 	public void  Start ()
 	{
