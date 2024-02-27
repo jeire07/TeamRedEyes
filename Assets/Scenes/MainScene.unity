@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 1686524342}
   m_IndirectSpecularColor: {r: 0.18047394, g: 0.22594184, b: 0.3070311, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -6686,6 +6686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cd8c957d57312f4ebc5104fa8d8720f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StatData: {fileID: 0}
   PlayerCharacter: {fileID: 946963578}
 --- !u!4 &932991106
 Transform:
