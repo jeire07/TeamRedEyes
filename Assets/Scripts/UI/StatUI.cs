@@ -10,18 +10,6 @@ public class StatUI : MonoBehaviour
 
     [SerializeField] private Transform basicTextParent;
 
-
-    private void OnEnable()
-    {
-        Cursor.lockState = CursorLockMode.None;
-        ToggleButtonState();
-    }
-
-    private void OnDisable()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-    }
-
     private void Start()
     {
         //Transform basicTextParent = transform.Find("BasicInfo");
@@ -71,11 +59,6 @@ public class StatUI : MonoBehaviour
     private void UpdateStat()
     {
         PlayerStatData stat = GameManager.Instance.StatData;
-
-        Debug.Log($"{stat.Level}");
-        Debug.Log($"{stat.CurExp}");
-        Debug.Log($"{stat.MaxExp}");
-        Debug.Log($"{stat.StatPoint}");
 
         _basicStatTexts[0].text = $"Lv. {stat.Level}";
         _basicStatTexts[1].text = $"{stat.CurExp} / {stat.MaxExp}";

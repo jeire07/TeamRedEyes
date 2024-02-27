@@ -21,9 +21,9 @@ MonoBehaviour:
   StatPoint: 0
   Conditions:
   - StatName: Health
-    CurValue: 1000
+    CurValue: 10
     MaxValue: 1000
-    StartValue: 1000
+    StartValue: 10
     RegenRate: 0
   - StatName: Stamina
     CurValue: 800

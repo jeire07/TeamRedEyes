@@ -39,6 +39,10 @@ public class PlayerCondition : Singleton<PlayerCondition>
     private void Awake()
     {
         Conditions = Resources.Load<PlayerStatData>("SO/PlayerData/StatData").Conditions;
+    }
+
+    private void Start()
+    {
         playerStateMachine = GetComponent<Player>().StateMachine;
     }
 

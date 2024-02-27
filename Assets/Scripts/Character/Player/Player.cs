@@ -38,7 +38,6 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
         StateMachine.ChangeState(StateMachine.IdleState);
         if (weapon != null)
         {

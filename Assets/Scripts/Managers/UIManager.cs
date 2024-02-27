@@ -195,8 +195,14 @@ public class UIManager : Singleton<UIManager>
     public void ToggleStatPanel()
     {
         if (PanelDict[PanelType.Stat].activeInHierarchy)
+        {
             HidePanel(PanelType.Stat);
+            Cursor.lockState = CursorLockMode.Locked;
+        }
         else
+        {
             ShowPanel(PanelType.Stat);
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 }
