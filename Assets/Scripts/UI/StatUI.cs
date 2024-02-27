@@ -10,18 +10,6 @@ public class StatUI : MonoBehaviour
 
     [SerializeField] private Transform basicTextParent;
 
-
-    private void OnEnable()
-    {
-        Cursor.lockState = CursorLockMode.None;
-        ToggleButtonState();
-    }
-
-    private void OnDisable()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-    }
-
     private void Start()
     {
         //Transform basicTextParent = transform.Find("BasicInfo");

@@ -91,7 +91,8 @@ public class UIMenuManager : MonoBehaviour
 		mainMenu.SetActive(true);
 
 		SetThemeColors();
-	}
+        Cursor.lockState = CursorLockMode.None;
+    }
 
 	void SetThemeColors()
 	{
