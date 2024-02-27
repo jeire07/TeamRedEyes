@@ -27,6 +27,7 @@ public class RestUI : MonoBehaviour
     public void OnEnable()
     {
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
         SetButtons();
 
@@ -41,7 +42,9 @@ public class RestUI : MonoBehaviour
     public void OnDisable()
     {
         this.gameObject.SetActive(false);
+
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         TimeManager.Instance.SetGameSpeed(1f);
     }

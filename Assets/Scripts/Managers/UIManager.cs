@@ -198,11 +198,13 @@ public class UIManager : Singleton<UIManager>
         {
             HidePanel(PanelType.Stat);
             Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
         else
         {
             ShowPanel(PanelType.Stat);
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 }
