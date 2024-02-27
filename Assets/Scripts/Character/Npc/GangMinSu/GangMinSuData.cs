@@ -1,26 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class GangMinSuData : MonoBehaviour
 {
    // public PlayerInventory playerInventory;
-    public string NpcName = "°­¹Î¼ö";
+    public string NpcName = "ê°•ë¯¼ìˆ˜";
     public string[] Dialogues = new string[]
     {
-        //Äù½ºÆ®³»¿ë ÀÛ¼º
+
     };
 
     public void interact()
     {
-        //´ëÈ­UIÀÛ¼º Ãß°¡ÇØ¾ßµÊ
         DisplayDialogues();
     }
 
     private void DisplayDialogues()
     {
-        //´ëÈ­³»¿ë Ç¥±â
         foreach (var dialogue in Dialogues)
         {
 

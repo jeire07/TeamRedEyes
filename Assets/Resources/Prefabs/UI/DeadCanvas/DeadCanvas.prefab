@@ -32,7 +32,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7975734544782426780}
+  - {fileID: 6463359227567653834}
   - {fileID: 5299030492291439550}
   - {fileID: 5888706253536633842}
   m_Father: {fileID: 0}
@@ -64,7 +64,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &4127053785855941914
 MonoBehaviour:
@@ -429,7 +429,7 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1793877663770036953}
   m_SourcePrefab: {fileID: 100100000, guid: 038d02cd915a2d64fa178a82a077946c, type: 3}
---- !u!1 &2898128301848824890 stripped
+--- !u!1 &2244427465198718316 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 461575907677783403, guid: 038d02cd915a2d64fa178a82a077946c,
     type: 3}
@@ -441,13 +441,13 @@ CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2898128301848824890}
+  m_GameObject: {fileID: 2244427465198718316}
   m_Enabled: 1
   m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!224 &7975734544782426780 stripped
+--- !u!224 &6463359227567653834 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4679346450376051661, guid: 038d02cd915a2d64fa178a82a077946c,
     type: 3}

@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: StatData
   m_EditorClassIdentifier: 
   Name: Han
-  Level: 7
-  CurExp: 5
-  MaxExp: 60
+  Level: 11
+  CurExp: 20
+  MaxExp: 150
   Atk: 100
   Def: 0
-  StatPoint: 35
+  StatPoint: 55
   Conditions:
   - StatName: Health
-    CurValue: 63.37061
+    CurValue: 1000
     MaxValue: 1000
-    StartValue: 1
+    StartValue: 1000
     RegenRate: -2
   - StatName: Stamina
     CurValue: 800
@@ -31,17 +31,17 @@ MonoBehaviour:
     StartValue: 800
     RegenRate: 0
   - StatName: Hunger
-    CurValue: 0
+    CurValue: 300
     MaxValue: 300
-    StartValue: 0
+    StartValue: 300
     RegenRate: -1
   - StatName: Thirsty
-    CurValue: 0
+    CurValue: 300
     MaxValue: 300
     StartValue: 300
     RegenRate: -1
   - StatName: Infection
     CurValue: 100
     MaxValue: 100
-    StartValue: 0
+    StartValue: 100
     RegenRate: 0
