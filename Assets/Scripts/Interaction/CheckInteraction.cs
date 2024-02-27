@@ -7,15 +7,18 @@ public class CheckInteraction : MonoBehaviour
     #region SerializeField
     [SerializeField] private float _checkRate = 0.05f;
     [SerializeField] private float _maxDistance = 3.0f;
+
+    [SerializeField] private TMP_Text _interactText;
+    [SerializeField] private GameObject _curGameobject;
     #endregion
 
     #region private field
-    private TMP_Text _interactText;
-    private GameObject _curGameobject;
+
     private Camera _camera;
 
     private IInteractable _curInteractable;
     private LayerMask _layerMask;
+    private LayerMask _NotInteractablelayerMask;
 
     private float _lastCheckTime;
     #endregion
@@ -24,10 +27,11 @@ public class CheckInteraction : MonoBehaviour
     void Start()
     {
         _camera = Camera.main;
-        _layerMask = LayerMask.GetMask("Interactable", "NotInteractable");
+        _layerMask = LayerMask.GetMask("Interactable");
+        _NotInteractablelayerMask = LayerMask.GetMask("NotInteractable");
 
-        Transform canvas = UIManager.Instance.UIDict[CanvasType.NotFrequent].GetComponent<Transform>();
-        _interactText = canvas.Find("InteractionText").GetComponent<TMP_Text>();
+        //Transform canvas = UIManager.Instance.UIDict[CanvasType.NotFrequent].GetComponent<Transform>();
+        //_interactText = canvas.Find("InteractionText").GetComponent<TMP_Text>();
     }
 
     // Update is called once per frame
@@ -40,7 +44,13 @@ public class CheckInteraction : MonoBehaviour
             Ray ray = _camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, _maxDistance, _layerMask))
+            if(Physics.Raycast(ray, out hit, _maxDistance, _NotInteractablelayerMask))
+            {
+                _curGameobject = null;
+                _curInteractable = null;
+                _interactText.enabled = false;
+            }
+            else if (Physics.Raycast(ray, out hit, _maxDistance, _layerMask))
             {
                 if (hit.collider.gameObject != _curGameobject)
                 {

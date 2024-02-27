@@ -12,6 +12,11 @@ public class GameManager : Singleton<GameManager>
         StatData = Resources.Load<PlayerStatData>("SO/PlayerData/StatData");
     }
 
+    private void Start()
+    {
+        NewGame();
+    }
+
     public void NewGame()
     {
         StatData.Name = _initData.Name;
