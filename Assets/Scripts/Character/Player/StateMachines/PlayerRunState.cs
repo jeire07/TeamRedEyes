@@ -13,6 +13,7 @@ public class PlayerRunState : PlayerGroundState
     {
         StateMachine.MovementspeedModifier = groundData.RunSpeedModifier;
         base.Enter();
+        Debug.Log("´Þ¸®±â");
         StartAnimation(StateMachine.Player.AnimationData.RunParameterHash);
         StateMachine.Player.Input.PlayerActions.Run.canceled += OnRunCanceled;
     }

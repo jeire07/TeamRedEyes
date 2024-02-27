@@ -166,7 +166,7 @@ using UnityEngine.InputSystem;
     }
 
     protected void StopAnimation(int animationHash)
-    {
+    {  
         StateMachine.Player.Animator.SetBool(animationHash, false);
     }
 
