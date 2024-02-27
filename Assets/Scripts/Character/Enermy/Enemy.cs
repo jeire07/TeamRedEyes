@@ -53,22 +53,10 @@ public class Enemy : MonoBehaviour
         if (other.CompareTag("Weapon"))
         {
             float damage = other.GetComponent<Weapon>().Damage;
-            ReceiveDamage(damage);
+            TakeDamage(damage);
         }
     }
-    public void ReceiveDamage(float damage)
-    {
-        currentHealth -= damage;
-        Debug.Log($"Enemy health: {currentHealth}/{Data.MaxHealth}");
-
-        HandleHealthChanged(currentHealth / Data.MaxHealth);
-
-        if (currentHealth <= 0)
-        {
-            stateMachine.ChangeState(stateMachine.DeadState);
-            StatManager.Instance.GainExp();
-        }
-    }
+    
     private void HandleHealthChanged(float healthPercentage)
     {
 
@@ -84,11 +72,13 @@ public class Enemy : MonoBehaviour
         currentHealth -= damage;
         Debug.Log($"Enemy health: {currentHealth}/{Data.MaxHealth}");
 
+        HandleHealthChanged(currentHealth / Data.MaxHealth);
+
         if (currentHealth <= 0)
         {
-            Debug.Log("Enemy is dead.");
-            stateMachine.ChangeState(stateMachine.DeadState); // 상태 머신을 통해 사망 상태로 전환
+            stateMachine.ChangeState(stateMachine.DeadState);
+            StatManager.Instance.GainExp();
         }
-       
     }
+
 }
