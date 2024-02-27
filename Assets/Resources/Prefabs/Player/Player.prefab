@@ -1871,7 +1871,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2189165697742768765}
-  - {fileID: 5420215504711834959}
   - {fileID: 7709498774169655248}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1904,6 +1903,7 @@ MonoBehaviour:
     comboattackParameterName: ComboAttack
     smashParameterName: Smash
     defenseParameterName: Defense
+    IsDeadParameterName: IsDead
   playerStatData: {fileID: 11400000, guid: 18ba5b258c352df40ab7989ea2ed0686, type: 2}
   weapon: {fileID: 4237444110266948966}
 --- !u!114 &3400866105781261090
@@ -1958,6 +1958,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _checkRate: 0.05
   _maxDistance: 10
+  _interactText: {fileID: 0}
+  _curGameobject: {fileID: 0}
 --- !u!114 &2763513100464326619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2103,6 +2105,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: cfd24418-18ea-46c3-99ec-1864277db553
     m_ActionName: PlayerUtillity/Help[/Keyboard/f1]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8412a68c-4524-4fbd-b59a-f999cf917f3e
+    m_ActionName: PlayerUtillity/OpenStat[/Keyboard/f2]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerUtillity
@@ -3079,12 +3085,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6315566610020146998}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.8, z: 0.2}
+  m_LocalRotation: {x: 0.50573224, y: -0.49420133, z: 0.5057322, w: 0.49420133}
+  m_LocalPosition: {x: -0.012775272, y: -0.24329711, z: 0.030000027}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 45996615817075903}
+  m_Father: {fileID: 8067203714088446100}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &5224960664648258563
@@ -3202,9 +3208,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ff489907f667204bb4610845a6e9ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minXLook: -80
-  maxXLook: 80
-  lookSensitivity: 3
+  minXLook: 10
+  maxXLook: 170
+  lookSensitivity: 10
+  lookAction:
+    m_Name: Look
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 916297f4-ebf7-48ab-ad17-c6c801580ef0
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   canLook: 1
 --- !u!114 &3191048499600136040
 MonoBehaviour:
@@ -3219,6 +3234,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnLookEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnToggleCanvasEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &6405839883145849573
@@ -3533,7 +3551,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5420215504711834959}
   m_Father: {fileID: 437290903947525175}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
