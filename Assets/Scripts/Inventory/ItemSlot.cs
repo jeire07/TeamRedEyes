@@ -27,11 +27,10 @@ public class ItemSlot : MonoBehaviour
     public ItemData Item;
     public int Quantity;
 
-    private PlayerStatData _PlayerStat;
+    private Condition[] _conditions;
 
     private void Awake()
     {
-        GameObject player = GameObject.Find("Player");
         EquipIcon.SetActive(false);
     }
 
@@ -67,6 +66,8 @@ public class ItemSlot : MonoBehaviour
 
     public void OnUseButton()
     {
+        _conditions = PlayerCondition.Instance.Conditions;
+
         if (Item.Type == ItemType.Consumable)
         {
             for (int i = 0; i < Item.Consumables.Length; i++)
@@ -74,19 +75,19 @@ public class ItemSlot : MonoBehaviour
                 switch (Item.Consumables[i].Type)
                 {
                     case ConsumableType.Health:
-                        _PlayerStat.Conditions[(int)ConditionType.Health].Add(Item.Consumables[i].Value);
+                        _conditions[(int)ConditionType.Health].Add(Item.Consumables[i].Value);
                         break;
                     case ConsumableType.Hunger:
-                        _PlayerStat.Conditions[(int)ConditionType.Hunger].Add(Item.Consumables[i].Value);
+                        _conditions[(int)ConditionType.Hunger].Add(Item.Consumables[i].Value);
                         break;
                     case ConsumableType.Thirsty:
-                        _PlayerStat.Conditions[(int)ConditionType.Thirsty].Add(Item.Consumables[i].Value);
+                        _conditions[(int)ConditionType.Thirsty].Add(Item.Consumables[i].Value);
                         break;
                     case ConsumableType.Infection:
-                        _PlayerStat.Conditions[(int)ConditionType.Infection].Add(Item.Consumables[i].Value);
+                        _conditions[(int)ConditionType.Infection].Add(Item.Consumables[i].Value);
                         break;
                     case ConsumableType.Immunity:
-                        _PlayerStat.Conditions[(int)ConditionType.Infection].Add(-1 * Item.Consumables[i].Value);
+                        _conditions[(int)ConditionType.Infection].Add(-1 * Item.Consumables[i].Value);
                         break;
                 }
             }
