@@ -12,6 +12,10 @@ public class InventoryManager : Singleton<InventoryManager>
 
     public void OnInventory(InputAction.CallbackContext context)
     {
+        if (UIManager.Instance.GetIsOpened(PanelType.Rest) ||
+            UIManager.Instance.GetIsOpened(PanelType.Stat))
+            return;
+
         if (context.phase == InputActionPhase.Started)
         {
             IsOpened = !IsOpened;

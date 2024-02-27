@@ -2,15 +2,19 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StatusUI : MonoBehaviour
+public class StatUI : MonoBehaviour
 {
     [SerializeField] private Button[] _buttons;
     [SerializeField] private TMP_Text[] _basicStatTexts;
     [SerializeField] private TMP_Text[] _statTexts;
 
+    [SerializeField] private Transform basicTextParent;
+
+
     private void OnEnable()
     {
         Cursor.lockState = CursorLockMode.None;
+        ToggleButtonState();
     }
 
     private void OnDisable()
@@ -20,21 +24,21 @@ public class StatusUI : MonoBehaviour
 
     private void Start()
     {
-        Transform basicTextParent = transform.Find("BasicInfo");
+        //Transform basicTextParent = transform.Find("BasicInfo");
 
-        _basicStatTexts = new TMP_Text[basicTextParent.childCount];
-        _statTexts = new TMP_Text[transform.childCount - 2];
+        //_basicStatTexts = new TMP_Text[basicTextParent.childCount];
+        //_statTexts = new TMP_Text[transform.childCount - 1];
 
-        for (int index = 0; index < basicTextParent.childCount; index++)
-        {
-            _basicStatTexts[index] = basicTextParent.GetChild(index).GetComponent<TMP_Text>();
-        }
+        //for (int index = 0; index < basicTextParent.childCount; index++)
+        //{
+        //    _basicStatTexts[index] = basicTextParent.GetChild(index).GetComponent<TMP_Text>();
+        //}
 
-        for (int index = 1; index < transform.childCount; index++)
-        {
-            _statTexts[index - 1] = basicTextParent.GetChild(index).Find("Value").GetComponent<TMP_Text>();
-        }
-
+        //for (int index = 1; index < transform.childCount; index++)
+        //{
+        //    _statTexts[index - 1] = basicTextParent.GetChild(index).Find("Value").GetComponent<TMP_Text>();
+        //}
+        UpdateStat();
         StatManager.Instance.OnStatUpdateEvent.AddListener(UpdateStat);
         StatManager.Instance.OnStatUpdateEvent.AddListener(ToggleButtonState);
     }
@@ -59,13 +63,23 @@ public class StatusUI : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        UpdateStat();
+    }
+
     private void UpdateStat()
     {
         PlayerStatData stat = GameManager.Instance.StatData;
 
-        _basicStatTexts[1].text = stat.Level.ToString();
-        _basicStatTexts[2].text = $"{stat.CurExp} / {stat.MaxExp}";
-        _basicStatTexts[1].text = stat.StatPoint.ToString();
+        Debug.Log($"{stat.Level}");
+        Debug.Log($"{stat.CurExp}");
+        Debug.Log($"{stat.MaxExp}");
+        Debug.Log($"{stat.StatPoint}");
+
+        _basicStatTexts[0].text = $"Lv. {stat.Level}";
+        _basicStatTexts[1].text = $"{stat.CurExp} / {stat.MaxExp}";
+        _basicStatTexts[2].text = stat.StatPoint.ToString();
 
         _statTexts[0].text = stat.Atk.ToString();
         _statTexts[1].text = stat.Def.ToString();
@@ -74,5 +88,7 @@ public class StatusUI : MonoBehaviour
         {
             _statTexts[i].text = stat.Conditions[i-2].CurValue.ToString();
         }
+
+        ToggleButtonState();
     }
 }

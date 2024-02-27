@@ -3,7 +3,7 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     private PlayerStatData _initData;
-    public PlayerStatData StatData { get; set; }
+    public PlayerStatData StatData;
     public GameObject PlayerCharacter;
 
     private void Awake()
@@ -12,7 +12,7 @@ public class GameManager : Singleton<GameManager>
         StatData = Resources.Load<PlayerStatData>("SO/PlayerData/StatData");
     }
 
-    public void OnEnable()
+    private void OnEnable()
     {
         NewGame();
     }

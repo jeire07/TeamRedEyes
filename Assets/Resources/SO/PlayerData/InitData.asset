@@ -18,80 +18,30 @@ MonoBehaviour:
   MaxExp: 5
   Atk: 100
   Def: 0
-  StatPoint: 5
+  StatPoint: 0
   Conditions:
   - StatName: Health
     CurValue: 1000
     MaxValue: 1000
     StartValue: 1000
     RegenRate: 0
-    DecayRate: 0
-    UiBar: {fileID: 0}
   - StatName: Stamina
     CurValue: 800
     MaxValue: 800
     StartValue: 800
     RegenRate: 0
-    DecayRate: 0
-    UiBar: {fileID: 0}
   - StatName: Hunger
     CurValue: 300
     MaxValue: 300
     StartValue: 300
     RegenRate: -1
-    DecayRate: 0
-    UiBar: {fileID: 0}
   - StatName: Thirsty
     CurValue: 300
     MaxValue: 300
     StartValue: 300
     RegenRate: -1
-    DecayRate: 0
-    UiBar: {fileID: 0}
   - StatName: Infection
     CurValue: 0
     MaxValue: 100
     StartValue: 0
     RegenRate: 0
-    DecayRate: 0
-    UiBar: {fileID: 0}
-  Infection:
-    StatName: 
-    CurValue: 0
-    MaxValue: 100
-    StartValue: 0
-    RegenRate: 0
-    DecayRate: 0
-    UiBar: {fileID: 0}
-  Health:
-    StatName: 
-    CurValue: 800
-    MaxValue: 800
-    StartValue: 800
-    RegenRate: 0
-    DecayRate: 0
-    UiBar: {fileID: 0}
-  Hunger:
-    StatName: 
-    CurValue: 300
-    MaxValue: 300
-    StartValue: 300
-    RegenRate: 0
-    DecayRate: 1
-    UiBar: {fileID: 0}
-  Thirsty:
-    StatName: 
-    CurValue: 0
-    MaxValue: 0
-    StartValue: 0
-    RegenRate: 0
-    DecayRate: 1
-    UiBar: {fileID: 0}
-  Stamina:
-    StatName: 
-    CurValue: 0
-    MaxValue: 0
-    StartValue: 0
-    RegenRate: 0
-    DecayRate: 0
-    UiBar: {fileID: 0}

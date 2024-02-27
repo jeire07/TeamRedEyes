@@ -47,16 +47,12 @@ public class CheckInteraction : MonoBehaviour
             {
                 if (hit.collider.gameObject.layer == LayerMask.NameToLayer("NotInteractable"))
                 {
-                    Debug.Log($"{LayerMask.GetMask("NotInteractable")}");
-
                     _curGameobject = null;
                     _curInteractable = null;
                     _interactText.enabled = false;
                 }
                 else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Interactable"))
                 {
-                    Debug.Log($"{LayerMask.GetMask("Interactable")}");
-
                     if (hit.collider.gameObject != _curGameobject)
                     {
 
