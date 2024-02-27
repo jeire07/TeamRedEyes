@@ -75,6 +75,7 @@ public class UIManager : Singleton<UIManager>
         PanelDict.Add(PanelType.Stat, Panels[0]);
         PanelDict.Add(PanelType.Inventory, Panels[1]);
         PanelDict.Add(PanelType.Rest, Panels[2]);
+        PanelDict.Add(PanelType.Dialog, Panels[3]);
 
         //if (_sceneName == "StartScene")
         //{

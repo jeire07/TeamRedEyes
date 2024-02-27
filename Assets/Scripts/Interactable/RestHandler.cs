@@ -45,7 +45,7 @@ public class RestHandler : Singleton<RestHandler>
             float timeScale = (float)(_timeData.RestHours * 3);
             TimeManager.Instance.SetGameSpeed(timeScale);
 
-            _restingTime = _timeData.RestHours * _timeData.MinutesPerDay * 60 / _timeData.TimeScale;
+            _restingTime = 10 * timeScale;
         }
     }
 
@@ -56,6 +56,6 @@ public class RestHandler : Singleton<RestHandler>
         _isResting = false;
         TimeManager.Instance.SetGameSpeed(0);
 
-        UIManager.Instance.PanelDict[PanelType.Rest].GetComponent<RestUI>().CloseUI();
+        UIManager.Instance.HidePanel(PanelType.Rest);
     }
 }
