@@ -5,12 +5,12 @@ using UnityEngine.Events;
 public class PlayerController : MonoBehaviour
 {
     public UnityEvent<Vector2> OnLookEvent;
-    public UnityEvent<CanvasType> OnOpenCombinedCanvasEvent;
+    public UnityEvent<CanvasType> OnToggleCanvasEvent;
 
     private void OnDisable()
     {
         OnLookEvent.RemoveAllListeners();
-        OnOpenCombinedCanvasEvent.RemoveAllListeners();
+        OnToggleCanvasEvent.RemoveAllListeners();
     }
 
     public void OnLook(InputAction.CallbackContext context)
@@ -19,9 +19,11 @@ public class PlayerController : MonoBehaviour
         OnLookEvent?.Invoke(mouseDelta);
     }
 
-    public void OnOpenCombinedCanvas(InputAction.CallbackContext context)
+    public void OnToggleCombinedCanvas(InputAction.CallbackContext context)
     {
-        if(!UIManager.Instance.GetIsOpened(CanvasType.NotFrequent))
-            OnOpenCombinedCanvasEvent?.Invoke(CanvasType.Combined);
+        if(context.phase == InputActionPhase.Started)
+            if(!UIManager.Instance.GetIsOpened(PanelType.Dialog) ||
+                !UIManager.Instance.GetIsOpened(PanelType.Rest))
+                OnToggleCanvasEvent?.Invoke(CanvasType.Combined);
     }
 }

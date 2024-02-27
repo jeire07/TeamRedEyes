@@ -8,9 +8,22 @@ public class StatusUI : MonoBehaviour
     [SerializeField] private TMP_Text[] _basicStatTexts;
     [SerializeField] private TMP_Text[] _statTexts;
 
+    private void OnEnable()
+    {
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    private void OnDisable()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     private void Start()
     {
         Transform basicTextParent = transform.Find("BasicInfo");
+
+        _basicStatTexts = new TMP_Text[basicTextParent.childCount];
+        _statTexts = new TMP_Text[transform.childCount - 2];
 
         for (int index = 0; index < basicTextParent.childCount; index++)
         {
