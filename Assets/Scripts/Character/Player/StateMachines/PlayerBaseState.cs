@@ -96,17 +96,25 @@ using UnityEngine.InputSystem;
     protected virtual void OnAttackPerformed(InputAction.CallbackContext context)
     {
         if (!StateMachine.IsAttacking)
+
         {
+            
+            StateMachine.IsAttacking = true;
             StateMachine.ChangeState(StateMachine.ComboAttackState);
+
+
         }
     }
 
     protected virtual void OnAttackCanceled(InputAction.CallbackContext context)
     {
         if (StateMachine.IsAttacking)
+
         {
+            
             StateMachine.IsAttacking = false;
             StateMachine.ChangeState(StateMachine.IdleState);
+
         }
     }
 

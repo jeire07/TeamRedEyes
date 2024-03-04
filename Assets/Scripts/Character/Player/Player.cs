@@ -36,6 +36,11 @@ public class Player : MonoBehaviour
         StateMachine = new PlayerStateMachine(this);
     }
 
+    public Weapon Weapon
+    {
+        get { return weapon; }
+    }
+
     private void Start()
     {
         StateMachine.ChangeState(StateMachine.IdleState);
