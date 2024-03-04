@@ -16,6 +16,7 @@ public class PlayerAttackState : PlayerBaseState
         StartAnimation(StateMachine.Player.AnimationData.AttackParameterHash);
         StateMachine.IsAttacking = true;
         StateMachine.Player.Weapon.ActivateAttack(true);
+        Debug.Log("22");
     }
     public override void Exit() 
     {

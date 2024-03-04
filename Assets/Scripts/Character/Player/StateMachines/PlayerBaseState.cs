@@ -101,6 +101,7 @@ using UnityEngine.InputSystem;
             
             StateMachine.IsAttacking = true;
             StateMachine.ChangeState(StateMachine.ComboAttackState);
+            Debug.Log("11");
 
 
         }

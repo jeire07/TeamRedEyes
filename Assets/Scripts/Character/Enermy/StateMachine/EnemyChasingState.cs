@@ -34,6 +34,8 @@ public class EnemyChasingState : EnemyBaseState
 
     private void UpdateStateTransition()
     {
+        if (!stateMachine.IsAlive) return;
+
         // 공격 범위 내에 있으면 공격 상태로 전환합니다.
         if (IsInAttackRange())
         {
@@ -48,6 +50,8 @@ public class EnemyChasingState : EnemyBaseState
 
     private void ChasePlayer()
     {
+        if (!stateMachine.IsAlive) return;
+
         // 플레이어를 향해 이동합니다.
         Vector3 playerPosition = stateMachine.Target.transform.position;
         Vector3 direction = (playerPosition - stateMachine.Enemy.transform.position).normalized;

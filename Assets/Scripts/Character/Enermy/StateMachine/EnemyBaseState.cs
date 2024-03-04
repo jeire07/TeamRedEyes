@@ -106,7 +106,7 @@ public class EnemyBaseState : IState
 
     protected void Rotate(Vector3 direction)
     {
-        if (direction != Vector3.zero)
+        if (direction != Vector3.zero && stateMachine.IsAlive)
         {
             direction.y = 0; // ���̸� ������� �ʰ� ȸ���ϵ��� ����
             Quaternion targetRotation = Quaternion.LookRotation(direction);

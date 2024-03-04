@@ -3862,6 +3862,7 @@ GameObject:
   - component: {fileID: 799994708}
   - component: {fileID: 799994707}
   - component: {fileID: 799994711}
+  - component: {fileID: 799994712}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -3944,6 +3945,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e73fbdc5fa384d4c995a537d52d1f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &799994712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799994706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e758576dd9e6f469f5030421e9b2c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnStatUpdateEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  StatData: {fileID: 11400000, guid: 18ba5b258c352df40ab7989ea2ed0686, type: 2}
+  EnemySO: {fileID: 11400000, guid: 961f4f4436abc2741b89b8b2f9a545c9, type: 2}
 --- !u!1001 &803088417
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10214,12 +10232,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14edc1d5c726e414e94b67588eb55b31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeData: {fileID: 0}
-  _weatherIcon: {fileID: 226112947}
-  _weatherText: {fileID: 412092388}
-  _timeText: {fileID: 1161302724}
-  _AMPMText: {fileID: 1433283563}
-  _is24HourFormat: 0
 --- !u!114 &1693739927 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3191048499600136040, guid: c814ae63aee7b0f46b5379481cdb182d,
