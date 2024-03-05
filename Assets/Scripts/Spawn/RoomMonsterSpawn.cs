@@ -35,7 +35,7 @@ public class RoomMonsterSpawn : MonoBehaviour
             {
                 int monsterCount = CountMonstersWithTag("Enemy");
 
-                if (monsterCount >= 10)
+                if (monsterCount >= 30)
                 {
                     yield break;
                 }

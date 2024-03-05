@@ -41,7 +41,7 @@ public class FloorSpawn : MonoBehaviour
             {
                 int monsterCount = CountMonstersWithTag("Enermy1");
 
-                if (monsterCount >= 25)
+                if (monsterCount >= 100)
                 {
                     StopSpawning();
                 }
