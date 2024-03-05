@@ -6706,7 +6706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cd8c957d57312f4ebc5104fa8d8720f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StatData: {fileID: 0}
+  StatData: {fileID: 11400000, guid: 18ba5b258c352df40ab7989ea2ed0686, type: 2}
   PlayerCharacter: {fileID: 946963578}
 --- !u!4 &932991106
 Transform:
@@ -6751,7 +6751,7 @@ PrefabInstance:
     - target: {fileID: 45996615817075903, guid: c814ae63aee7b0f46b5379481cdb182d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 45996615817075903, guid: c814ae63aee7b0f46b5379481cdb182d,
         type: 3}
@@ -12571,12 +12571,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14edc1d5c726e414e94b67588eb55b31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeData: {fileID: 11400000, guid: 2cb0ca0b6eab6da49bd23f26fbe13dd3, type: 2}
-  _weatherIcon: {fileID: 226112947}
-  _weatherText: {fileID: 412092388}
-  _timeText: {fileID: 1161302724}
-  _AMPMText: {fileID: 1433283563}
-  _is24HourFormat: 0
 --- !u!1001 &1702207227
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15919,7 +15913,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2108222435
 MonoBehaviour:
