@@ -13,6 +13,6 @@ public class EnemyDeadState : EnemyBaseState
         base.Enter();
         StartAnimation(stateMachine.Enemy.AnimationData.IsDeadParameterHash);
         stateMachine.IsAlive = false;
-        GameObject.Destroy(stateMachine.Enemy.gameObject, 30f);
+        GameObject.Destroy(stateMachine.Enemy.gameObject, 5f);
     }
 }
