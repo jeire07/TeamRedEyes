@@ -48,18 +48,18 @@ public class Enemy : MonoBehaviour
         stateMachine.PhysicsUpdate();
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Weapon"))
-        {
-            Weapon weapon = other.GetComponent<Weapon>();
-            if (weapon != null && weapon.isAttacking) // IsAttacking은 공개 속성이어야 합니다.
-            {
-                float damage = weapon.Damage;
-                TakeDamage(damage);
-            }
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag("Weapon"))
+    //    {
+    //        Weapon weapon = other.GetComponent<Weapon>();
+    //        if (weapon != null && weapon.isAttacking) // IsAttacking은 공개 속성이어야 합니다.
+    //        {
+    //            float damage = weapon.Damage;
+    //            TakeDamage(damage);
+    //        }
+    //    }
+    //}
 
     private void HandleHealthChanged(float healthPercentage)
     {
