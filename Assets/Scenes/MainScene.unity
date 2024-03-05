@@ -4235,6 +4235,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 558418074}
   m_CullTransparentMesh: 1
+--- !u!1 &563395087 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2723511206384498034, guid: 8cdf3eb8220626844ae54918fcc144d3,
+    type: 3}
+  m_PrefabInstance: {fileID: 759942938}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &601129383
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7114,6 +7120,11 @@ PrefabInstance:
       propertyPath: MainButton
       value: 
       objectReference: {fileID: 759942941}
+    - target: {fileID: 5263752478367123050, guid: c814ae63aee7b0f46b5379481cdb182d,
+        type: 3}
+      propertyPath: ExitBackGround
+      value: 
+      objectReference: {fileID: 563395087}
     - target: {fileID: 5420215504711834959, guid: c814ae63aee7b0f46b5379481cdb182d,
         type: 3}
       propertyPath: m_LocalRotation.w
