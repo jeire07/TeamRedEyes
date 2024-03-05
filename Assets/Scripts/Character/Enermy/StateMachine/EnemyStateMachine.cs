@@ -6,6 +6,7 @@ public class EnemyStateMachine : StateMachine
 {
 
     public Enemy Enemy { get; }
+    public bool IsAlive = true;
 
     public Transform Target { get; private set; }
     public EnemyIdleState IdlingState { get; set; }
