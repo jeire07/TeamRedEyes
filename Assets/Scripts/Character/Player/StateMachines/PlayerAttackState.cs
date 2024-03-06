@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerAttackState : PlayerBaseState
 {
@@ -16,9 +13,9 @@ public class PlayerAttackState : PlayerBaseState
         StartAnimation(StateMachine.Player.AnimationData.AttackParameterHash);
         StateMachine.IsAttacking = true;
         StateMachine.Player.Weapon.ActivateAttack(true);
-        Debug.Log("22");
     }
-    public override void Exit() 
+
+    public override void Exit()
     {
         base.Exit();
         StopAnimation(StateMachine.Player.AnimationData.AttackParameterHash);
