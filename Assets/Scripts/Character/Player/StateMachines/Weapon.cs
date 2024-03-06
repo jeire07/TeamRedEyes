@@ -23,21 +23,20 @@ public class Weapon : MonoBehaviour
     public void ActivateAttack(bool isActive)
     {
         isAttacking = isActive;
-        Debug.Log("33");
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("44");
+        //Debug.Log($"{other.name}, {isAttacking}");
         if (other.CompareTag("Enemy") && player != null && isAttacking) // isAttacking 조건 추가
         {
-            Debug.Log("55");
+            //Debug.Log("55");
             float totalDamage = BaseDamage + player.GetCurrentAttack();
             Enemy enemy = other.GetComponent<Enemy>();
             if (enemy != null)
             {
                 enemy.TakeDamage(totalDamage);
-                Debug.Log("66");
+                //Debug.Log("66");
             }
         }
     }
