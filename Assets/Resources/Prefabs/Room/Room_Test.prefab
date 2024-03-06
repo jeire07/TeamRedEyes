@@ -33872,11 +33872,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6752351451164711623}
     m_Modifications:
-    - target: {fileID: 119965155647827301, guid: 9349a63988fcf3e42acd3b3e23c62a2c,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300000, guid: 14e6c8de446b55543bae4674932e8ec1, type: 2}
     - target: {fileID: 157899482235085078, guid: 9349a63988fcf3e42acd3b3e23c62a2c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -34326,11 +34321,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6752351451164711623}
     m_Modifications:
-    - target: {fileID: 119965155647827301, guid: 9349a63988fcf3e42acd3b3e23c62a2c,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300000, guid: 14e6c8de446b55543bae4674932e8ec1, type: 2}
     - target: {fileID: 157899482235085078, guid: 9349a63988fcf3e42acd3b3e23c62a2c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -34780,11 +34770,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6752351451164711623}
     m_Modifications:
-    - target: {fileID: 119965155647827301, guid: 9349a63988fcf3e42acd3b3e23c62a2c,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300000, guid: 14e6c8de446b55543bae4674932e8ec1, type: 2}
     - target: {fileID: 157899482235085078, guid: 9349a63988fcf3e42acd3b3e23c62a2c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -35752,11 +35737,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6752351451164711623}
     m_Modifications:
-    - target: {fileID: 119965155647827301, guid: 9349a63988fcf3e42acd3b3e23c62a2c,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300000, guid: 14e6c8de446b55543bae4674932e8ec1, type: 2}
     - target: {fileID: 157899482235085078, guid: 9349a63988fcf3e42acd3b3e23c62a2c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -36433,11 +36413,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6752351451164711623}
     m_Modifications:
-    - target: {fileID: 119965155647827301, guid: 9349a63988fcf3e42acd3b3e23c62a2c,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300000, guid: 14e6c8de446b55543bae4674932e8ec1, type: 2}
     - target: {fileID: 157899482235085078, guid: 9349a63988fcf3e42acd3b3e23c62a2c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -36565,7 +36540,7 @@ PrefabInstance:
     - target: {fileID: 4744298277100597789, guid: 70fabb01ff1c18343bb1751483aaa593,
         type: 3}
       propertyPath: m_Name
-      value: Int_WB_01_Wall_01 (16)
+      value: RoomWall (27)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
