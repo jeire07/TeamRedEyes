@@ -16,6 +16,8 @@ public class Enemy : MonoBehaviour
     public Animator Animator { get; private set; }
     public ForceReceiver ForceReceiver { get; private set; }
     public CharacterController Controller { get; private set; }
+    public Transform BaseHumanLArmPalm;
+    public Transform BaseHumanRArmPalm;
 
     private EnemyStateMachine stateMachine;
 
@@ -63,8 +65,7 @@ public class Enemy : MonoBehaviour
 
     private void HandleHealthChanged(float healthPercentage)
     {
-
-        Debug.Log($"Enemy health changed: {healthPercentage * 100}%");
+ 
     }
     private void HandleDeath()
     {
@@ -74,7 +75,6 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-        Debug.Log($"Enemy health: {currentHealth}/{Data.MaxHealth}");
 
         HandleHealthChanged(currentHealth / Data.MaxHealth);
 
@@ -84,5 +84,14 @@ public class Enemy : MonoBehaviour
             StatManager.Instance.GainExp();
         }
     }
+
+    public void StopMovementTemporary()
+    {
+        if (stateMachine != null)
+        {
+            stateMachine.StopMovementTemporary();
+        }
+    }
+
 
 }
