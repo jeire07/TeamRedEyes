@@ -7,6 +7,7 @@ public class PlayerLook : MonoBehaviour
     [SerializeField] private float maxXLook;
     public float lookSensitivity;
     private Transform _player;
+    private float _xRotation = 0f; // 추가
 
     [HideInInspector]
     public bool canLook = true;
@@ -29,20 +30,13 @@ public class PlayerLook : MonoBehaviour
         float mouseX = delta.x * lookSensitivity / 100;
         float mouseY = delta.y * lookSensitivity / 100;
 
-        transform.Rotate(Vector3.up, mouseX);
-        transform.Rotate(Vector3.left, mouseY);
+        // 플레이어만 y축을 기준으로 회전
+        _player.Rotate(Vector3.up * mouseX);
 
-        float currentXRotation = transform.eulerAngles.x;
-        if (currentXRotation > 180f)
-            currentXRotation -= 360f;
-        float newXRotation = Mathf.Clamp(currentXRotation, minXLook, maxXLook);
+        // 카메라는 x축을 기준으로만 회전
+        _xRotation -= mouseY;
+        _xRotation = Mathf.Clamp(_xRotation, minXLook, maxXLook);
 
-        transform.rotation = Quaternion.Euler(newXRotation, transform.eulerAngles.y, 0f);
-
-        // Only rotate around y-axis for player
-        if (_player != null)
-        {
-            _player.Rotate(Vector3.up, mouseX);
-        }
+        transform.localRotation = Quaternion.Euler(_xRotation, 0f, 0f);
     }
 }
