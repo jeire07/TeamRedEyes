@@ -6,7 +6,7 @@ public class ItemObject : MonoBehaviour, IInteractable
 
     public string GetInteractText()
     {
-        return $"Pickup {item.DisplayName}";
+        return $"[G] {item.DisplayName} 줍기";
     }
 
     public void Interact()
