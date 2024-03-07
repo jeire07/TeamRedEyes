@@ -55,8 +55,6 @@ public class CheckInteraction : MonoBehaviour
                 {
                     if (hit.collider.gameObject != _curGameobject)
                     {
-
-
                         _curGameobject = hit.collider.gameObject;
                         _curInteractable = hit.collider.GetComponent<IInteractable>();
                         SetPromptText();
@@ -64,9 +62,9 @@ public class CheckInteraction : MonoBehaviour
                 }
                 else
                 {
-                    _curGameobject = null;
-                    _curInteractable = null;
-                    _interactText.enabled = false;
+                    //_curGameobject = null;
+                    //_curInteractable = null;
+                    //_interactText.enabled = false;
                 }
             }
             else
