@@ -1,62 +1,48 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerLook : MonoBehaviour
 {
-    [Header("Look Settings")]
-    [SerializeField] private float minXLook = -90f;
-    [SerializeField] private float maxXLook = 90f;
-    [SerializeField] private float lookSensitivity = 100f;
-    [SerializeField] private InputAction lookAction; // 마우스 움직임에 대한 Input Action
-
-    private Transform playerBody; // This will be the transform that should rotate around Y axis
+    [Header("Look")]
+    [SerializeField] private float minXLook;
+    [SerializeField] private float maxXLook;
+    public float lookSensitivity;
+    private Transform _player;
 
     [HideInInspector]
     public bool canLook = true;
 
-    private void OnEnable()
+    void OnEnable()
     {
-        playerBody = transform.root;
+        _player = transform.root;
         ToggleCursor(false);
-        lookAction.Enable();
-    }
-
-    private void OnDisable()
-    {
-        lookAction.Disable();
-    }
-
-    void Update()
-    {
-        if (canLook)
-        {
-            RotateCameraBasedOnInput();
-        }
+        transform.GetComponent<PlayerController>().OnLookEvent.AddListener(RotateCamera);
     }
 
     public void ToggleCursor(bool toggle)
     {
         Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
-        Cursor.visible = toggle;
         canLook = !toggle;
     }
 
-    private void RotateCameraBasedOnInput()
+    private void RotateCamera(Vector2 delta)
     {
-        Vector2 lookInput = lookAction.ReadValue<Vector2>(); // 새로운 Input System을 사용하여 입력값을 읽음
-        float mouseX = lookInput.x * lookSensitivity * Time.deltaTime;
-        float mouseY = lookInput.y * lookSensitivity * Time.deltaTime;
+        float mouseX = delta.x * lookSensitivity / 100;
+        float mouseY = delta.y * lookSensitivity / 100;
 
-        // Player rotation around Y axis
-        playerBody.Rotate(Vector3.up * mouseX);
+        transform.Rotate(Vector3.up, mouseX);
+        transform.Rotate(Vector3.left, mouseY);
 
-        // Camera rotation around X axis
-        float currentXRotation = transform.localEulerAngles.x;
-        float rotationAmountX = currentXRotation - mouseY;
-        if (rotationAmountX > 180f) rotationAmountX -= 360f; // Adjust for Unity's 360 degree representation
+        float currentXRotation = transform.eulerAngles.x;
+        if (currentXRotation > 180f)
+            currentXRotation -= 360f;
+        float newXRotation = Mathf.Clamp(currentXRotation, minXLook, maxXLook);
 
-        rotationAmountX = Mathf.Clamp(rotationAmountX, minXLook, maxXLook);
+        transform.rotation = Quaternion.Euler(newXRotation, transform.eulerAngles.y, 0f);
 
-        transform.localEulerAngles = new Vector3(rotationAmountX, transform.localEulerAngles.y, 0);
+        // Only rotate around y-axis for player
+        if (_player != null)
+        {
+            _player.Rotate(Vector3.up, mouseX);
+        }
     }
 }
