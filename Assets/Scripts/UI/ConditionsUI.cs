@@ -11,7 +11,7 @@ public class ConditionsUI : MonoBehaviour
     private void Start()
     {
         GameObject player = GameManager.Instance.PlayerCharacter;
-        _conditions = player.GetComponent<PlayerCondition>().Conditions;
+        _conditions = player.GetComponent<PlayerCondition>().statData.Conditions;
         _conditionBars = new Image[_conditions.Length];
 
         for (int i = 0; i < transform.childCount; i++)

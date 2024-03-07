@@ -32,13 +32,13 @@ public class Condition
 
 public class PlayerCondition : Singleton<PlayerCondition>
 {
-    public Condition[] Conditions { get; set; }
+    public PlayerStatData statData { get; set; }
     public PlayerStateMachine playerStateMachine;
     private bool IsDead = false;
 
     private void Awake()
     {
-        Conditions = Resources.Load<PlayerStatData>("SO/PlayerData/StatData").Conditions;
+        statData = Resources.Load<PlayerStatData>("SO/PlayerData/StatData");
     }
 
     private void Start()
@@ -50,13 +50,13 @@ public class PlayerCondition : Singleton<PlayerCondition>
     {
         for(ConditionType type = ConditionType.Health; type <= ConditionType.Infection; type++)
         {
-            Conditions[(int)type].Add(Conditions[(int)type].RegenRate * Time.deltaTime);
+            statData.Conditions[(int)type].Add(statData.Conditions[(int)type].RegenRate * Time.deltaTime);
         }
 
-        if (Conditions[(int)ConditionType.Hunger].CurValue <= 0.0f || Conditions[(int)ConditionType.Thirsty].CurValue <= 0.0f)
-            Conditions[(int)ConditionType.Health].RegenRate = -2;
+        if (statData.Conditions[(int)ConditionType.Hunger].CurValue <= 0.0f || statData.Conditions[(int)ConditionType.Thirsty].CurValue <= 0.0f)
+            statData.Conditions[(int)ConditionType.Health].RegenRate = -2;
 
-        if (Conditions[(int)ConditionType.Health].CurValue <= 0.0f && IsDead == false)
+        if (statData.Conditions[(int)ConditionType.Health].CurValue <= 0.0f && IsDead == false)
         {
             IsDead = true;
             SetDead();
