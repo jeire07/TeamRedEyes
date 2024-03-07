@@ -2607,6 +2607,7 @@ GameObject:
   - component: {fileID: 6293601362110931991}
   - component: {fileID: 7917203591862349901}
   - component: {fileID: 8076877744877320300}
+  - component: {fileID: 7378651351481421356}
   m_Layer: 6
   m_Name: DoorL
   m_TagString: Untagged
@@ -2712,7 +2713,7 @@ Animator:
   m_GameObject: {fileID: 915078552990740874}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 099e6cc38da8ff74bb68d0bf29e24642, type: 2}
+  m_Controller: {fileID: 9100000, guid: a2f76b8b74c0cea41aeff1430b7cee8b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2723,6 +2724,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7378651351481421356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915078552990740874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36ad3d22b61d215468db56800e94a6d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AnimatorDoor: {fileID: 8076877744877320300}
 --- !u!1 &916587626514876540
 GameObject:
   m_ObjectHideFlags: 0
@@ -5700,6 +5714,7 @@ GameObject:
   - component: {fileID: 3011806251258962198}
   - component: {fileID: 8342185551523014504}
   - component: {fileID: 1816431947061366645}
+  - component: {fileID: 5545100517503690278}
   m_Layer: 6
   m_Name: DoorL
   m_TagString: Untagged
@@ -5804,7 +5819,7 @@ Animator:
   m_GameObject: {fileID: 1901415802382085236}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 099e6cc38da8ff74bb68d0bf29e24642, type: 2}
+  m_Controller: {fileID: 9100000, guid: a2f76b8b74c0cea41aeff1430b7cee8b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5815,6 +5830,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5545100517503690278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901415802382085236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36ad3d22b61d215468db56800e94a6d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AnimatorDoor: {fileID: 1816431947061366645}
 --- !u!1 &1904506275317264165
 GameObject:
   m_ObjectHideFlags: 0
@@ -13645,6 +13673,7 @@ GameObject:
   - component: {fileID: 2437141648609276107}
   - component: {fileID: 5225538326061243923}
   - component: {fileID: 8621264864394236253}
+  - component: {fileID: 2506833395624375819}
   m_Layer: 6
   m_Name: DoorR
   m_TagString: Untagged
@@ -13749,7 +13778,7 @@ Animator:
   m_GameObject: {fileID: 4166936903181192986}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a78403c5152a9024b9029ea9f39b3592, type: 2}
+  m_Controller: {fileID: 9100000, guid: c867e87298a45d149a1add7423f9a39c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -13760,6 +13789,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2506833395624375819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4166936903181192986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36ad3d22b61d215468db56800e94a6d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AnimatorDoor: {fileID: 8621264864394236253}
 --- !u!1 &4196429659427585019
 GameObject:
   m_ObjectHideFlags: 0
@@ -15786,7 +15828,7 @@ GameObject:
   - component: {fileID: 3898445211761973009}
   - component: {fileID: 1571317809929147170}
   - component: {fileID: 953766235794761647}
-  - component: {fileID: 1764533313962964767}
+  - component: {fileID: 1287985192564692389}
   m_Layer: 6
   m_Name: Sofa_Apt_01
   m_TagString: Untagged
@@ -15881,7 +15923,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.2318714, y: 0.4408971, z: 3.5366955}
   m_Center: {x: 0.0080423355, y: 0.4915194, z: -1.936995e-17}
---- !u!114 &1764533313962964767
+--- !u!114 &1287985192564692389
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -15890,7 +15932,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4754971063138527984}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e73fbdc5fa384d4c995a537d52d1f0e, type: 3}
+  m_Script: {fileID: 11500000, guid: d59d33d745c108743abff5c7609218b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4769679042875069615
@@ -33181,6 +33223,7 @@ GameObject:
   - component: {fileID: 1477729288325773002}
   - component: {fileID: 409951491387723798}
   - component: {fileID: 3789677429899649824}
+  - component: {fileID: 9041339960695199629}
   m_Layer: 6
   m_Name: DoorR
   m_TagString: Untagged
@@ -33286,7 +33329,7 @@ Animator:
   m_GameObject: {fileID: 9108637715889188592}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a78403c5152a9024b9029ea9f39b3592, type: 2}
+  m_Controller: {fileID: 9100000, guid: c867e87298a45d149a1add7423f9a39c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -33297,6 +33340,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &9041339960695199629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9108637715889188592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36ad3d22b61d215468db56800e94a6d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AnimatorDoor: {fileID: 3789677429899649824}
 --- !u!1 &9155342136401277197
 GameObject:
   m_ObjectHideFlags: 0
@@ -33950,6 +34006,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DoorFrame_Apt_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308962632287982885, guid: c628fad62e129264a811439c12cbefc6,
+        type: 3}
+      propertyPath: m_Name
+      value: DoorL
       objectReference: {fileID: 0}
     - target: {fileID: 8993614803243838387, guid: c628fad62e129264a811439c12cbefc6,
         type: 3}
@@ -35885,6 +35946,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8219655752743515702}
     m_Modifications:
+    - target: {fileID: 148553230497775627, guid: 5fc31a090dcbb5544a8d07e19a2a16b0,
+        type: 3}
+      propertyPath: m_Name
+      value: DoorL
+      objectReference: {fileID: 0}
     - target: {fileID: 6827088866261111773, guid: 5fc31a090dcbb5544a8d07e19a2a16b0,
         type: 3}
       propertyPath: m_RootOrder
@@ -36861,6 +36927,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DoorFrame_Apt_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308962632287982885, guid: c628fad62e129264a811439c12cbefc6,
+        type: 3}
+      propertyPath: m_Name
+      value: DoorL
       objectReference: {fileID: 0}
     - target: {fileID: 8993614803243838387, guid: c628fad62e129264a811439c12cbefc6,
         type: 3}
