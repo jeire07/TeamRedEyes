@@ -66,7 +66,7 @@ public class ItemSlot : MonoBehaviour
 
     public void OnUseButton()
     {
-        _conditions = PlayerCondition.Instance.Conditions;
+        _conditions = PlayerCondition.Instance.statData.Conditions;
 
         if (Item.Type == ItemType.Consumable)
         {
