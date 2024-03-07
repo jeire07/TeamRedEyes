@@ -1,11 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using System.Threading.Tasks;
 
- public class PlayerBaseState : IState
+public class PlayerBaseState : IState
 {
     protected PlayerStateMachine StateMachine;
     protected readonly PlayerGroundData groundData;
@@ -93,29 +91,45 @@ using UnityEngine.InputSystem;
     {
 
     }
-    protected virtual void OnAttackPerformed(InputAction.CallbackContext context)
+
+    //protected virtual void OnAttackPerformed(InputAction.CallbackContext context)
+    //{
+    //    if (!StateMachine.IsAttacking)
+    //    {
+    //        StateMachine.IsAttacking = true;
+    //        StateMachine.ChangeState(StateMachine.ComboAttackState);
+    //        Debug.Log("11");
+    //    }
+    //}
+
+    protected virtual async void OnAttackPerformed(InputAction.CallbackContext context)
     {
-        if (!StateMachine.IsAttacking)
+        //Debug.Log($"mouse clicked, StateMachine.IsAttacking = {StateMachine.IsAttacking}"); // it will be 'false'
+        StateMachine.IsAttacking = true;
 
+        //if (!StateMachine.IsAttacking)
+        //{
+        //    StateMachine.IsAttacking = true;
+        //    StateMachine.ChangeState(StateMachine.ComboAttackState);
+        //    Debug.Log("11");
+        //}
+
+        await Task.Delay(1000); // 1초 대기
+
+        if (StateMachine.IsAttacking) // 애니메이션 종료 체크
         {
-            
-            StateMachine.IsAttacking = true;
-            StateMachine.ChangeState(StateMachine.ComboAttackState);
-            Debug.Log("11");
-
-
+            StateMachine.IsAttacking = false;
+            StateMachine.ChangeState(StateMachine.IdleState);
         }
+        StateMachine.ChangeState(StateMachine.IdleState);
     }
 
     protected virtual void OnAttackCanceled(InputAction.CallbackContext context)
     {
-        if (StateMachine.IsAttacking)
-
+        if (StateMachine.IsAttacking) // 애니메이션 종료 체크
         {
-            
-            StateMachine.IsAttacking = false;
-            StateMachine.ChangeState(StateMachine.IdleState);
-
+            //StateMachine.IsAttacking = false;
+            //StateMachine.ChangeState(StateMachine.IdleState);
         }
     }
 
