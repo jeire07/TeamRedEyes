@@ -358,7 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 776bec92d523bd9488d36eed0c5ba868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 0
+  damageAmount: 10
   infectionAmount: 5
   pushBackForce: 10
 --- !u!1 &1893532717809384578
@@ -1841,7 +1841,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 776bec92d523bd9488d36eed0c5ba868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 0
+  damageAmount: 10
   infectionAmount: 5
   pushBackForce: 10
 --- !u!1 &8271078418592090047
