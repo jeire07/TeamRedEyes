@@ -49,6 +49,7 @@ public class EnemyIdleState : EnemyBaseState
 
     private bool CanSeePlayerWithoutObstacles()
     {
+        Vector3 startPosition = stateMachine.Enemy.transform.position + Vector3.up * 2.0f;
         Vector3 directionToPlayer = stateMachine.Target.transform.position - stateMachine.Enemy.transform.position;
         float distanceToPlayer = directionToPlayer.magnitude;
         directionToPlayer.Normalize();
@@ -58,8 +59,9 @@ public class EnemyIdleState : EnemyBaseState
 
         RaycastHit hit;
         // 플레이어 방향으로 레이캐스트 발사
-        if (Physics.Raycast(stateMachine.Enemy.transform.position, directionToPlayer, out hit, distanceToPlayer, layerMask))
+        if (Physics.Raycast(startPosition, directionToPlayer, out hit, distanceToPlayer, layerMask))
         {
+            Debug.DrawLine(startPosition, hit.point, Color.red);
             // 레이캐스트가 "Interactable" 또는 "NotInteractable" 오브젝트에 맞았다면, 플레이어가 가로막혔음을 의미
             Debug.Log($"View to player blocked by {hit.collider.gameObject.name}");
             return false; // 플레이어를 볼 수 없으므로 chasing 상태로 전환하지 않음

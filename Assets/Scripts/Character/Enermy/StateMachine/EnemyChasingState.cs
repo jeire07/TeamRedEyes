@@ -76,13 +76,14 @@ public class EnemyChasingState : EnemyBaseState
         // 추적 범위 밖으로 벗어나면 대기 상태로 전환합니다.
         else if (!IsInChaseRange())
         {
-            stateMachine.ChangeState(stateMachine.IdlingState);
+
+           // stateMachine.ChangeState(stateMachine.IdlingState);
         }
     }
 
     private void CheckForObstacles()
     {
-        Vector3 startPosition = stateMachine.Enemy.transform.position + Vector3.up * 0.5f;
+        Vector3 startPosition = stateMachine.Enemy.transform.position + Vector3.up * 2.0f;
         Vector3 directionToPlayer = (stateMachine.Target.transform.position - startPosition).normalized;
         float distanceToPlayer = Vector3.Distance(stateMachine.Target.transform.position, startPosition);
 
@@ -90,7 +91,6 @@ public class EnemyChasingState : EnemyBaseState
         if (Physics.Raycast(startPosition, directionToPlayer, out hit, distanceToPlayer, obstacleLayerMask))
         {
             Debug.DrawLine(startPosition, hit.point, Color.red);
-
             // 충돌한 객체에 대한 디버그 로그 출력
             Debug.Log("Obstacle Detected: " + hit.collider.gameObject.name);
 
