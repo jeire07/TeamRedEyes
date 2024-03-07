@@ -296,6 +296,7 @@ GameObject:
   - component: {fileID: 2832835760600406655}
   - component: {fileID: 1380264288413762574}
   - component: {fileID: 316131301816255733}
+  - component: {fileID: 6989911441319435131}
   m_Layer: 0
   m_Name: Base HumanRArmPalm
   m_TagString: Untagged
@@ -361,6 +362,18 @@ MonoBehaviour:
   damageAmount: 0
   infectionAmount: 5
   pushBackForce: 10
+--- !u!114 &6989911441319435131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869088245184224777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 279aaafc5f3a17d41ba8c9422b8bbdd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1893532717809384578
 GameObject:
   m_ObjectHideFlags: 0
@@ -1779,6 +1792,7 @@ GameObject:
   - component: {fileID: 8749030717258810727}
   - component: {fileID: 3127205231867766153}
   - component: {fileID: 7028229887846448163}
+  - component: {fileID: 4825391094456885586}
   m_Layer: 0
   m_Name: Base HumanLArmPalm
   m_TagString: Untagged
@@ -1844,6 +1858,18 @@ MonoBehaviour:
   damageAmount: 0
   infectionAmount: 5
   pushBackForce: 10
+--- !u!114 &4825391094456885586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8033520490442369893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 279aaafc5f3a17d41ba8c9422b8bbdd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8271078418592090047
 GameObject:
   m_ObjectHideFlags: 0
