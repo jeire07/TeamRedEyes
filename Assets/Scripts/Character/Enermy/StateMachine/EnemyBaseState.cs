@@ -30,7 +30,11 @@ public class EnemyBaseState : IState
     }
     public virtual void Update()
     {
-        Move();
+        // 이 메서드는 상태별로 다를 수 있으므로, 상속받은 클래스에서 필요에 따라 오버라이드 해서 사용합니다.
+        if (CanMove())
+        {
+            Move();
+        }
     }
     public virtual void PhysicsUpdate()
     {
@@ -66,6 +70,12 @@ public class EnemyBaseState : IState
         }
     }
 
+    public virtual bool CanMove()
+    {
+        // 기본적으로는 모든 상태에서 이동이 가능하다고 가정합니다.
+        return true;
+    }
+
     private void Move()
     {
         Vector3 movementDirection = GetMovementDirection();
@@ -75,16 +85,17 @@ public class EnemyBaseState : IState
 
     private void ApplyMovement(Vector3 direction)
     {
+        // CanMove 체크를 여기서 수행
+        if (!CanMove()) return; // 이동 불가능한 상태이면 이동 로직을 실행하지 않음
+
         float movementSpeed = GetMovementSpeed();
-        // 지면에 닿아 있지 않을 경우 중력 적용
         if (!stateMachine.Enemy.Controller.isGrounded)
         {
             stateMachine.Enemy.ForceReceiver.AddForce(Physics.gravity);
         }
 
-        // 중력 영향을 받는 이동력 계산
         Vector3 movement = direction * movementSpeed + stateMachine.Enemy.ForceReceiver.Movement;
-        movement.y += stateMachine.Enemy.ForceReceiver.Movement.y; // 중력 값 적용
+        movement.y += stateMachine.Enemy.ForceReceiver.Movement.y;
         stateMachine.Enemy.Controller.Move(movement * Time.deltaTime);
     }
 
@@ -106,12 +117,11 @@ public class EnemyBaseState : IState
 
     protected void Rotate(Vector3 direction)
     {
-        if (direction != Vector3.zero && stateMachine.IsAlive)
-        {
-            direction.y = 0; // ���̸� ������� �ʰ� ȸ���ϵ��� ����
-            Quaternion targetRotation = Quaternion.LookRotation(direction);
-            stateMachine.Enemy.transform.rotation = Quaternion.Slerp(stateMachine.Enemy.transform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
-        }
+        if (!CanMove() || direction == Vector3.zero) return; // 회전 불가능한 상태이거나 방향이 없으면 회전 로직을 실행하지 않음
+
+        direction.y = 0;
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        stateMachine.Enemy.transform.rotation = Quaternion.Slerp(stateMachine.Enemy.transform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
     }
 
     protected float GetMovementSpeed()

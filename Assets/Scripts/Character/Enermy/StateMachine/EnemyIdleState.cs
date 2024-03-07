@@ -21,7 +21,7 @@ public class EnemyIdleState : EnemyBaseState
 
     public override void Update()
     {
-        if (IsInChaseRange())
+        if (CanSeePlayerWithoutObstacles())
         {
             stateMachine.ChangeState(stateMachine.ChasingState);
         }
@@ -45,6 +45,28 @@ public class EnemyIdleState : EnemyBaseState
         {
             StopAnimation(hash);
         }
+    }
+
+    private bool CanSeePlayerWithoutObstacles()
+    {
+        Vector3 directionToPlayer = stateMachine.Target.transform.position - stateMachine.Enemy.transform.position;
+        float distanceToPlayer = directionToPlayer.magnitude;
+        directionToPlayer.Normalize();
+
+        // "Interactable" 및 "NotInteractable" 레이어를 포함하는 레이어 마스크 설정
+        int layerMask = LayerMask.GetMask("Interactable", "NotInteractable");
+
+        RaycastHit hit;
+        // 플레이어 방향으로 레이캐스트 발사
+        if (Physics.Raycast(stateMachine.Enemy.transform.position, directionToPlayer, out hit, distanceToPlayer, layerMask))
+        {
+            // 레이캐스트가 "Interactable" 또는 "NotInteractable" 오브젝트에 맞았다면, 플레이어가 가로막혔음을 의미
+            Debug.Log($"View to player blocked by {hit.collider.gameObject.name}");
+            return false; // 플레이어를 볼 수 없으므로 chasing 상태로 전환하지 않음
+        }
+
+        // 장애물이 없다면 true 반환
+        return true; // 플레이어를 볼 수 있으므로 chasing 상태로 전환 가능
     }
 }
 

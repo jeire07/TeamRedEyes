@@ -338,7 +338,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -361,6 +361,13 @@ MonoBehaviour:
   damageAmount: 10
   infectionAmount: 5
   pushBackForce: 10
+  InteractableLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  NotInteractableLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  enemy: {fileID: 8742954496198554941}
 --- !u!1 &1893532717809384578
 GameObject:
   m_ObjectHideFlags: 0
@@ -1378,6 +1385,8 @@ MonoBehaviour:
     baseattackParameterName: Z_BaseAttack
     hitParameterName: Z_Hit
     isdeadParameterName: Z_IsDead
+  BaseHumanLArmPalm: {fileID: 0}
+  BaseHumanRArmPalm: {fileID: 0}
 --- !u!114 &1813220457413851294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1844,6 +1853,13 @@ MonoBehaviour:
   damageAmount: 10
   infectionAmount: 5
   pushBackForce: 10
+  InteractableLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  NotInteractableLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  enemy: {fileID: 8742954496198554941}
 --- !u!1 &8271078418592090047
 GameObject:
   m_ObjectHideFlags: 0

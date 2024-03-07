@@ -361,6 +361,12 @@ MonoBehaviour:
   damageAmount: 10
   infectionAmount: 5
   pushBackForce: 10
+  InteractableLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  NotInteractableLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1893532717809384578
 GameObject:
   m_ObjectHideFlags: 0
@@ -1844,6 +1850,12 @@ MonoBehaviour:
   damageAmount: 10
   infectionAmount: 5
   pushBackForce: 10
+  InteractableLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  NotInteractableLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &8271078418592090047
 GameObject:
   m_ObjectHideFlags: 0
